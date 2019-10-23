@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exect path="/" component={Login} />
-          <Route exect path="/market" component={Market} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/market" component={Market} />
         </Switch>
       </BrowserRouter>
     </div>
