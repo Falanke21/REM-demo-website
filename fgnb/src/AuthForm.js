@@ -1,4 +1,9 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import './AuthForm.css'
 
 class AuthForm extends React.Component {
   togglePasswordMask = () => {
@@ -12,16 +17,17 @@ class AuthForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         <div>
-          <input
+          <Input
             name='username'
             value={this.props.username}
             onChange={this.props.handleChange}
             type='text'
             placeholder='Username'
           />
-          <input
+
+          <Input
             id='passInput'
             name='password'
             value={this.props.password}
@@ -29,13 +35,15 @@ class AuthForm extends React.Component {
             type='password'
             placeholder='Password'
           />
-          <button
+
+          <Button variant="contained" color="primary"
             onClick={this.props.checkAuth}>
             Login
-          </button>
+          </Button>
         </div>
+
         <div>
-          <input
+          <Checkbox
             type='checkbox'
             onClick={this.togglePasswordMask}
           />
