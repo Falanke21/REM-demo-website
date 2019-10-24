@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from './Login';
 import Market from './Market';
+import AdminDashBoard from './AdminDashBoard';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Login} />
+          <Route exact path="/admindash" component={AdminDashBoard} />
           <Route exact path="/market" component={Market} />
         </Switch>
       </BrowserRouter>

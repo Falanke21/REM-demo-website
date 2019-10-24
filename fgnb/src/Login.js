@@ -5,7 +5,7 @@ import AuthForm from './AuthForm.js'
 
 class Login extends Component {
   state = {
-    isValid: false,
+    status: "",
     username: "",
     password: ""
   };
@@ -25,21 +25,24 @@ class Login extends Component {
     const password = this.state.password;
 
     if (username === "admin" && password === "admin") {
-      console.log("admin");
       this.setState({
-        isValid: true
+        status: "admin"
       })
     } else if (username === "user" && password === "user") {
-      console.log("valid user");
-    } else {
-      console.log("invalid user");
+      this.setState({
+        status: "user"
+      })
     }
   };
 
   render() {
-    if (this.state.isValid) {
+    if (this.state.status === "user") {
       return (
         <Redirect to='/market'/>
+      );
+    } else if (this.state.status === "admin") {
+      return (
+        <Redirect to='/admindash'/>
       );
     } else {
       return (
