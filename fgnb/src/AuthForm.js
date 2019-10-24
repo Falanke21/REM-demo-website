@@ -2,10 +2,32 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import { makeStyles, emphasize } from '@material-ui/core/styles';
 import './AuthForm.css'
 
-class AuthForm extends React.Component {
+const useStyles = makeStyles({
+  button: {
+    float: "right",
+    position: "relative",
+    background: 'grey',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'black',
+    height: 20,
+    width: 1,
+    padding: '0 30px',
+  }
+})
+
+function Hook() {
+  const classes = useStyles();
+  return <Button className={classes.button}>SignUp</Button>;
+}
+
+
+  class AuthForm extends React.Component {
+
   togglePasswordMask = () => {
     const container = document.getElementById("passInput");
     if (container.type === "password") {
@@ -14,6 +36,7 @@ class AuthForm extends React.Component {
       container.type = "password";
     }
   };
+
 
   render() {
     return (
@@ -36,7 +59,8 @@ class AuthForm extends React.Component {
             placeholder='Password'
           />
 
-          <Button variant="contained" color="primary"
+
+          <Button variant="contained" 
             onClick={this.props.checkAuth}>
             Login
           </Button>
@@ -48,6 +72,16 @@ class AuthForm extends React.Component {
             onClick={this.togglePasswordMask}
           />
           Show Password
+        </div>
+
+        <div>
+          <p>
+          <tr className="signUptext">
+          If you do not have an account yet, click here!
+          </tr>
+           <Hook></Hook>
+          </p>
+
         </div>
       </div>
     )
