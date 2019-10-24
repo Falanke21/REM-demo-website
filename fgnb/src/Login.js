@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import AuthForm from './AuthForm.js'
 
 class Login extends Component {
   state = {
+    isValid: false,
     username: "",
     password: ""
   };
@@ -13,7 +14,7 @@ class Login extends Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    
+
     this.setState({
       [name]: value
     });
@@ -25,6 +26,9 @@ class Login extends Component {
 
     if (username === "admin" && password === "admin") {
       console.log("admin");
+      this.setState({
+        isValid: true
+      })
     } else if (username === "csc309" && password === "csc309") {
       console.log("valid user");
     } else {
@@ -33,20 +37,26 @@ class Login extends Component {
   };
 
   render() {
-    return (
-      <div> 
-        I'm the login page
-        <Link to={"./market"}>
-          <button>Go to market</button>
-        </Link>
-        <AuthForm
-          username={this.state.username}
-          password={this.state.password}
-          handleChange={this.handleChange}
-          checkAuth={this.checkAuth}
-        />
-      </div>
-    );
+    if (this.state.isValid) {
+      return (
+        <Redirect to='/market'/>
+      );
+    } else {
+      return (
+        <div> 
+          I'm the login page
+          <Link to={"./market"}>
+            <button>Go to market</button>
+          </Link>
+          <AuthForm
+            username={this.state.username}
+            password={this.state.password}
+            handleChange={this.handleChange}
+            checkAuth={this.checkAuth}
+          />
+        </div>
+      );
+    }
   }
 }
 
