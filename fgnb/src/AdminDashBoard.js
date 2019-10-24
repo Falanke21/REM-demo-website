@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-class AdminDashBoard extends React.Component {
+class AdminDashBoard extends Component {
   render() {
-    <div>
-      {/* user actions */}
-      {/* transaction query */}
-    </div>
+    return (
+      <div>
+        {/* user actions */}
+        {/* transaction query */}
+      </div>
+    );
   }
 }
 
