@@ -29,7 +29,7 @@ class Login extends Component {
       this.setState({
         isValid: true
       })
-    } else if (username === "csc309" && password === "csc309") {
+    } else if (username === "user" && password === "user") {
       console.log("valid user");
     } else {
       console.log("invalid user");
