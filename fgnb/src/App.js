@@ -5,6 +5,7 @@ import './App.css';
 import Login from './Login';
 import Market from './Market';
 import AdminDashBoard from './AdminDashBoard';
+import User from './User';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/admindash" component={AdminDashBoard} />
           <Route exact path="/market" component={Market} />
+          <Route exact path="/user" component={User} />
         </Switch>
       </BrowserRouter>
     </div>

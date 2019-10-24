@@ -1,4 +1,4 @@
-import React from "react"
+import React,  { Component }  from "react"
 
 class User extends Component{
 	render (){
@@ -7,3 +7,5 @@ class User extends Component{
 			)
 	}
 }
+
+export default User;
