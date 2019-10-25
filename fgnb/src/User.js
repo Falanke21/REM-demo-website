@@ -18,6 +18,9 @@ class User extends React.Component{
 					<Link to={"./Market"}>
 						<button className="market_button"> Market</button>
 					</Link>
+					<Link to={"./"}>
+						<button className="logout_button">LogOut</button>
+					</Link>
 				</div>
 				<div className="profiles">
 					<Avatar className="avatar" size="400"> AL</Avatar>
