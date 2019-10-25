@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Container from "@material-ui/core/Container";
 
 import Navigation from './Navigation';
 
@@ -9,7 +8,7 @@ class Market extends Component {
     return (
       <div>
         <Navigation />
-          <span> Here is something for sale </span>
+        <span>操你妈</span>
       </div>
     );
   }

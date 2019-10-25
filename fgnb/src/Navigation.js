@@ -7,45 +7,42 @@ import "./Navigation.css";
 class Navigation extends Component {
     render() {
         return (
-            <div>
-                {" "}
-                <div className="navigator">
-                    <ul>
-                        <Link to={"./"}>
-                            <li>
-                                <Button
-                                    size="large"
-                                    variant="outlined"
-                                    color="primary"
-                                >
-                                    Log out
-                                </Button>
-                            </li>
-                        </Link>
-                        <Link to={"./user"}>
-                            <li>
-                                <Button
-                                    size="large"
-                                    variant="outlined"
-                                    color="primary"
-                                >
-                                    Profile
-                                </Button>
-                            </li>
-                        </Link>
-                        <Link to={"./market"}>
-                            <li>
-                                <Button
-                                    size="large"
-                                    variant="outlined"
-                                    color="primary"
-                                >
-                                    Market
-                                </Button>
-                            </li>
-                        </Link>
-                    </ul>
-                </div>{" "}
+            <div className="navigator">
+                <ul>
+                    <Link to={"./"}>
+                        <li>
+                            <Button
+                                size="large"
+                                variant="outlined"
+                                color="primary"
+                            >
+                                Log out
+                            </Button>
+                        </li>
+                    </Link>
+                    <Link to={"./user"}>
+                        <li>
+                            <Button
+                                size="large"
+                                variant="outlined"
+                                color="primary"
+                            >
+                                Profile
+                            </Button>
+                        </li>
+                    </Link>
+                    <Link to={"./market"}>
+                        <li>
+                            <Button
+                                size="large"
+                                variant="outlined"
+                                color="primary"
+                            >
+                                Market
+                            </Button>
+                        </li>
+                    </Link>
+                </ul>
             </div>
         );
     }

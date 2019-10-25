@@ -1,13 +1,17 @@
 .navigator {
-    position: absolute;
-    /* background-color: lightcyan; */
-    width: 95%;
-    height: 12%;
+    /* position: fixed; */
+    background-color: lightcyan;
+    width: 96%;
+    height: 4.7em;
+    padding: 0 2%;
 }
 
+.navigator ul {
+    margin: 0;
+}
 
 .navigator li {
     display: block;
     float: right;
-    margin: 0 0.5em;   
+    margin: 1em 0.5em;
 }
