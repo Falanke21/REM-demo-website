@@ -6,7 +6,7 @@ import Login from './Login';
 import Market from './Market';
 import AdminDashBoard from './AdminDashBoard';
 import User from './User';
-
+import SignUp from './SignUp';
 function App() {
   return (
     <div className="App">
@@ -16,6 +16,7 @@ function App() {
           <Route exact path="/admindash" component={AdminDashBoard} />
           <Route exact path="/market" component={Market} />
           <Route exact path="/user" component={User} />
+          <Route exact path="/signup" component={SignUp}/>
         </Switch>
       </BrowserRouter>
     </div>

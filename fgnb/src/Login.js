@@ -57,10 +57,15 @@ class Login extends Component {
             handleChange={this.handleChange}
             checkAuth={this.checkAuth}
           />
+          <Link to={"./signUp"}>
+            <button>signUpHere</button>
+          </Link>
         </div>
       );
+
     }
   }
+
 }
 
 export default Login;
