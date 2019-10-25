@@ -7,6 +7,9 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
 class Transaction extends React.Component {
   state = {
+    id: "",
+    from: "",
+    to: "",
     isEditing: false
   };
 
@@ -17,13 +20,27 @@ class Transaction extends React.Component {
     });
   };
 
+  handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
   render() {
     const { 
       transaction, updateTransaction, removeTransaction
     } = this.props;
     const sumbitChange = () => {
       this.toggleIsEditing();
-      updateTransaction.bind(this, transaction)();
+      updateTransaction.bind(this, transaction)(
+        this.state.id,
+        this.state.from,
+        this.state.to
+      );
     }
 
     if (this.state.isEditing) {
@@ -38,13 +55,31 @@ class Transaction extends React.Component {
             </IconButton>
           </TableCell>
             <TableCell component='th' scope='row' align='right'>
-              <Input/>
+              <Input
+                name='id'
+                value={this.state.id}
+                onChange={this.handleChange}
+                type='number'
+                placeholder={transaction.id.toString()}
+              />
             </TableCell>
             <TableCell align='right'>
-              {transaction.from}
+              <Input
+                name='from'
+                value={this.state.from}
+                onChange={this.handleChange}
+                type='text'
+                placeholder={transaction.from}
+              />
             </TableCell>
             <TableCell align='right'>
-              {transaction.to}
+              <Input
+                name='to'
+                value={this.state.to}
+                onChange={this.handleChange}
+                type='text'
+                placeholder={transaction.to}
+              />
             </TableCell>
           </TableRow>
       );

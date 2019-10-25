@@ -23,12 +23,30 @@ class TransactionList extends React.Component {
 
   };
 
-  updateTransaction = (transaction) => {
-
+  updateTransaction = (transaction, id, from, to) => {
+    const newList = this.state.data.map((t) => {
+      if (t.id === transaction.id) {
+        return {
+          id: id,
+          from: from,
+          to: to
+        };
+      } else {
+        return t;
+      }
+    })
+    this.setState({
+      data: newList
+    });
   };
 
   removeTransaction = (transaction) => {
-
+    const toKeep = this.state.data.filter((t) => {
+      return t.id !== transaction.id;
+    });
+    this.setState({
+      data: toKeep
+    });
   };
 
   render() {
