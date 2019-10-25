@@ -4,3 +4,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.signUptext{
+    position: relative;
+    top:50%;
+    color:"grey";
+    font-size: 0.8em;
+}
+
+.signUpbuttom{
+    background-color: #4CAF50; /* Green */
+}
+
