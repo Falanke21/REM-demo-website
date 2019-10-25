@@ -1,0 +1,13 @@
+.navigator {
+    position: absolute;
+    /* background-color: lightcyan; */
+    width: 95%;
+    height: 12%;
+}
+
+
+.navigator li {
+    display: block;
+    float: right;
+    margin: 0 0.5em;   
+}
