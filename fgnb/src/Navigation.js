@@ -13,12 +13,12 @@ class Navigation extends Component {
                     <ul>
                         <Link to={"./user"}>
                             <li>
-                                <Button variant="contained" color="primary">Profile</Button>
+                                <Button size="large" variant="outlined" color="primary">Profile</Button>
                             </li>
                         </Link>
                         <Link to={"./market"}>
                             <li>
-                                <Button variant="contained" color="primary">Market</Button>
+                                <Button size="large" variant="outlined" color="primary">Market</Button>
                             </li>
                         </Link>
                     </ul>
