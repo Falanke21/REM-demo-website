@@ -9,18 +9,29 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from "react-router-dom";
 import "./User.css"
-
 class User extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className = "market">
-					<Link to={"./Market"}>
-						<button className="market_button"> Market</button>
-					</Link>
-					<Link to={"./"}>
-						<button className="logout_button">LogOut</button>
-					</Link>
+				<div className="nav_bar">
+					<ul>
+						<Link to={"./Market"}>
+							<li>
+								<button  size="large"
+                                variant="outlined"
+                                color="primary"
+                                className="market_button"> Market</button>
+							</li>
+						</Link>
+						<Link to={"./"}>
+							<li>
+								<button  size="large"
+                                variant="outlined"
+                                color="primary"
+                                className="logout_button">LogOut</button>
+							</li>
+							</Link>
+					</ul>
 				</div>
 				<div className="profiles">
 					<Avatar className="avatar" size="400"> AL</Avatar>
