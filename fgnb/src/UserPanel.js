@@ -9,7 +9,7 @@ class UserPanel extends React.Component {
         "username": "",
         "password": ""
       }
-    }
+    };
   }
 
   render() {

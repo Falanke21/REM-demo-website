@@ -82,33 +82,36 @@ class TransactionList extends React.Component {
           justify='space-evenly'
           alignItems='center'
         >
-          <Grid item xs={1}>
+          <Grid item xs={2}>
             <IconButton onClick={this.addTransaction}>
               <AddIcon/>
             </IconButton>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <Input
               name='id'
               value={this.state.id}
               onChange={this.handleChange}
               type='number'
+              placeholder='ID'
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <Input
               name='from'
               value={this.state.from}
               onChange={this.handleChange}
               type='text'
+              placeholder='From'
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <Input
               name='to'
               value={this.state.to}
               onChange={this.handleChange}
               type='text'
+              placeholder='To'
             />
           </Grid>
         </Grid>
