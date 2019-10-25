@@ -9,6 +9,7 @@ class ItemGrid extends Component {
 		<div className="item">Ass We Can</div>
 		<div className="item">Ass We Can</div>
 		<div className="item">Ass We Can</div>
+		<div className="item">Ass We Can</div>
 	</div>
     );
   }

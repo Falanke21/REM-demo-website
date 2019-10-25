@@ -3,12 +3,12 @@
 	display: flex;
 	margin: 0 auto;
 	width: 75vw;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .item {
 	border: solid black 1px;
 	height: 25vh;
 	width: 30%;
-
 }
