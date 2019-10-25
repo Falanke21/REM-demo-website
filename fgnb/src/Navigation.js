@@ -11,14 +11,37 @@ class Navigation extends Component {
                 {" "}
                 <div className="navigator">
                     <ul>
+                        <Link to={"./"}>
+                            <li>
+                                <Button
+                                    size="large"
+                                    variant="outlined"
+                                    color="primary"
+                                >
+                                    Log out
+                                </Button>
+                            </li>
+                        </Link>
                         <Link to={"./user"}>
                             <li>
-                                <Button size="large" variant="outlined" color="primary">Profile</Button>
+                                <Button
+                                    size="large"
+                                    variant="outlined"
+                                    color="primary"
+                                >
+                                    Profile
+                                </Button>
                             </li>
                         </Link>
                         <Link to={"./market"}>
                             <li>
-                                <Button size="large" variant="outlined" color="primary">Market</Button>
+                                <Button
+                                    size="large"
+                                    variant="outlined"
+                                    color="primary"
+                                >
+                                    Market
+                                </Button>
                             </li>
                         </Link>
                     </ul>
