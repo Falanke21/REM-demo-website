@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Redirect } from "react-router-dom";
 import {
     AppBar,
     Toolbar,
@@ -6,6 +7,7 @@ import {
     Drawer,
     Paper,
     Typography,
+    Button,
     List,
     ListItem,
     ListItemIcon,
@@ -37,16 +39,32 @@ class AdminDashBoard extends React.Component {
     render() {
         return (
             <div>
-                <AppBar>
+                <AppBar style={{ flexGrow: 1 }}>
                     <Toolbar>
                         <IconButton
+                            style={{ marginRight: 10 }}
                             edge="start"
                             color="inherit"
                             onClick={this.toggleDrawer(true)}
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography>Dashboard</Typography>
+                        <Typography
+                            variant="h6"
+                            style={{ flexGrow: 1 }}
+                            align="left"
+                        >
+                            Dashboard
+                        </Typography>
+                        <Button
+                            color="inherit"
+                            onClick={() => {
+                                this.props.history.push("/");
+                            }}
+                            variant="inherit"
+                        >
+                            Log out
+                        </Button>
                     </Toolbar>
                 </AppBar>
                 <Toolbar />
