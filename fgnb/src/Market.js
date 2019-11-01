@@ -9,6 +9,8 @@ class Market extends Component {
         return (
             <div>
                 <Navigation />
+                <br/>
+                <br/>
                 <ItemGrid />
             </div>
         );
