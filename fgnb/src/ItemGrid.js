@@ -109,7 +109,11 @@ function LineGridBox() {
         <div className={classes.root}>
             <GridList className={classes.gridList} cols={10.0} cellHeight={150}>
                 {tileData.map(tile => (
-                    <GridListTile key={tile.img}>
+                    <GridListTile
+                        key={tile.img}
+                        component={Link}
+                        to={`/item/${tile.id}`}
+                    >
                         <img src={tile.img} alt={tile.title} height="90px" />
                         <GridListTileBar
                             title={tile.title}
