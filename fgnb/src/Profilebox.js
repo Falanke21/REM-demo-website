@@ -28,15 +28,10 @@ export default function ComplexGrid() {
     <div className={classes.root} color="pink">
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="followMe" src="/asset/bike.jpg" />
-            </ButtonBase>
-          </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" color="pink">
+                <Typography gutterBottom variant="subtitle1">
                     Name: Frank Hua
                 </Typography>
                 <br></br>

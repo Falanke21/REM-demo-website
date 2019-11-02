@@ -9,7 +9,6 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import Avatar from "@material-ui/core/Avatar";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Navigation from "./Navigation";
@@ -143,8 +142,7 @@ function UserPassWordBox() {
             <Grid container justify="center" alignItems="center">
                 <Avatar
                     alt="IMAGE"
-					image={require("./static/images/yaoshui.jpg")}
-					// src="/static/images/yaoshui.jpg"
+					src={require("./static/images/yaoshui.jpg")}
                     className={classes.bigAvatar}
                 />
             </Grid>
@@ -201,48 +199,6 @@ function LetterAvatarsMySales() {
             <Avatar className={classes.purpleAvatar}>MyItems</Avatar>
         </Grid>
     );
-=======
-import "./User.css"
-class User extends React.Component{
-	render(){
-		return(
-			<div>
-				<div className="nav_bar">
-					<ul>
-						<Link to={"./Market"}>
-							<li>
-								<button  size="large"
-                                variant="outlined"
-                                color="primary"
-                                className="market_button"> Market</button>
-							</li>
-						</Link>
-						<Link to={"./"}>
-							<li>
-								<button  size="large"
-                                variant="outlined"
-                                color="primary"
-                                className="logout_button">LogOut</button>
-							</li>
-							</Link>
-					</ul>
-				</div>
-				<div className="profiles">
-					<Avatar className="avatar" size="400"> AL</Avatar>
-					<div className="sales">
-						<button className="btn profile_button">Sales</button>
-					</div>
-					<div className="orders">
-						<button className="btn profile_button">orders</button>
-					</div>
-					<div className="wishlist">
-						<button className="btn profile_button">WishList</button>
-					</div>
-				</div>
-			</div>
-			);
-	}
->>>>>>> dcc35db00929dd8684364e73e294b6251cfd6bf4
 }
 
 class User extends React.Component {
