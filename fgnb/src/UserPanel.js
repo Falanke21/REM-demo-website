@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import UserQueryForm from './UserQueryForm';
-import User from './User';
+import UserInspector from './UserInspector';
 
 class UserPanel extends React.Component {
     constructor() {
@@ -63,7 +63,7 @@ class UserPanel extends React.Component {
                     />
                 </Grid>
                 <Grid item>
-                    <User
+                    <UserInspector
                         user={this.currUser}
                     />
                 </Grid>
