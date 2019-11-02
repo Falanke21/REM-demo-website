@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ItemGrid.css";
+
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -145,12 +145,6 @@ class ItemGrid extends Component {
                 <LineGridBox></LineGridBox>
             </div>
         );
-        // return (<div className="grid-container">
-        // <div className="item">Ass We Can</div>
-        // <div className="item">Ass We Can</div>
-        // <div className="item">Ass We Can</div>
-        // <div className="item">Ass We Can</div>
-        // </div>)
     }
 }
 
