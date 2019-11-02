@@ -1,6 +1,6 @@
-import React from 'react';
-import { Grid, Input, IconButton } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import React from "react";
+import { Grid, Input, IconButton } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 
 class UserQueryForm extends React.Component {
     render() {
@@ -8,10 +8,10 @@ class UserQueryForm extends React.Component {
             <Grid
                 container
                 direction="row"
-                justify="space-evenly"
+                justify="center"
                 alignItems="center"
             >
-                <Grid item xs={7}>
+                <Grid item>
                     <Input
                         name="username"
                         value={this.props.username}
@@ -20,9 +20,9 @@ class UserQueryForm extends React.Component {
                         placeholder="Username"
                     />
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item>
                     <IconButton onClick={this.props.execQuery}>
-                        <SearchIcon/>
+                        <SearchIcon />
                     </IconButton>
                 </Grid>
             </Grid>
