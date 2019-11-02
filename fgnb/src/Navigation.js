@@ -9,7 +9,7 @@ class Navigation extends Component {
         return (
             <div className="navigator">
                 <ul>
-                    <Link to={"./"}>
+                    <Link to={"/"}>
                         <li>
                             <Button
                                 size="large"
@@ -20,7 +20,7 @@ class Navigation extends Component {
                             </Button>
                         </li>
                     </Link>
-                    <Link to={"./user"}>
+                    <Link to={"/user"}>
                         <li>
                             <Button
                                 size="large"
@@ -31,7 +31,7 @@ class Navigation extends Component {
                             </Button>
                         </li>
                     </Link>
-                    <Link to={"./market"}>
+                    <Link to={"/market"}>
                         <li>
                             <Button
                                 size="large"

@@ -7,6 +7,8 @@ import Market from './Market';
 import AdminDashBoard from './AdminDashBoard';
 import User from './User';
 import SignUp from './SignUp';
+import ItemDetail from './ItemDetail';
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +19,7 @@ function App() {
           <Route exact path="/market" component={Market} />
           <Route exact path="/user" component={User} />
           <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/item/:itemId" component={ItemDetail} />
         </Switch>
       </BrowserRouter>
     </div>
