@@ -11,27 +11,33 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 0.5
   },
-  paper: {
-    padding: theme.spacing(2),
-    // margin: 'auto',
-    height: 270,
-    left: 800,
-    position: "absolute"
-  },
   background: {
     backgroundImage: `url(${background})`,
-    width: '80%',
+    width: '55%',
     height: 300,
-    left: 250,
+    left: '25%',
     position: "absolute"
   },
   bigAvatar: {
-    width: 250,
-    height: 250,
-    display: "flex",
+    width: 100,
+    height: 100,
     position: "absolute",
-    top: 40,
-    left: 290
+    left: '50%',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    // margin: 'auto',
+    width: 250,
+    height: 150,
+    left: '40%',
+    top:110,
+    position: "absolute",
+  },
+  info:{
+    wdith: 600,
+    height: 200,
+    left: '20%',
+    top:20,
   }
 }));
 
@@ -41,42 +47,35 @@ export default function ComplexGrid() {
   return (
     <div className={classes.background}>
       <div className={classes.root} color="pink">
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={2}>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Name: Frank Hua
-                  </Typography>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <Typography variant="body2" gutterBottom>
-                    SuperSuperSmart Person
-                  </Typography>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <Typography variant="body2" color="textSecondary">
-                    ID: 1030114
-                  </Typography>
+        <div className={classes.info}>
+        <Avatar alt="IMAGE" src={require("./static/images/yaoshui.jpg")} className={classes.bigAvatar}/>
+          <Paper className={classes.paper}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm container>
+                <Grid item xs container direction="column" spacing={2}>
+                  <Grid item xs>
+                    <Typography gutterBottom variant="subtitle1">
+                      Name: Frank Hua
+                    </Typography>
+                    <br></br>
+                    <Typography variant="body2" gutterBottom>
+                      SuperSuperSmart Person
+                    </Typography>
+                    <br></br>
+                    <Typography variant="body2" color="textSecondary">
+                      ID: 1030114
+                    </Typography>
+                  </Grid>
+                  <Grid item></Grid>
                 </Grid>
-                <Grid item></Grid>
-              </Grid>
-              <Grid item>
-                <Typography variant="subtitle1">First Year</Typography>
+                <Grid item>
+                  <Typography variant="subtitle1">First Year</Typography>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Avatar
-            alt="IMAGE"
-            src={require("./static/images/yaoshui.jpg")}
-            className={classes.bigAvatar}
-          />
-        </Paper>
+          </Paper>
+        </div>
       </div>
-     </div>
+    </div>
   );
 }
