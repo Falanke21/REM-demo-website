@@ -38,7 +38,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItem>
-    <ListItem button component={Link} to='/bidding'>
+    <ListItem button component={Link} to='/biddinglist'>
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
