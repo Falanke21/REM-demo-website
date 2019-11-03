@@ -132,10 +132,10 @@ class Item extends React.Component {
                 <TableCell align="right" style={{ width: "5%" }}>
                     {item.price}
                 </TableCell>
-                <TableCell align="right" style={{ width: "30%" }}>
+                <TableCell align="right" style={{ width: "20%" }}>
                     {item.location}
                 </TableCell>
-                <TableCell align="left" style={{ width: "30%" }}>
+                <TableCell align="left" style={{ width: "40%" }}>
                     {item.description}
                 </TableCell>
             </TableRow>
