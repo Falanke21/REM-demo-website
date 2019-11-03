@@ -7,11 +7,22 @@ import {
     TableRow,
     TableCell,
     IconButton,
-    Input
+    Input,
+    Paper
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 import Transaction from "./Transaction";
+import { withStyles } from "@material-ui/styles";
+
+const ContainedPaper = withStyles({
+    root: {
+        width: "90%",
+        maxWidth: 1000,
+        margin: "auto",
+        padding: 20
+    }
+})(Paper);
 
 function createTranx(id, from, to) {
     return { id, from, to };
@@ -86,14 +97,16 @@ class TransactionList extends React.Component {
     };
 
     render() {
+        const { classes } = this.props;
         const transactionList = this.state.data;
         return (
             <div>
                 <Grid
                     container
                     direction="row"
-                    justify="space-evenly"
+                    justify="center"
                     alignItems="center"
+                    spacing={1}
                 >
                     <Grid item xs={1}>
                         <IconButton onClick={this.addTransaction}>
@@ -128,28 +141,34 @@ class TransactionList extends React.Component {
                         />
                     </Grid>
                 </Grid>
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center">Actions</TableCell>
-                            <TableCell align="right">ID</TableCell>
-                            <TableCell align="right">From</TableCell>
-                            <TableCell align="right">To</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {transactionList.map(transaction => {
-                            return (
-                                <Transaction
-                                    key={transaction.id}
-                                    transaction={transaction}
-                                    updateTransaction={this.updateTransaction}
-                                    removeTransaction={this.removeTransaction}
-                                />
-                            );
-                        })}
-                    </TableBody>
-                </Table>
+                <ContainedPaper>
+                    <Table size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">Actions</TableCell>
+                                <TableCell align="right">ID</TableCell>
+                                <TableCell align="right">From</TableCell>
+                                <TableCell align="right">To</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {transactionList.map(transaction => {
+                                return (
+                                    <Transaction
+                                        key={transaction.id}
+                                        transaction={transaction}
+                                        updateTransaction={
+                                            this.updateTransaction
+                                        }
+                                        removeTransaction={
+                                            this.removeTransaction
+                                        }
+                                    />
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+                </ContainedPaper>
             </div>
         );
     }
