@@ -77,7 +77,7 @@ function UserPassWordBox(prop) {
                 id="outlined-email-input"
                 label="Password"
                 className={classes.textField}
-                type="password"
+                type={prop.type}
                 name="password"
                 autoComplete="password"
                 margin="normal"
@@ -90,12 +90,19 @@ function UserPassWordBox(prop) {
 }
 
 class LoginForm extends React.Component {
+    state = {
+        passwordType: "password"
+    }
+
     togglePasswordMask = () => {
-        const container = document.getElementById("passInput");
-        if (container.type === "password") {
-            container.type = "text";
+        if (this.state.passwordType === "password") {
+            this.setState({
+                passwordType: "text"
+            });
         } else {
-            container.type = "password";
+            this.setState({
+                passwordType: "password"
+            });
         }
     };
 
@@ -115,7 +122,7 @@ class LoginForm extends React.Component {
                          name="password"
                          value={this.props.password}
                          onChange={this.props.handleChange}
-                         type="password"
+                         type={this.state.passwordType}
                          placeholder="Password"></UserPassWordBox>
                 </div>
                 <div>
