@@ -21,7 +21,7 @@ import ItemList from "./ItemList";
 class AdminDashBoard extends React.Component {
     state = {
         sideList: false,
-        currPage: "Item"
+        currPage: "User"
     };
 
     toggleDrawer = open => event => {

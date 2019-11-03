@@ -15,8 +15,9 @@ import Item from "./Item";
 const ContainedPaper = withStyles({
     root: {
         width: "90%",
-        maxWidth: 1000,
-        margin: 20,
+        maxWidth: 1080,
+        marginTop: 20,
+        margin: "auto",
         padding: 20
     }
 })(Paper);

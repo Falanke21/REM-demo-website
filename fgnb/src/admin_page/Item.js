@@ -71,11 +71,11 @@ class Item extends React.Component {
                     component="th"
                     scope="row"
                     align="right"
-                    style={{ width: "18%" }}
+                    style={{ width: "5%" }}
                 >
                     {item.id.toString()}
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "20%" }}>
                     <Input
                         name="name"
                         value={this.state.name}
@@ -83,7 +83,7 @@ class Item extends React.Component {
                         type="text"
                     />
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "5%" }}>
                     <Input
                         name="price"
                         value={this.state.price}
@@ -91,7 +91,7 @@ class Item extends React.Component {
                         type="number"
                     />
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "30%" }}>
                     <Input
                         name="location"
                         value={this.state.location}
@@ -99,7 +99,7 @@ class Item extends React.Component {
                         type="text"
                     />
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "30%" }}>
                     <Input
                         name="description"
                         value={this.state.description}
@@ -122,20 +122,20 @@ class Item extends React.Component {
                     component="th"
                     scope="row"
                     align="right"
-                    style={{ width: "18%" }}
+                    style={{ width: "5%" }}
                 >
                     {item.id.toString()}
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "20%" }}>
                     {item.name}
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "5%" }}>
                     {item.price}
                 </TableCell>
-                <TableCell align="right" style={{ width: "18%" }}>
+                <TableCell align="right" style={{ width: "30%" }}>
                     {item.location}
                 </TableCell>
-                <TableCell align="left" style={{ width: "18%" }}>
+                <TableCell align="left" style={{ width: "30%" }}>
                     {item.description}
                 </TableCell>
             </TableRow>

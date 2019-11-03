@@ -52,7 +52,7 @@ class Transaction extends React.Component {
         if (this.state.isEditing) {
             return (
                 <TableRow key={transaction.id}>
-                    <TableCell align="center" style={{ width: "25%" }}>
+                    <TableCell align="center" style={{ width: "20%" }}>
                         <IconButton onClick={sumbitChange}>
                             <SubmitIcon />
                         </IconButton>
@@ -64,7 +64,7 @@ class Transaction extends React.Component {
                         component="th"
                         scope="row"
                         align="right"
-                        style={{ width: "25%" }}
+                        style={{ width: "10%" }}
                     >
                         <Input
                             name="id"
@@ -74,7 +74,7 @@ class Transaction extends React.Component {
                             placeholder={transaction.id.toString()}
                         />
                     </TableCell>
-                    <TableCell align="right" style={{ width: "25%" }}>
+                    <TableCell align="right" style={{ width: "35%" }}>
                         <Input
                             name="from"
                             value={this.state.from}
@@ -83,7 +83,7 @@ class Transaction extends React.Component {
                             placeholder={transaction.from}
                         />
                     </TableCell>
-                    <TableCell align="right" style={{ width: "25%" }}>
+                    <TableCell align="right" style={{ width: "35%" }}>
                         <Input
                             name="to"
                             value={this.state.to}
@@ -97,7 +97,7 @@ class Transaction extends React.Component {
         } else {
             return (
                 <TableRow key={transaction.id}>
-                    <TableCell align="center" style={{ width: "25%" }}>
+                    <TableCell align="center" style={{ width: "20%" }}>
                         <IconButton onClick={this.toggleIsEditing}>
                             <EditIcon />
                         </IconButton>
@@ -111,14 +111,14 @@ class Transaction extends React.Component {
                         component="th"
                         scope="row"
                         align="right"
-                        style={{ width: "25%" }}
+                        style={{ width: "10%" }}
                     >
                         {transaction.id}
                     </TableCell>
-                    <TableCell align="right" style={{ width: "25%" }}>
+                    <TableCell align="right" style={{ width: "35%" }}>
                         {transaction.from}
                     </TableCell>
-                    <TableCell align="right" style={{ width: "25%" }}>
+                    <TableCell align="right" style={{ width: "35%" }}>
                         {transaction.to}
                     </TableCell>
                 </TableRow>
