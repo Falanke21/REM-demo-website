@@ -20,29 +20,29 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Sell"/>
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to='/biddinglist'>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="Bidding To Me" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="Settings" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="To Be Developed" />
     </ListItem>
-    <ListItem button component={Link} to='/biddinglist'>
+    <ListItem button >
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <ListItemText primary="Bidding" />
+      <ListItemText primary="To Be Developed" />
     </ListItem>
   </div>
 );
@@ -53,19 +53,19 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="To Be Developed" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="To Be Developed" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="To Be Developed" />
     </ListItem>
   </div>
 );
