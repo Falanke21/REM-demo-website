@@ -92,7 +92,7 @@ class ItemList extends React.Component {
                                 <TableCell align="right">Name</TableCell>
                                 <TableCell align="right">Price</TableCell>
                                 <TableCell align="right">Location</TableCell>
-                                <TableCell align="right">Description</TableCell>
+                                <TableCell align="left">Description</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
