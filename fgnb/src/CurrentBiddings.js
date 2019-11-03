@@ -18,19 +18,19 @@ function Biddings(prop) {
         {
             bidderId: 1,
             username: "Yaoshui",
-            profilePic: "/static/images/yaoshui.jpg",
+            profilePic: "./static/images/yaoshui.jpg",
             amount: 100
         },
         {
             bidderId: 2,
             username: "Falanke",
-            profilePic: "/static/images/yaoshui.jpg",
+            profilePic: "./static/images/yaoshui.jpg",
             amount: 87
         },
         {
             bidderId: 3,
             username: "Why do I have the same photo as the other two",
-            profilePic: "/static/images/yaoshui.jpg",
+            profilePic: "./static/images/yaoshui.jpg",
             amount: 85
         }
     ];
@@ -41,11 +41,9 @@ function Biddings(prop) {
                 <Container>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar
-                                src={require("./static/images/yaoshui.jpg")}
-                            />
+                            <Avatar src={require(`${bid.profilePic}`)} />
                             {
-                                // why material ui why
+                                // why react why
                             }
                         </ListItemAvatar>
                         <ListItemText
