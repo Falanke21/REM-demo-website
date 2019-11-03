@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     Paper,
     Typography,
     IconButton,
     Input,
-    Button,
     FormControlLabel,
     Switch
 } from "@material-ui/core";
@@ -29,9 +28,6 @@ function UserInspector(props) {
     const [password, setPassword] = React.useState("");
     const [blocked, setBlocked] = React.useState(false);
     const [editing, setEditing] = React.useState(false);
-    useEffect(() => {
-        setBlocked(user.blocked);
-    })
 
     return (
         <Paper classes={{ root: classes.info }}>
