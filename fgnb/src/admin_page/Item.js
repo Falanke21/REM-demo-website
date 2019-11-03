@@ -91,7 +91,7 @@ class Item extends React.Component {
                         type="number"
                     />
                 </TableCell>
-                <TableCell align="right" style={{ width: "30%" }}>
+                <TableCell align="right" style={{ width: "20%" }}>
                     <Input
                         name="location"
                         value={this.state.location}
@@ -99,7 +99,7 @@ class Item extends React.Component {
                         type="text"
                     />
                 </TableCell>
-                <TableCell align="right" style={{ width: "30%" }}>
+                <TableCell align="left" style={{ width: "40%" }}>
                     <Input
                         name="description"
                         value={this.state.description}
