@@ -9,16 +9,17 @@ class UserPanel extends React.Component {
         super();
         this.state = {
             username: "",
-            password: "",
             currUser: null,
             userList: [
                 {
                     username: "user1",
-                    password: "user1"
+                    password: "user1",
+                    blocked: false
                 },
                 {
                     username: "user2",
-                    password: "user2"
+                    password: "user2",
+                    blocked: true
                 }
             ]
         };

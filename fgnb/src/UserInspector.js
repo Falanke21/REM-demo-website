@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Paper,
     Typography,
     IconButton,
     Input,
-    Button
+    Button,
+    FormControlLabel,
+    Switch
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import EditIcon from "@material-ui/icons/Edit";
@@ -13,8 +15,8 @@ import CancelIcon from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles(theme => ({
     info: {
-        width: "50%",
-        maxWidth: 800,
+        width: "35%",
+        maxWidth: 500,
         margin: "auto",
         padding: 20
     }
@@ -25,8 +27,11 @@ function UserInspector(props) {
     const user = props.user;
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [blocked, setBlocked] = React.useState(false);
     const [editing, setEditing] = React.useState(false);
-    console.log(props.user);
+    useEffect(() => {
+        setBlocked(user.blocked);
+    })
 
     return (
         <Paper classes={{ root: classes.info }}>
@@ -67,6 +72,8 @@ function UserInspector(props) {
                     <IconButton
                         onClick={() => {
                             setEditing(true);
+                            setUsername(props.user.username);
+                            setPassword(props.user.password);
                         }}
                     >
                         <EditIcon />
@@ -92,7 +99,20 @@ function UserInspector(props) {
                     </IconButton>
                 </div>
             )}
-            <Button variant="outlined">Block User</Button>
+            <FormControlLabel
+                control={
+                    <Switch
+                        checked={user.blocked}
+                        onChange={event => {
+                            setBlocked(!blocked);
+                            user.blocked = !user.blocked;
+                        }}
+                        value="blocked"
+                    />
+                }
+                label="Blocked"
+                labelPlacement="start"
+            />
         </Paper>
     );
 }
