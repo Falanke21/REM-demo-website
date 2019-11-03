@@ -11,9 +11,9 @@ import {
     Paper
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
+import { withStyles } from "@material-ui/styles";
 
 import Transaction from "./Transaction";
-import { withStyles } from "@material-ui/styles";
 
 const ContainedPaper = withStyles({
     root: {
