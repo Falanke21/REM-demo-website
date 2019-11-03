@@ -10,6 +10,7 @@ class UserPanel extends React.Component {
         this.state = {
             username: "",
             currUser: null,
+            // stub data contains all users, to retrieve users from server
             userList: [
                 {
                     username: "user1",
@@ -36,6 +37,7 @@ class UserPanel extends React.Component {
     };
 
     execQuery = () => {
+        // currently search from state user list, to integrate with server call
         const res = this.state.userList.filter(u => {
             return u.username === this.state.username;
         });
