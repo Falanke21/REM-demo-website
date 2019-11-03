@@ -14,8 +14,12 @@ class Transaction extends React.Component {
     };
 
     toggleIsEditing = () => {
+        const t = this.props.transaction;
         const cur = this.state.isEditing;
         this.setState({
+            id: t.id,
+            from: t.from,
+            to: t.to,
             isEditing: !cur
         });
     };
