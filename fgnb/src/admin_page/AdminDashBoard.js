@@ -71,7 +71,6 @@ class AdminDashBoard extends React.Component {
                 <Drawer
                     open={this.state.sideList}
                     onClose={this.toggleDrawer(false)}
-                    moveView={this.moveView}
                 >
                     <div
                         style={{ width: 300 }}

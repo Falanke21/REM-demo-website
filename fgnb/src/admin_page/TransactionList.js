@@ -97,7 +97,6 @@ class TransactionList extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;
         const transactionList = this.state.data;
         return (
             <div>
