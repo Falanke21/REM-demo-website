@@ -35,6 +35,7 @@ class TransactionList extends React.Component {
             id: "",
             from: "",
             to: "",
+            // stub data contains all transactions, to retrieve info from server
             data: [
                 createTranx(0, "user1", "user2"),
                 createTranx(1, "user2", "user1")
@@ -43,6 +44,7 @@ class TransactionList extends React.Component {
     }
 
     addTransaction = () => {
+        // currently push to state transaction list, to synchroinze with server database
         let transactions = this.state.data;
         if (
             transactions.filter(t => {
@@ -61,6 +63,7 @@ class TransactionList extends React.Component {
     };
 
     updateTransaction = (transaction, id, from, to) => {
+        // currently push to state transaction list, to synchroinze with server database
         const newList = this.state.data.map(t => {
             if (t.id === transaction.id) {
                 return {
@@ -78,6 +81,7 @@ class TransactionList extends React.Component {
     };
 
     removeTransaction = transaction => {
+        // currently push to state transaction list, to synchroinze with server database
         const toKeep = this.state.data.filter(t => {
             return t.id !== transaction.id;
         });

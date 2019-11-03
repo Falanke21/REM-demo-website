@@ -35,6 +35,7 @@ class ItemList extends React.Component {
             price: "",
             location: "",
             description: "",
+            // stub data contains all current items, to retrieve items from server
             data: [
                 createItem(0, "Tasty burger", 15, "SS", "It is tasty."),
                 createItem(
@@ -49,6 +50,7 @@ class ItemList extends React.Component {
     }
 
     addItem = prop => {
+        // currently push to state item list, to synchroinze with server database
         let items = this.state.data;
         items.push({ ...prop, id: items[items.length - 1].id + 1 });
         this.setState({
@@ -57,6 +59,7 @@ class ItemList extends React.Component {
     };
 
     updateItem = (item, newItem) => {
+        // currently update state item list, to synchroinze with server database
         const newList = this.state.data.map(i => {
             if (i.id === item.id) {
                 return newItem;
@@ -70,6 +73,7 @@ class ItemList extends React.Component {
     };
 
     removeItem = item => {
+        // currently update state item list, to synchroinze with server database
         const toKeep = this.state.data.filter(i => {
             return i.id !== item.id;
         });
