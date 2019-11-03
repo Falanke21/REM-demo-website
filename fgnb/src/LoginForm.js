@@ -44,51 +44,13 @@ function SignUpButton() {
     const classes = useStylesButton();
     return (
         <Button variant="outlined" className={classes.button}>
-            Finish
+            SignUP
         </Button>
     );
 }
 
-function UserInputBox() {
+function UserAccountBox(prop) {
     const classes = useStyles();
-
-    return (
-        <form className={classes.container} noValidate autoComplete="off">
-            <TextField
-                id="outlined-email-input"
-                label="Email"
-                className={classes.textField}
-                type="email"
-                name="email"
-                autoComplete="email"
-                margin="normal"
-                variant="outlined"
-            />
-        </form>
-    );
-}
-
-function UserEmailBox() {
-    const classes = useStyles();
-
-    return (
-        <form className={classes.container} noValidate autoComplete="off">
-            <TextField
-                id="outlined-email-input"
-                label="Email"
-                className={classes.textField}
-                type="email"
-                name="email"
-                autoComplete="email"
-                margin="normal"
-                variant="outlined"
-            />
-        </form>
-    );
-}
-function UserAccountBox() {
-    const classes = useStyles();
-
     return (
         <form className={classes.container} noValidate autoComplete="off">
             <TextField
@@ -100,12 +62,14 @@ function UserAccountBox() {
                 autoComplete="account"
                 margin="normal"
                 variant="outlined"
+                value={prop.value}
+                onChange={prop.onChange}
             />
         </form>
     );
 }
 
-function UserPassWordBox() {
+function UserPassWordBox(prop) {
     const classes = useStyles();
     return (
         <form className={classes.container} noValidate autoComplete="off">
@@ -118,12 +82,14 @@ function UserPassWordBox() {
                 autoComplete="password"
                 margin="normal"
                 variant="outlined"
+                value={prop.value}
+                onChange={prop.onChange}
             />
         </form>
     );
 }
 
-class SignUpForm extends React.Component {
+class LoginForm extends React.Component {
     togglePasswordMask = () => {
         const container = document.getElementById("passInput");
         if (container.type === "password") {
@@ -137,15 +103,35 @@ class SignUpForm extends React.Component {
         return (
             <div className="main-container">
                 <div>
-                    <UserAccountBox></UserAccountBox>
-                    <UserPassWordBox></UserPassWordBox>
-                    <UserEmailBox> </UserEmailBox>
+                    <UserAccountBox
+                        name="account"
+                        value={this.props.username}
+                        onChange={this.props.handleAccount}
+                        type="text"
+                        placeholder="Username"
+                    ></UserAccountBox>
+                    <UserPassWordBox
+                         id="passInput"
+                         name="password"
+                         value={this.props.password}
+                         onChange={this.props.handleChange}
+                         type="password"
+                         placeholder="Password"></UserPassWordBox>
                 </div>
-
+                <div>
+                    <Checkbox
+                        type="checkbox"
+                        onClick={this.togglePasswordMask}
+                    />
+                    Show Password
+                </div>
+                <Button variant="contained" onClick={this.props.checkAuth}>
+                        Login
+                </Button>
                 <div>
                     <p>
                         <span className="signUptext">
-                            Welcome to join us!!!!
+                            Don't have an account yet? Signup here!
                         </span>
                         <Link to={"./signup"}>
                             <SignUpButton></SignUpButton>
@@ -157,4 +143,4 @@ class SignUpForm extends React.Component {
     }
 }
 
-export default SignUpForm;
+export default LoginForm;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-
 import AuthForm from './AuthForm.js'
-
+import LoginForm from './LoginForm.js'
+import "./Login.css";
+import loginlogo from './asset/logo.png';
 class Login extends Component {
   state = {
     status: "",
@@ -20,6 +21,12 @@ class Login extends Component {
     });
   };
 
+  handleAccount = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
   checkAuth = () => {
     const username = this.state.username;
     const password = this.state.password;
@@ -33,6 +40,10 @@ class Login extends Component {
         status: "user"
       })
     }
+    console.log(`state is ${this.state.status}`);
+    console.log(`user is ${this.state.username}`);
+    console.log(`user is ${this.state.password}`);
+    
   };
 
   render() {
@@ -47,19 +58,23 @@ class Login extends Component {
     } else {
       return (
         <div> 
-          I'm the login page
+          {/* I'm the login page
           <Link to={"./market"}>
             <button>Go to market</button>
-          </Link>
-          <AuthForm
+          </Link> */}
+          <img id="loginlogo" src={loginlogo} alt={"logo in login"} />
+          <LoginForm
+          username={this.state.username}
+          password={this.state.password}
+          handleChange={this.handleChange}
+          handleAccount={this.handleAccount}
+          checkAuth={this.checkAuth}></LoginForm>
+          {/* <AuthForm
             username={this.state.username}
             password={this.state.password}
             handleChange={this.handleChange}
             checkAuth={this.checkAuth}
-          />
-          <Link to={"./signUp"}>
-            <button>signUpHere</button>
-          </Link>
+          /> */}
         </div>
       );
 
