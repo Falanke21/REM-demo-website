@@ -8,6 +8,7 @@ import AdminDashBoard from './AdminDashBoard';
 import User from './User';
 import SignUp from './SignUp';
 import ItemDetail from './ItemDetail';
+import AddItem from './AddItem';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/user" component={User} />
           <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/item/:itemId" component={ItemDetail} />
+          <Route exact path="/additem" component={AddItem} />
         </Switch>
       </BrowserRouter>
     </div>
