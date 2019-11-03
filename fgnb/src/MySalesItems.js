@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ItemGrid.css';
+
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -17,14 +17,14 @@ const useStylesLineimgs = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    height: "200px",
+    height: "80%",
     flexWrap: 'nowrap',
-    width: "2800px",
+    width: "80%",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
-    position:"relative",
-    left:"1400px",
-    top:"60px"
+    position:"absolute",
+    left:"10%",
+    top:"80%"
   },
   title: {
     color: 'white',
@@ -52,11 +52,6 @@ function LineGridBox() {
                 root: classes.titleBar,
                 title: classes.title,
               }}
-              actionIcon={
-                <IconButton aria-label={`star ${tile.title}`}>
-                  <StarBorderIcon className={classes.title} />
-                </IconButton>
-              }
             />
           </GridListTile>
         ))}

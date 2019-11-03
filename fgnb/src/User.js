@@ -93,8 +93,6 @@ const useStyles = makeStyles(theme => ({
         position: "relative",
         top: 40,
         left: 1000,
-        background: require("./asset/honey.jpg"),
-        img: require("./asset/breakfast.jpg")
     },
     bigGrid: {
         width: 20,
@@ -140,11 +138,11 @@ function UserPassWordBox() {
             {/* <ImageAvatars></ImageAvatars> test purposes */}
             <FullWidthGrid> </FullWidthGrid>
             <Grid container justify="center" alignItems="center">
-                <Avatar
+                {/* <Avatar
                     alt="IMAGE"
 					src={require("./static/images/yaoshui.jpg")}
                     className={classes.bigAvatar}
-                />
+                /> */}
             </Grid>
         </div>
     );
@@ -170,7 +168,7 @@ const avatarletterstyle = makeStyles({
         color: "#fff",
         backgroundColor: deepOrange[500],
         position: "absolute",
-        top: 400,
+        top: '45%',
         left: 150
     },
     purpleAvatar: {
@@ -179,7 +177,7 @@ const avatarletterstyle = makeStyles({
         color: "#ggg",
         backgroundColor: deepPurple[500],
         position: "absolute",
-        top: 630,
+        top: '72%',
         left: 150
     }
 });
@@ -188,7 +186,7 @@ function LetterAvatars() {
     const classes = avatarletterstyle();
     return (
         <Grid container justify="center" alignItems="center">
-            <Avatar className={classes.orangeAvatar}>WishList</Avatar>
+            <Avatar className={classes.orangeAvatar}>MyBidding</Avatar>
         </Grid>
     );
 }
@@ -196,7 +194,7 @@ function LetterAvatarsMySales() {
     const classes = avatarletterstyle();
     return (
         <Grid container justify="center" alignItems="center">
-            <Avatar className={classes.purpleAvatar}>MyItems</Avatar>
+            <Avatar className={classes.purpleAvatar}>MySells</Avatar>
         </Grid>
     );
 }

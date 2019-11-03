@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ItemGrid.css';
+
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -18,17 +18,21 @@ const useStylesLineimgs = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    height: "200px",
+    height: "80%",
     flexWrap: 'nowrap',
-    width: "2800px",
+    width: '80%',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
-    position:"relative",
-    left:"1400px",
-    top:"40px"
+    position:"absolute",
+    left:"10%",
+    top:"53%",
   },
   title: {
     color: 'white',
+  },
+  listele:{
+    width:"100px",
+    height:"100px",
   },
   titleBar: {
     background:
@@ -45,7 +49,7 @@ function LineGridBox() {
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={10.0} cellHeight={150}>
         {tileData.map(tile => (
-          <GridListTile key={tile.img}>
+          <GridListTile className={classes.listele} key={tile.img}>
             <img src={tile.img} alt={tile.title}/>
             <GridListTileBar
               title={tile.title}
@@ -53,11 +57,6 @@ function LineGridBox() {
                 root: classes.titleBar,
                 title: classes.title,
               }}
-              actionIcon={
-                <IconButton aria-label={`star ${tile.title}`}>
-                  <StarBorderIcon className={classes.title} />
-                </IconButton>
-              }
             />
           </GridListTile>
         ))}

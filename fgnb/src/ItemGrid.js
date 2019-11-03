@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ItemGrid.css";
+
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -85,14 +85,6 @@ function GridBox() {
                         <GridListTileBar
                             title={tile.title}
                             titlePosition="top"
-                            actionIcon={
-                                <IconButton
-                                    aria-label={`star ${tile.title}`}
-                                    className={classes.icon}
-                                >
-                                    <StarBorderIcon />
-                                </IconButton>
-                            }
                             actionPosition="left"
                             className={classes.titleBar}
                         />
@@ -109,7 +101,11 @@ function LineGridBox() {
         <div className={classes.root}>
             <GridList className={classes.gridList} cols={10.0} cellHeight={150}>
                 {tileData.map(tile => (
-                    <GridListTile key={tile.img}>
+                    <GridListTile
+                        key={tile.img}
+                        component={Link}
+                        to={`/item/${tile.id}`}
+                    >
                         <img src={tile.img} alt={tile.title} height="90px" />
                         <GridListTileBar
                             title={tile.title}
@@ -117,11 +113,6 @@ function LineGridBox() {
                                 root: classes.titleBar,
                                 title: classes.title
                             }}
-                            actionIcon={
-                                <IconButton aria-label={`star ${tile.title}`}>
-                                    <StarBorderIcon className={classes.title} />
-                                </IconButton>
-                            }
                         />
                     </GridListTile>
                 ))}
@@ -145,12 +136,6 @@ class ItemGrid extends Component {
                 <LineGridBox></LineGridBox>
             </div>
         );
-        // return (<div className="grid-container">
-        // <div className="item">Ass We Can</div>
-        // <div className="item">Ass We Can</div>
-        // <div className="item">Ass We Can</div>
-        // <div className="item">Ass We Can</div>
-        // </div>)
     }
 }
 
