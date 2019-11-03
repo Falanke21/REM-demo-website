@@ -78,7 +78,11 @@ class AdminDashBoard extends React.Component {
                     >
                         <List>
                             {["User", "Transaction", "Item"].map(item => (
-                                <ListItem button onClick={this.moveView(item)}>
+                                <ListItem
+                                    button
+                                    key={item}
+                                    onClick={this.moveView(item)}
+                                >
                                     <ListItemIcon>
                                         <MenuIcon />
                                     </ListItemIcon>
@@ -90,7 +94,7 @@ class AdminDashBoard extends React.Component {
                 </Drawer>
                 {this.state.currPage === "User" && <UserPanel />}
                 {this.state.currPage === "Transaction" && <TransactionList />}
-                {this.state.currPage === "Item" && <ItemList/>}
+                {this.state.currPage === "Item" && <ItemList />}
             </div>
         );
     }
