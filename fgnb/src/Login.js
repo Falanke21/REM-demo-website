@@ -39,10 +39,10 @@ class Login extends Component {
       this.setState({
         status: "user"
       })
+    } else {
+      alert("Username or Password incorrect")
     }
-    console.log(`state is ${this.state.status}`);
-    console.log(`user is ${this.state.username}`);
-    console.log(`user is ${this.state.password}`);
+
     
   };
 
