@@ -168,7 +168,7 @@ const avatarletterstyle = makeStyles({
         color: "#fff",
         backgroundColor: deepOrange[500],
         position: "absolute",
-        top: 400,
+        top: '45%',
         left: 150
     },
     purpleAvatar: {
@@ -177,7 +177,7 @@ const avatarletterstyle = makeStyles({
         color: "#ggg",
         backgroundColor: deepPurple[500],
         position: "absolute",
-        top: 630,
+        top: '72%',
         left: 150
     }
 });
