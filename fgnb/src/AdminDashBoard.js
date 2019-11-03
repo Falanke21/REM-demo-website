@@ -39,12 +39,12 @@ class AdminDashBoard extends React.Component {
     render() {
         return (
             <div>
-                <AppBar style={{ flexGrow: 1 }}>
+                <AppBar style={{ flexGrow: 1, background: "lightcyan" }}>
                     <Toolbar>
                         <IconButton
                             style={{ marginRight: 10 }}
                             edge="start"
-                            color="inherit"
+                            color="primary"
                             onClick={this.toggleDrawer(true)}
                         >
                             <MenuIcon />
@@ -52,16 +52,16 @@ class AdminDashBoard extends React.Component {
                         <Typography
                             variant="h6"
                             style={{ flexGrow: 1 }}
+                            color="primary"
                             align="left"
                         >
                             Dashboard
                         </Typography>
                         <Button
-                            color="inherit"
-                            onClick={() => {
-                                this.props.history.push("/");
-                            }}
-                            variant="inherit"
+                            color="primary"
+                            component={Link}
+                            to="/"
+                            variant="outlined"
                         >
                             Log out
                         </Button>

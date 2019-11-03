@@ -93,8 +93,6 @@ const useStyles = makeStyles(theme => ({
         position: "relative",
         top: 40,
         left: 1000,
-        background: require("./asset/honey.jpg"),
-        img: require("./asset/breakfast.jpg")
     },
     bigGrid: {
         width: 20,
@@ -140,12 +138,11 @@ function UserPassWordBox() {
             {/* <ImageAvatars></ImageAvatars> test purposes */}
             <FullWidthGrid> </FullWidthGrid>
             <Grid container justify="center" alignItems="center">
-                <Avatar
+                {/* <Avatar
                     alt="IMAGE"
-					image={require("./static/images/yaoshui.jpg")}
-					// src="/static/images/yaoshui.jpg"
+					src={require("./static/images/yaoshui.jpg")}
                     className={classes.bigAvatar}
-                />
+                /> */}
             </Grid>
         </div>
     );
