@@ -17,14 +17,14 @@ const useStylesLineimgs = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    height: "200px",
+    height: "80%",
     flexWrap: 'nowrap',
-    width: "2800px",
+    width: "80%",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
-    position:"relative",
-    left:"1400px",
-    top:"60px"
+    position:"absolute",
+    left:"10%",
+    top:"120%"
   },
   title: {
     color: 'white',
