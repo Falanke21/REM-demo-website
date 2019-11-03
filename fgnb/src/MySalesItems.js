@@ -24,7 +24,7 @@ const useStylesLineimgs = makeStyles(theme => ({
     transform: 'translateZ(0)',
     position:"absolute",
     left:"10%",
-    top:"120%"
+    top:"80%"
   },
   title: {
     color: 'white',
