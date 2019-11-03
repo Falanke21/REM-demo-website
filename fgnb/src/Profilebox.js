@@ -54,6 +54,7 @@ export default function ComplexGrid() {
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
+                    {/* Hard code data, add server call here */}
                     <Typography gutterBottom variant="subtitle1">
                       Name: Frank Hua
                     </Typography>

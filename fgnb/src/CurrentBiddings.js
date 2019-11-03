@@ -53,38 +53,6 @@ function Biddings(prop) {
                     </ListItem>
                 </Container>
             ))}
-            {/*
-            <Container>
-
-
-
-                 <ListItem>
-                    <ListItemAvatar>
-                        <Avatar src={require("./static/images/yaoshui.jpg")} />
-                    </ListItemAvatar>
-                    <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-                </ListItem>
-            </Container>
-            <Container>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar src={require("./static/images/yaoshui.jpg")} />
-                    </ListItemAvatar>
-                    <ListItemText primary="Work" secondary="Jan 7, 2014" />
-                </ListItem>
-            </Container>
-            <Container>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar src={require("./static/images/yaoshui.jpg")} />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Vacation"
-                        secondary="July 20, 2014"
-                    />
-                </ListItem> 
-			</Container>
-			*/}
         </List>
     );
 }

@@ -26,6 +26,7 @@ class Bidding extends React.Component {
             removeTransaction
         } = this.props;
             return (
+                // hardcode data, add server call here
               <TableRow>
                 <TableCell component="th" scope="row" align="center">
                   CSC309

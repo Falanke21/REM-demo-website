@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 export default function ItemCard(prop) {
     return (
+        // Server call will be add to this page later
         <div>
             <br />
             <Container maxWidth="md">

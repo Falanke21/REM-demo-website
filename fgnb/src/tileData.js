@@ -1,3 +1,5 @@
+// Hard code data, to be replaced by server calls
+
 const tileData = [
     {
         id: "0",
