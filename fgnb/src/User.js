@@ -168,7 +168,7 @@ const avatarletterstyle = makeStyles({
         color: "#fff",
         backgroundColor: deepOrange[500],
         position: "absolute",
-        top: 400,
+        top: '45%',
         left: 150
     },
     purpleAvatar: {
@@ -177,7 +177,7 @@ const avatarletterstyle = makeStyles({
         color: "#ggg",
         backgroundColor: deepPurple[500],
         position: "absolute",
-        top: 630,
+        top: '72%',
         left: 150
     }
 });
@@ -186,7 +186,7 @@ function LetterAvatars() {
     const classes = avatarletterstyle();
     return (
         <Grid container justify="center" alignItems="center">
-            <Avatar className={classes.orangeAvatar}>WishList</Avatar>
+            <Avatar className={classes.orangeAvatar}>MyBidding</Avatar>
         </Grid>
     );
 }
@@ -194,7 +194,7 @@ function LetterAvatarsMySales() {
     const classes = avatarletterstyle();
     return (
         <Grid container justify="center" alignItems="center">
-            <Avatar className={classes.purpleAvatar}>MyItems</Avatar>
+            <Avatar className={classes.purpleAvatar}>MySells</Avatar>
         </Grid>
     );
 }
