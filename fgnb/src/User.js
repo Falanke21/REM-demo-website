@@ -186,7 +186,7 @@ function LetterAvatars() {
     const classes = avatarletterstyle();
     return (
         <Grid container justify="center" alignItems="center">
-            <Avatar className={classes.orangeAvatar}>WishList</Avatar>
+            <Avatar className={classes.orangeAvatar}>MyBidding</Avatar>
         </Grid>
     );
 }
@@ -194,7 +194,7 @@ function LetterAvatarsMySales() {
     const classes = avatarletterstyle();
     return (
         <Grid container justify="center" alignItems="center">
-            <Avatar className={classes.purpleAvatar}>MyItems</Avatar>
+            <Avatar className={classes.purpleAvatar}>MySells</Avatar>
         </Grid>
     );
 }
