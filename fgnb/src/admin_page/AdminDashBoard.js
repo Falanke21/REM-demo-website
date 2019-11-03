@@ -14,8 +14,9 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import UserPanel from "./UserPanel.js";
+import UserPanel from "./UserPanel";
 import TransactionList from "./TransactionList";
+import ItemList from "./ItemList";
 
 class AdminDashBoard extends React.Component {
     state = {
@@ -77,7 +78,7 @@ class AdminDashBoard extends React.Component {
                         onClick={this.toggleDrawer(false)}
                     >
                         <List>
-                            {["User", "Transaction"].map(item => (
+                            {["User", "Transaction", "Item"].map(item => (
                                 <ListItem button onClick={this.moveView(item)}>
                                     <ListItemIcon>
                                         <MenuIcon />
@@ -88,12 +89,9 @@ class AdminDashBoard extends React.Component {
                         </List>
                     </div>
                 </Drawer>
-                {/* <Paper> */}
-                    {this.state.currPage === "User" && <UserPanel />}
-                    {this.state.currPage === "Transaction" && (
-                        <TransactionList />
-                    )}
-                {/* </Paper> */}
+                {this.state.currPage === "User" && <UserPanel />}
+                {this.state.currPage === "Transaction" && <TransactionList />}
+                {this.state.currPage === "Item" && <ItemList/>}
             </div>
         );
     }

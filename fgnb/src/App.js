@@ -4,7 +4,7 @@ import './App.css';
 
 import Login from './Login';
 import Market from './Market';
-import AdminDashBoard from './AdminDashBoard';
+import AdminDashBoard from './admin_page/AdminDashBoard';
 import User from './User';
 import SignUp from './SignUp';
 import ItemDetail from './ItemDetail';
