@@ -13,9 +13,10 @@ export default function Settings() {
     // const [itemName, setItemName] = React.useState("");
     // const [itemDescription, setItemDescription] = React.useState("");
     // const [itemPrice, setItemPrice] = React.useState("");
-	// const [itemLocation, setItemLocation] = React.useState("");
-	
-	// TODO add server call of user information
+    // const [itemLocation, setItemLocation] = React.useState("");
+
+    // TODO add server call of user information
+    // Hard code data here
 
     return (
         <div>
@@ -33,6 +34,7 @@ export default function Settings() {
                         label="Name goes here"
                         type="text"
                         fullWidth
+                        value="Falanke"
                         // value={itemName}
                         // onChange={e => {
                         //     setItemName(e.target.value);
@@ -48,6 +50,7 @@ export default function Settings() {
                         label="The email of this account"
                         type="text"
                         fullWidth
+                        value="falanke.ihatematerialui.com"
                         // value={itemDescription}
                         // onChange={e => {
                         //     setItemDescription(e.target.value);
