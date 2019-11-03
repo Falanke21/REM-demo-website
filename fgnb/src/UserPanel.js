@@ -1,8 +1,8 @@
-import React from 'react';
-import { Grid } from '@material-ui/core';
+import React from "react";
+import { Grid } from "@material-ui/core";
 
-import UserQueryForm from './UserQueryForm';
-import UserInspector from './UserInspector';
+import UserQueryForm from "./UserQueryForm";
+import UserInspector from "./UserInspector";
 
 class UserPanel extends React.Component {
     constructor() {
@@ -62,10 +62,10 @@ class UserPanel extends React.Component {
                         execQuery={this.execQuery}
                     />
                 </Grid>
-                <Grid item>
-                    <UserInspector
-                        user={this.currUser}
-                    />
+                <Grid item container>
+                    {this.state.currUser && (
+                        <UserInspector user={this.state.currUser} />
+                    )}
                 </Grid>
             </Grid>
         );

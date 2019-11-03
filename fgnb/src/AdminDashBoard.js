@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
     AppBar,
     Toolbar,
     IconButton,
     Drawer,
-    Paper,
     Typography,
     Button,
     List,
@@ -89,16 +88,12 @@ class AdminDashBoard extends React.Component {
                         </List>
                     </div>
                 </Drawer>
-                {this.state.currPage === "User" && (
-                    <Paper>
-                        <UserPanel />
-                    </Paper>
-                )}
-                {this.state.currPage === "Transaction" && (
-                    <Paper>
+                {/* <Paper> */}
+                    {this.state.currPage === "User" && <UserPanel />}
+                    {this.state.currPage === "Transaction" && (
                         <TransactionList />
-                    </Paper>
-                )}
+                    )}
+                {/* </Paper> */}
             </div>
         );
     }

@@ -2,8 +2,8 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
-import { makeStyles, emphasize } from "@material-ui/core/styles";
-import { Link, Redirect } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import "./AuthForm.css";
 
 const useStyles = makeStyles({
