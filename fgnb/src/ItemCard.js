@@ -10,7 +10,7 @@ export default function ItemCard(prop) {
     return (
         <div>
             <br />
-            <Container maxWidth="md" p={40}>
+            <Container maxWidth="md">
                 <Card>
                     <CardMedia image={prop.item.img} />
                     {
@@ -20,7 +20,7 @@ export default function ItemCard(prop) {
                     }
                     <img alt={prop.item.title} src={prop.item.img}></img>
                     <CardContent>
-                        <Typography gutterBottom variant="h4" component="h2">
+                        <Typography gutterBottom variant="h3" component="h2">
                             {prop.item.title}
                         </Typography>
                         <Typography variant="subtitle1" component="h5">
