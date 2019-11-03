@@ -26,7 +26,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Bidding To Me" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to='/settings'>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>

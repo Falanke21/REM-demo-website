@@ -10,6 +10,7 @@ import SignUp from './SignUp';
 import ItemDetail from './ItemDetail';
 import AddItem from './AddItem';
 import BiddingList from './BiddingList';
+import Settings from './Settings';
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/item/:itemId" component={ItemDetail} />
           <Route exact path="/additem" component={AddItem} />
           <Route exact path="/biddinglist" component={BiddingList} />
+          <Route exact path="/settings" component={Settings} />
         </Switch>
       </BrowserRouter>
     </div>
