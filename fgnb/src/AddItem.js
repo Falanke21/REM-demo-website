@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect, Link } from "react-router-dom";
 
 import Navigation from "./Navigation";
 
@@ -90,19 +91,21 @@ export default function AddItem() {
                 </Container>
                 <Container maxWidth="sm">
                     <br />
-                    <Button
-                        size="large"
-                        color="primary"
-                        fullWidth
-                        variant="contained"
-                        onClick={() =>
-                            alert(
-                                `${itemName}, ${itemDescription}, ${itemPrice}, ${itemLocation}`
-                            )
-                        }
-                    >
-                        Submit my item
-                    </Button>
+                    <Link to="/market">
+                        <Button
+                            size="large"
+                            color="primary"
+                            fullWidth
+                            variant="contained"
+                            onClick={() =>
+                                alert(
+                                    `${itemName}, ${itemDescription}, ${itemPrice}, ${itemLocation}`
+                                )
+                            }
+                        >
+                            Submit my item
+                        </Button>
+                    </Link>
                 </Container>
             </Container>
         </div>
