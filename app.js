@@ -25,7 +25,7 @@ app.use("/example", exampleRouter);
     ALL HTML file routes stay in this file
 */
 
-// REAL APIs
+// REAL JSON APIs
 app.use("/api/signup", signupRouter);
 
 /*** Webpage routes below **********************************/
@@ -35,6 +35,11 @@ app.use(express.static(__dirname + "/fgnb/build"));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + '/fgnb/build/index.html');
 });
+
+// All routes other than above will go to index.html
+app.get("*", (req, res) => {
+    res.sendFile(__dirname + '/fgnb/build/index.html');
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

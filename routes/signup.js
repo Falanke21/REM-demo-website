@@ -7,10 +7,11 @@ const { mongoose } = require('../db/mongoose')
 // import model
 const { User } = require('../models/user')
 
-/* GET home page. */
+/* POST to create a new user on /api/signup */
 router.post('/', function(req, res, next) {
   // Create a new user
 	const user = new User({
+		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password
 	})
