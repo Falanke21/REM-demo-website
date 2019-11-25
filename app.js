@@ -5,7 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var exampleRouter = require('./routes/example');
+const signupRouter = require('./routes/signup');
+
+// mongoose and mongo connection
+const { mongoose } = require('./db/mongoose')
 
 var app = express();
 
@@ -15,8 +19,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// EXAMPLES
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/example', exampleRouter);
+
+// REAL APIs
+app.use('/api/signup', signupRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
