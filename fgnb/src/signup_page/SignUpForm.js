@@ -4,7 +4,7 @@ import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles, emphasize } from "@material-ui/core/styles";
 import { Link, Redirect } from "react-router-dom";
-import "./AuthForm.css";
+import "../login_page/AuthForm.css";
 import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({

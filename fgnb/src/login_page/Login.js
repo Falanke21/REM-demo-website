@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import AuthForm from './AuthForm.js'
+// import AuthForm from './AuthForm.js'
 import LoginForm from './LoginForm.js'
 import "./Login.css";
-import loginlogo from './asset/logo.png';
+import loginlogo from '../asset/logo.png';
 class Login extends Component {
   state = {
     status: "",
