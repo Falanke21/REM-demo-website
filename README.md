@@ -1,5 +1,12 @@
 # team23
 
+# Some messages for my teammates: 
+- **fgnb** folder is now the front-end, others are the back-end
+- run `npm install` in root directory
+- On MacOS, run the app with this command:
+- `$ DEBUG=myapp:* npm start`
+- Then load http://localhost:3001/ in your browser, or using postman to access the app.
+
 ## Admin Dashboard
 This page serves the puepose of website admin managing various information and assets. Dashboard can be navigated to by logging in using credential of username and password of "admin".  
 Within the dashboard there are three subpages, each can be navigated to using the side drawer on the left:
