@@ -4,8 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import background from "./asset/profileBackground.JPG";
-import bike from "./asset/profileBackground.JPG";
+import background from "../asset/profileBackground.JPG";
+import bike from "../asset/profileBackground.JPG";
 import Avatar from "@material-ui/core/Avatar";
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,7 +48,7 @@ export default function ComplexGrid() {
     <div className={classes.background}>
       <div className={classes.root} color="pink">
         <div className={classes.info}>
-        <Avatar alt="IMAGE" src={require("./static/images/yaoshui.jpg")} className={classes.bigAvatar}/>
+        <Avatar alt="IMAGE" src={require("../static/images/yaoshui.jpg")} className={classes.bigAvatar}/>
           <Paper className={classes.paper}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm container>

@@ -5,12 +5,12 @@ import './App.css';
 import Login from './login_page/Login';
 import Market from './market_page/Market';
 import AdminDashBoard from './admin_page/AdminDashBoard';
-import User from './User';
+import User from './profile_page/User';
 import SignUp from './signup_page/SignUp';
 import ItemDetail from './market_page/ItemDetail';
-import AddItem from './AddItem';
-import BiddingList from './BiddingList';
-import Settings from './Settings';
+import AddItem from './profile_page/AddItem';
+import BiddingList from './profile_page/BiddingList';
+import Settings from './profile_page/Settings';
 function App() {
   return (
     <div className="App">

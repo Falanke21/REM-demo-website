@@ -7,8 +7,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import tileData from "./tileData";
-import { whileStatement } from "@babel/types";
+import tileData from "../tileData";
 
 const useStylesLineimgs = makeStyles(theme => ({
     root: {
@@ -26,14 +25,10 @@ const useStylesLineimgs = makeStyles(theme => ({
         transform: "translateZ(0)",
         position: "absolute",
         left: "10%",
-        top: "53%"
+        top: "80%"
     },
     title: {
         color: "white"
-    },
-    listele: {
-        width: "100px",
-        height: "100px"
     },
     titleBar: {
         background:
@@ -48,7 +43,6 @@ function LineGridBox() {
             <GridList className={classes.gridList} cols={10.0} cellHeight={150}>
                 {tileData.map(tile => (
                     <GridListTile
-                        className={classes.listele}
                         key={tile.img}
                         component={Link}
                         to={`/item/${tile.id}`}
@@ -68,7 +62,7 @@ function LineGridBox() {
     );
 }
 
-class ItemGrid extends Component {
+class ItemGridForSale extends Component {
     render() {
         return (
             <div>
@@ -78,4 +72,4 @@ class ItemGrid extends Component {
     }
 }
 
-export default ItemGrid;
+export default ItemGridForSale;
