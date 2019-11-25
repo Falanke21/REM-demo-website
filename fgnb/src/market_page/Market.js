@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Navigation from "../Navigation";
+import Navigation from "../navigation/Navigation";
 
 import ItemGrid from "./ItemGrid";
 class Market extends Component {

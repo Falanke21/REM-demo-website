@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Navigation from "./Navigation";
+import Navigation from "./navigation/Navigation";
 import Drawer from "@material-ui/core/Drawer";
 import { positions, style } from "@material-ui/system";
 import "./User.css";

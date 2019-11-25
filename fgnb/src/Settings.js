@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import Navigation from "./Navigation";
+import Navigation from "./navigation/Navigation";
 
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";

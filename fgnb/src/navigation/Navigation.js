@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 import "./Navigation.css";
-import logo from './asset/logo.png';
+import logo from '../asset/logo.png';
 // const logo = require("./asset/logo.png");
 class Navigation extends Component {
     render() {

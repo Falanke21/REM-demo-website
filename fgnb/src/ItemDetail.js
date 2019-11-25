@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navigation from "./Navigation";
+import Navigation from "./navigation/Navigation";
 import ItemCard from "./ItemCard";
 import tileData from "./tileData";
 import BiddingDialog from "./BiddingDialog";
