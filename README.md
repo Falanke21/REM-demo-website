@@ -2,6 +2,9 @@
 
 # Some messages for my teammates: 
 - **fgnb** folder is now the front-end, others are the back-end
+- `cd` into **fgnb**
+- execute `npm run build`, this could take about 1-2 mintues
+- `cd` back to root directory
 - run `npm install` in root directory
 - On MacOS, run the app with this command:
 - `$ DEBUG=myapp:* npm start`
