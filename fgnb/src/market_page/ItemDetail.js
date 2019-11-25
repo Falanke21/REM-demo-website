@@ -1,8 +1,8 @@
 import React from "react";
 
-import Navigation from "./navigation/Navigation";
+import Navigation from "../navigation/Navigation";
 import ItemCard from "./ItemCard";
-import tileData from "./tileData";
+import tileData from "../tileData";
 import BiddingDialog from "./BiddingDialog";
 import CurrentBiddings from "./CurrentBiddings";
 

@@ -7,7 +7,7 @@ import Market from './market_page/Market';
 import AdminDashBoard from './admin_page/AdminDashBoard';
 import User from './User';
 import SignUp from './signup_page/SignUp';
-import ItemDetail from './ItemDetail';
+import ItemDetail from './market_page/ItemDetail';
 import AddItem from './AddItem';
 import BiddingList from './BiddingList';
 import Settings from './Settings';

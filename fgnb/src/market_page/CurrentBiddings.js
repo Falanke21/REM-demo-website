@@ -12,25 +12,27 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 
+import yaoshui from "../static/images/yaoshui.jpg"
+
 function Biddings(prop) {
     // Hard code bidding information, add server call later
     const bidArray = [
         {
             bidderId: 1,
             username: "Yaoshui",
-            profilePic: "./static/images/yaoshui.jpg",
+            profilePic: "SOMETHING FROM DATABASE",
             amount: 100
         },
         {
             bidderId: 2,
             username: "Falanke",
-            profilePic: "./static/images/yaoshui.jpg",
+            profilePic: "SOMETHING FROM DATABASE",
             amount: 87
         },
         {
             bidderId: 3,
             username: "Why do I have the same photo as the other two",
-            profilePic: "./static/images/yaoshui.jpg",
+            profilePic: "SOMETHING FROM DATABASE",
             amount: 85
         }
     ];
@@ -41,7 +43,10 @@ function Biddings(prop) {
                 <Container>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar src={require(`${bid.profilePic}`)} />
+                            {
+                            // This to be replaced by external image sources
+                            }
+                            <Avatar src={yaoshui} />
                             {
                                 // why react why
                             }
