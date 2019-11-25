@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../Market.css";
 import SignUpForm from "./SignUpForm.js";
 
 class signUp extends Component {

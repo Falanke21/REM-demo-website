@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Login from './login_page/Login';
-import Market from './Market';
+import Market from './market_page/Market';
 import AdminDashBoard from './admin_page/AdminDashBoard';
 import User from './User';
 import SignUp from './signup_page/SignUp';
