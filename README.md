@@ -3,12 +3,12 @@
 # Some messages for my teammates: 
 - **fgnb** folder is now the front-end, others are the back-end
 - `cd` into **fgnb**
-- execute `npm run build`, this could take about 1-2 mintues
+- run `npm start` to load react front-end on http://localhost:3000
 - `cd` back to root directory
 - run `npm install` in root directory
 - On MacOS, run the app with this command:
-- `$ DEBUG=myapp:* npm start`
-- Then load http://localhost:3001/ in your browser, or using postman to access the app.
+- `$ DEBUG=myapp:* npm start`, or just `npm start` ;)
+- Then you can use postman to send request to http://localhost:3001/, or using browser on http://localhost:3000 to access the app.
 
 ## Admin Dashboard
 This page serves the puepose of website admin managing various information and assets. Dashboard can be navigated to by logging in using credential of username and password of "admin".  

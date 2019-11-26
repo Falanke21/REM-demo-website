@@ -44,7 +44,7 @@ class Login extends Component {
         // }
 
         // Create our request constructor with all the parameters we need
-        const request = new Request("/api/login", {
+        const request = new Request("http://localhost:3001/api/login", {
             method: "post",
             body: JSON.stringify({ email: email, password: password }),
             headers: {

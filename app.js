@@ -21,6 +21,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+var cors = require('cors')
+// TODO
+// THIS NEEDS TO BE REMOVED WHEN DEPLOYING !!!!!!!!!!!!!!
+// Enable All CORS Requests
+app.use(cors())
+
 /*** Session handling **************************************/
 // Create a session cookie
 app.use(session({
@@ -57,17 +63,17 @@ app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 
 /*** Webpage routes below **********************************/
-// Serve the build (production)
-app.use(express.static(__dirname + "/fgnb/build"));
+// // Serve the build (production)
+// app.use(express.static(__dirname + "/fgnb/build"));
 
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + '/fgnb/build/index.html');
-});
+// app.get("/", (req, res) => {
+//     res.sendFile(__dirname + '/fgnb/build/index.html');
+// });
 
-// All routes other than above will go to index.html
-app.get("*", (req, res) => {
-    res.sendFile(__dirname + '/fgnb/build/index.html');
-})
+// // All routes other than above will go to index.html
+// app.get("*", (req, res) => {
+//     res.sendFile(__dirname + '/fgnb/build/index.html');
+// })
 
 
 // // React without build (development)
