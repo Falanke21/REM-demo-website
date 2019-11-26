@@ -61,16 +61,17 @@ class Login extends Component {
             .then(res => {
                 if (res.status === 200) {
                     return res.json();
+                } else if (res.status === 400) {
+                    return Promise.reject("The email and password you entered didn't match");
+                } else {
+                    return Promise.reject(`Didn't find the user with email: ${this.state.email}`);
                 }
             })
             .then(json => {
-                if (json.auth) {
+                if (json.auth !== undefined) {
                     that.setState({
                       status: email
                     });
-                }
-                else {
-                    alert("Log in failed");
                 }
             })
             .catch(error => {
