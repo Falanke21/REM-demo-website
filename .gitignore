@@ -62,3 +62,6 @@ typings/
 
 # vsc configuration file
 .vscode/
+
+# mongo database
+mongo-data/

@@ -55,11 +55,11 @@ function UserAccountBox(prop) {
         <form className={classes.container} noValidate autoComplete="off">
             <TextField
                 id="outlined-account-input"
-                label="Account"
+                label="Email"
                 className={classes.textField}
-                type="account"
-                name="account"
-                autoComplete="account"
+                type="email"
+                name="email"
+                autoComplete="email"
                 margin="normal"
                 variant="outlined"
                 value={prop.value}
@@ -111,11 +111,11 @@ class LoginForm extends React.Component {
             <div className="main-container">
                 <div>
                     <UserAccountBox
-                        name="account"
-                        value={this.props.username}
+                        name="email"
+                        value={this.props.email}
                         onChange={this.props.handleAccount}
                         type="text"
-                        placeholder="Username"
+                        placeholder="Email"
                     ></UserAccountBox>
                     <UserPassWordBox
                          id="passInput"

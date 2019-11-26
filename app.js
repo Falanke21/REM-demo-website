@@ -57,7 +57,7 @@ app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 
 /*** Webpage routes below **********************************/
-// Serve the build
+// Serve the build (production)
 app.use(express.static(__dirname + "/fgnb/build"));
 
 app.get("/", (req, res) => {
@@ -68,6 +68,19 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
     res.sendFile(__dirname + '/fgnb/build/index.html');
 })
+
+
+// // React without build (development)
+// app.use(express.static(__dirname + "/fgnb/public"));
+
+// app.get("/", (req, res) => {
+//     res.sendFile(__dirname + '/fgnb/public/index.html');
+// });
+
+// // All routes other than above will go to index.html
+// app.get("*", (req, res) => {
+//     res.sendFile(__dirname + '/fgnb/public/index.html');
+// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
