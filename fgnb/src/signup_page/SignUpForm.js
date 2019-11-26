@@ -1,7 +1,5 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
-import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles, emphasize } from "@material-ui/core/styles";
 import { Link, Redirect } from "react-router-dom";
 import "../login_page/AuthForm.css";
@@ -40,10 +38,14 @@ const useStylesButton = makeStyles({
     }
 });
 
-function SignUpButton() {
+function SignUpButton(props) {
     const classes = useStylesButton();
     return (
-        <Button variant="outlined" className={classes.button}>
+        <Button
+            onClick={props.signUpRequest}
+            variant="outlined"
+            className={classes.button}
+        >
             Finish
         </Button>
     );
@@ -130,30 +132,42 @@ class SignUpForm extends React.Component {
     };
 
     render() {
-        return (
-            <div className="main-container">
-                <div>
-                    <UserEmailBox value={this.props.email} handleChange={this.props.handleChange} />
-                    <UserUsernameBox value={this.props.username} handleChange={this.props.handleChange} />
-                    <UserPassWordBox value={this.props.password} handleChange={this.props.handleChange} />
-                </div>
+        if (this.props.status) {
+            return <Redirect to="/market" />;
+        } else {
+            return (
+                <div className="main-container">
+                    <div>
+                        <UserEmailBox
+                            value={this.props.email}
+                            handleChange={this.props.handleChange}
+                        />
+                        <UserUsernameBox
+                            value={this.props.username}
+                            handleChange={this.props.handleChange}
+                        />
+                        <UserPassWordBox
+                            value={this.props.password}
+                            handleChange={this.props.handleChange}
+                        />
+                    </div>
 
-                <div>
-                    <p>
-                        <span className="signUptext">
-                            Welcome to join us!!!!
-                        </span>
-                        <Link to={"./signup"}>
-                            <SignUpButton></SignUpButton>
-                        </Link>
-                        <Link to={"./"}>
-                            <BackButton />
-                        </Link>
-                    </p>
+                    <div>
+                        <p>
+                            <span className="signUptext">
+                                Welcome to join us!!!!
+                            </span>
+                            <SignUpButton
+                                signUpRequest={this.props.signUpRequest}
+                            />
+                            <Link to={"./"}>
+                                <BackButton />
+                            </Link>
+                        </p>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
-
 export default SignUpForm;
