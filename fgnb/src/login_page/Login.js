@@ -21,7 +21,7 @@ class Login extends Component {
         });
     };
 
-    handleAccount = event => {
+    handleUsername = event => {
         this.setState({
             email: event.target.value
         });
@@ -96,7 +96,7 @@ class Login extends Component {
                         email={this.state.email}
                         password={this.state.password}
                         handleChange={this.handleChange}
-                        handleAccount={this.handleAccount}
+                        handleUsername={this.handleUsername}
                         checkAuth={this.checkAuth}
                     ></LoginForm>
                     {/* <AuthForm

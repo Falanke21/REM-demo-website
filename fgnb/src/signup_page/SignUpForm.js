@@ -49,7 +49,16 @@ function SignUpButton() {
     );
 }
 
-function UserInputBox() {
+function BackButton() {
+    const classes = useStylesButton();
+    return (
+        <Button variant="outlined" className={classes.button}>
+            Cancel
+        </Button>
+    );
+}
+
+function UserEmailBox(props) {
     const classes = useStyles();
 
     return (
@@ -63,54 +72,39 @@ function UserInputBox() {
                 autoComplete="email"
                 margin="normal"
                 variant="outlined"
+                onChange={props.handleChange}
+                value={props.value}
             />
         </form>
     );
 }
-
-function UserEmailBox() {
+function UserUsernameBox(props) {
     const classes = useStyles();
 
     return (
         <form className={classes.container} noValidate autoComplete="off">
             <TextField
-                id="outlined-email-input"
-                label="Email"
+                id="outlined-username-input"
+                label="Username"
                 className={classes.textField}
-                type="email"
-                name="email"
-                autoComplete="email"
+                type="username"
+                name="username"
+                autoComplete="username"
                 margin="normal"
                 variant="outlined"
-            />
-        </form>
-    );
-}
-function UserAccountBox() {
-    const classes = useStyles();
-
-    return (
-        <form className={classes.container} noValidate autoComplete="off">
-            <TextField
-                id="outlined-account-input"
-                label="Account"
-                className={classes.textField}
-                type="account"
-                name="account"
-                autoComplete="account"
-                margin="normal"
-                variant="outlined"
+                onChange={props.handleChange}
+                value={props.value}
             />
         </form>
     );
 }
 
-function UserPassWordBox() {
+function UserPassWordBox(props) {
     const classes = useStyles();
     return (
         <form className={classes.container} noValidate autoComplete="off">
             <TextField
-                id="outlined-email-input"
+                id="outlined-password-input"
                 label="Password"
                 className={classes.textField}
                 type="password"
@@ -118,6 +112,8 @@ function UserPassWordBox() {
                 autoComplete="password"
                 margin="normal"
                 variant="outlined"
+                onChange={props.handleChange}
+                value={props.value}
             />
         </form>
     );
@@ -137,9 +133,9 @@ class SignUpForm extends React.Component {
         return (
             <div className="main-container">
                 <div>
-                    <UserAccountBox></UserAccountBox>
-                    <UserPassWordBox></UserPassWordBox>
-                    <UserEmailBox> </UserEmailBox>
+                    <UserEmailBox value={this.props.email} handleChange={this.props.handleChange} />
+                    <UserUsernameBox value={this.props.username} handleChange={this.props.handleChange} />
+                    <UserPassWordBox value={this.props.password} handleChange={this.props.handleChange} />
                 </div>
 
                 <div>
@@ -149,6 +145,9 @@ class SignUpForm extends React.Component {
                         </span>
                         <Link to={"./signup"}>
                             <SignUpButton></SignUpButton>
+                        </Link>
+                        <Link to={"./"}>
+                            <BackButton />
                         </Link>
                     </p>
                 </div>

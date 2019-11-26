@@ -49,12 +49,12 @@ function SignUpButton() {
     );
 }
 
-function UserAccountBox(prop) {
+function UserUsernameBox(prop) {
     const classes = useStyles();
     return (
         <form className={classes.container} noValidate autoComplete="off">
             <TextField
-                id="outlined-account-input"
+                id="outlined-username-input"
                 label="Email"
                 className={classes.textField}
                 type="email"
@@ -110,13 +110,13 @@ class LoginForm extends React.Component {
         return (
             <div className="main-container">
                 <div>
-                    <UserAccountBox
+                    <UserUsernameBox
                         name="email"
                         value={this.props.email}
-                        onChange={this.props.handleAccount}
+                        onChange={this.props.handleUsername}
                         type="text"
                         placeholder="Email"
-                    ></UserAccountBox>
+                    ></UserUsernameBox>
                     <UserPassWordBox
                          id="passInput"
                          name="password"

@@ -4,6 +4,7 @@ import SignUpForm from "./SignUpForm.js";
 class signUp extends Component {
     state = {
         status: "",
+        email: "",
         username: "",
         password: ""
     };
@@ -11,6 +12,7 @@ class signUp extends Component {
         const target = event.target;
         const name = target.name;
         const value = target.value;
+
         this.setState({
             [name]: value
         });
@@ -19,10 +21,10 @@ class signUp extends Component {
         return (
             <div>
                 <SignUpForm
+                    email={this.state.email}
                     username={this.state.username}
                     password={this.state.password}
                     handleChange={this.handleChange}
-                    checkAuth={this.checkAuth}
                 />
             </div>
         );
