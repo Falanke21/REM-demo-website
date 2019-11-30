@@ -65,3 +65,6 @@ typings/
 
 # mongo database
 mongo-data/
+
+# ignore public folder
+public/
