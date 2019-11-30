@@ -71,19 +71,29 @@ router.post("/", function(req, res, next) {
 });
 
 /* 
-    GET all items that are in the market.
+    GET all items that are available in the market.
 */
 router.get("/", function(req, res, next) {
-    // Item.findAll()
-    res.send("What's up motherfxxkers");
+    Item.find({ inMarket: true })
+        .then(result => {
+            res.send({ flag: true, items: result });
+        })
+        .catch(err => {
+            res.status(500).send();
+        });
 });
 
-// /* 
-//     GET all items that are in record, THIS IS FOR ADMIN USE
-// */
-// router.get("/", function(req, res, next) {
-//     // Item.findAll()
-//     res.send("What's up motherfxxkers");
-// });
+/*
+    GET all items that are in database, THIS IS FOR ADMIN USE
+*/
+router.get("/", function(req, res, next) {
+    Item.find()
+        .then(result => {
+            res.send({ flag: true, items: result });
+        })
+        .catch(err => {
+            res.status(500).send();
+        });
+});
 
 module.exports = router;
