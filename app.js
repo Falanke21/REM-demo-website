@@ -7,6 +7,7 @@ var logger = require("morgan");
 var exampleRouter = require("./routes/example");
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
+const itemRouter = require("./routes/item");
 
 // mongoose and mongo connection
 const { mongoose } = require("./db/mongoose");
@@ -61,6 +62,7 @@ app.use("/example", exampleRouter);
 // REAL JSON APIs
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
+app.use("/api/item", itemRouter);
 
 /*** Webpage routes below **********************************/
 // // Serve the build (production)
@@ -88,7 +90,8 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render("error");
+    console.error(err);
+    res.send(err)
 });
 
 module.exports = app;
