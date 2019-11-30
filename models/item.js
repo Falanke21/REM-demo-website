@@ -19,7 +19,7 @@ const ItemSchema = new mongoose.Schema({
 		trim: true,
 	},
 	author: { // Well, owner
-		type: Schema.Types.ObjectId, 
+		type: mongoose.Schema.Types.ObjectId, 
 		ref: "User",
 		required: true
 	},
@@ -38,7 +38,11 @@ const ItemSchema = new mongoose.Schema({
 	location: {
 		type: String,
 		trim: true,
-	}
+	},
+	biddings: [{
+		type: mongoose.Schema.Types.ObjectId, 
+		ref: "Bidding",
+	}]
 })
 
 // make a model using the Item schema

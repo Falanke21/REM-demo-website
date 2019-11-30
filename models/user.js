@@ -24,7 +24,10 @@ const UserSchema = new mongoose.Schema({
             validator: validator.isEmail, // custom validator
             message: "Not valid email"
         }
-    },
+	},
+	phone: {
+		type: Number,
+	},
     password: {
         type: String,
         required: true,
@@ -36,22 +39,16 @@ const UserSchema = new mongoose.Schema({
     },
     sellings: [
         {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Item"
         }
     ],
     biddings: [
         {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Bidding"
         }
     ],
-    histories: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "History"
-        }
-    ]
 });
 
 // An example of Mongoose middleware.
