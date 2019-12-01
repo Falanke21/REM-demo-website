@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import Mainview from "./root_views/Mainview";
 import Authview from "./root_views/Authview";
+import AdminDashBoard from "./admin_page/AdminDashBoard";
 import StateReactComponent from "./component/StateReactComponent";
 import { readCookie } from "./utils/user";
 
@@ -22,7 +23,13 @@ class App extends StateReactComponent {
         return (
             <div>
                 <BrowserRouter>
-                    {currentUser ? <Mainview /> : <Authview />}
+                    {currentUser === "admin" ? (
+                        <AdminDashBoard />
+                    ) : currentUser ? (
+                        <Mainview />
+                    ) : (
+                        <Authview />
+                    )}
                 </BrowserRouter>
             </div>
         );

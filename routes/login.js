@@ -7,7 +7,14 @@ const { User } = require('../models/user')
 /* POST to login on /api/login */
 router.post('/', function(req, res, next) {
 	const email = req.body.email
-	const password = req.body.password
+    const password = req.body.password
+    
+    // examine admin condition? TODO: discuss about this
+    if (email === "admin" && password === "admin") {
+        req.session.user = "admin";
+        res.send({ user: "admin", admin: true });
+    }
+
 	
 	User.findByEmailPassword(email, password).then((user) => {
 	    if (!user) {

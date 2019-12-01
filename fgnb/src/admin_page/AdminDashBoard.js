@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import { logout } from "../utils/user";
 import UserPanel from "./UserPanel";
 import TransactionList from "./TransactionList";
 import ItemList from "./ItemList";
@@ -61,6 +62,7 @@ class AdminDashBoard extends React.Component {
                             color="primary"
                             component={Link}
                             to="/"
+                            onClick={logout}
                             variant="outlined"
                         >
                             Log out
