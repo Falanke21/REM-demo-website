@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
+import { logout } from "../utils/user";
+import logo from "../asset/logo.png";
 import "./Navigation.css";
-import logo from '../asset/logo.png';
-// const logo = require("./asset/logo.png");
+
 class Navigation extends Component {
     render() {
         return (
@@ -17,6 +18,7 @@ class Navigation extends Component {
                                 size="large"
                                 variant="outlined"
                                 color="primary"
+                                onClick={logout}
                             >
                                 Log out
                             </Button>

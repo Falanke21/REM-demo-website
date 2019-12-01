@@ -1,5 +1,7 @@
 import { setState, getState } from "statezero";
 
+import { setEmptyState } from "./helpers";
+
 export const readCookie = () => {
     const url = "http://localhost:3001/api/verify";
     fetch(url)
@@ -77,6 +79,17 @@ export const signUp = () => {
         })
         .catch(error => {
             alert(error);
+        });
+};
+
+export const logout = () => {
+    const url = "http://localhost:3001/api/logout";
+    fetch(url)
+        .then(res => {
+            setEmptyState();
+        })
+        .catch(error => {
+            console.log(error);
         });
 };
 

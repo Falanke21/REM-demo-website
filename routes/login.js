@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-// mongoose and mongo connection
-const { mongoose } = require('../db/mongoose')
-
 // import model
 const { User } = require('../models/user')
 
