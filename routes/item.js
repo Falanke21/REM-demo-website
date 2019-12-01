@@ -53,14 +53,14 @@ router.post("/", function(req, res, next) {
 
         User.findById(seller)
             .then(user => {
-                console.log(`Seller is: ${seller}`);
+                console.log(`Seller is: ${user}`);
+                if (user === null) {
+                    res.status(404).send({ flag: false });
+                    return;
+                }
             })
             .catch(err => {
-                console.log(`Can't find user ${seller}`);
-                res.status(404).send({
-                    flag: false,
-                    error: "Can't find seller"
-                });
+                res.status(500).send();
             });
 
         const item = new Item({
@@ -110,6 +110,23 @@ router.get("/", function(req, res, next) {
         .catch(err => {
             res.status(500).send();
         });
+});
+
+/*
+    DELETE an item
+*/
+router.delete("/", function(req, res, next) {
+    Item.findByIdAndDelete(req.body.itemId)
+        .then(result => {
+            res.send({ flag: true, items: result });
+            User.findById(result.seller, (err, user) => {
+                user.sellings.filter((x) => x !== result._id);
+                user.save();
+            })
+        .catch(err => {
+            res.status(500).send({ flag: false, error: err });
+        });
+    });
 });
 
 module.exports = router;
