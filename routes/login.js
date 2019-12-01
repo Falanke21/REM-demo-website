@@ -21,11 +21,11 @@ router.post('/', function(req, res, next) {
             // We can check later if this exists to ensure we are logged in.
             console.log(`user with email ${email} to SESSION!`)
             req.session.user = user._id;
-            res.send({auth: true});
+            res.send({ user: user._id, admin: false });
         }
     }).catch((error) => {
     	console.log(400)
-		res.status(400).send({auth: false, error: error});
+		res.status(400).send({ error });
     })
 });
 

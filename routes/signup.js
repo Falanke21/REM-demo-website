@@ -18,9 +18,10 @@ router.post('/', function(req, res, next) {
 
 	// Save the user
 	user.save().then((user) => {
-		res.send({user: user})
+		req.session.user = user._id;
+		res.send({ user: user._id, admin: false });
 	}, (error) => {
-		res.status(400).send({user: false, error: error}) // 400 for bad request
+		res.status(400).send({ error }) // 400 for bad request
 	})
 });
 

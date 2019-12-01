@@ -1,11 +1,12 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
-import { makeStyles, emphasize } from "@material-ui/core/styles";
-import { Link, Redirect } from "react-router-dom";
-import "./AuthForm.css";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+
+import { updateLoginForm, login } from "../utils/user";
+import "./AuthForm.css";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -62,8 +63,7 @@ function UserUsernameBox(prop) {
                 autoComplete="email"
                 margin="normal"
                 variant="outlined"
-                value={prop.value}
-                onChange={prop.onChange}
+                onChange={e => updateLoginForm(e.target)}
             />
         </form>
     );
@@ -82,8 +82,7 @@ function UserPassWordBox(prop) {
                 autoComplete="password"
                 margin="normal"
                 variant="outlined"
-                value={prop.value}
-                onChange={prop.onChange}
+                onChange={e => updateLoginForm(e.target)}
             />
         </form>
     );
@@ -92,7 +91,7 @@ function UserPassWordBox(prop) {
 class LoginForm extends React.Component {
     state = {
         passwordType: "password"
-    }
+    };
 
     togglePasswordMask = () => {
         if (this.state.passwordType === "password") {
@@ -110,20 +109,8 @@ class LoginForm extends React.Component {
         return (
             <div className="main-container">
                 <div>
-                    <UserUsernameBox
-                        name="email"
-                        value={this.props.email}
-                        onChange={this.props.handleUsername}
-                        type="text"
-                        placeholder="Email"
-                    ></UserUsernameBox>
-                    <UserPassWordBox
-                         id="passInput"
-                         name="password"
-                         value={this.props.password}
-                         onChange={this.props.handleChange}
-                         type={this.state.passwordType}
-                         placeholder="Password"></UserPassWordBox>
+                    <UserUsernameBox />
+                    <UserPassWordBox type={this.state.passwordType} />
                 </div>
                 <div>
                     <Checkbox
@@ -132,8 +119,8 @@ class LoginForm extends React.Component {
                     />
                     Show Password
                 </div>
-                <Button variant="contained" onClick={this.props.checkAuth}>
-                        Login
+                <Button variant="contained" onClick={login}>
+                    Login
                 </Button>
                 <div>
                     <p>

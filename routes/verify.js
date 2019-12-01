@@ -4,6 +4,7 @@ var router = express.Router();
 // check if cookie is valid
 router.get("/", function(req, res, next) {
     const user = req.session.user;
+    console.log(`Retreived session data: ${req.session.user}`);
     if (user) {
         console.log(`Verified user ${user} cookie`);
         res.send({ user });
