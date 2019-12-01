@@ -9,7 +9,7 @@ router.get("/", function(req, res, next) {
         console.log(`Verified user ${user} cookie`);
         res.send({ user });
     } else {
-        res.status(401).send(error);
+        res.status(401).send();
     }
 });
 

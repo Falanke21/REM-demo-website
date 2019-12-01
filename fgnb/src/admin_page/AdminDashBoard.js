@@ -20,10 +20,14 @@ import TransactionList from "./TransactionList";
 import ItemList from "./ItemList";
 
 class AdminDashBoard extends React.Component {
-    state = {
-        sideList: false,
-        currPage: "User"
-    };
+    constructor(props) {
+        super(props);
+        this.props.history.push("/admindash");
+        this.state = {
+            sideList: false,
+            currPage: "User"
+        };
+    }
 
     toggleDrawer = open => event => {
         this.setState({

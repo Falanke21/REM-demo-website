@@ -12,8 +12,8 @@ class Authview extends React.Component {
             <div className="Authview">
                 <BrowserRouter>
                     <Switch>
-                        <Route exact path="/" component={Login} />
                         <Route exact path="/signup" component={SignUp} />
+                        <Route component={Login} />
                     </Switch>
                 </BrowserRouter>
             </div>
