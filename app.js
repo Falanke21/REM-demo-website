@@ -8,6 +8,7 @@ var exampleRouter = require("./routes/example");
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 const itemRouter = require("./routes/item");
+const verifyRouter = require("./routes/verify");
 
 // mongoose and mongo connection
 const { mongoose } = require("./db/mongoose");
@@ -63,6 +64,7 @@ app.use("/example", exampleRouter);
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/item", itemRouter);
+app.use("/api/verify", verifyRouter);
 
 /*** Webpage routes below **********************************/
 // // Serve the build (production)
