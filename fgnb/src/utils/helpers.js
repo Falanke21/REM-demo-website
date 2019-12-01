@@ -15,4 +15,11 @@ export const setEmptyState = () => {
         password: "",
         username: ""
     });
+    setState("adminUserQueryForm", {
+        email: ""
+    });
+    setState("adminUserInspectForm", {
+        username: "",
+        password: ""
+    })
 };

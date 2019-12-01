@@ -59,11 +59,7 @@ class UserPanel extends React.Component {
                 alignItems="flex-start"
             >
                 <Grid item container>
-                    <UserQueryForm
-                        username={this.state.username}
-                        handleChange={this.handleChange}
-                        execQuery={this.execQuery}
-                    />
+                    <UserQueryForm />
                 </Grid>
                 <Grid item container>
                     {this.state.currUser && (

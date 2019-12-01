@@ -93,6 +93,8 @@ export const logout = () => {
         });
 };
 
+export const queryUser = () => {};
+
 export const updateLoginForm = field => {
     const { name, value } = field;
     setState(`loginForm.${name}`, value);
@@ -102,3 +104,8 @@ export const updateSignUpForm = field => {
     const { name, value } = field;
     setState(`signUpForm.${name}`, value);
 };
+
+export const updateAdminUserQueryForm = field => {
+    const { name, value } = field;
+    setState(`adminUserQueryForm.${name}`, value);
+}
