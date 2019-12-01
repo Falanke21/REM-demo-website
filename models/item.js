@@ -34,12 +34,13 @@ const ItemSchema = new mongoose.Schema({
         required: true,
         default: true
     },
+    submittedWhen: {
+        type: Date,
+        default: new Date(),
+        required: true
+    },
     description: {
         type: String
-    },
-    soldAt: {
-        type: Number,
-        default: null
     },
     location: {
         type: String,

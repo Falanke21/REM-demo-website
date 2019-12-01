@@ -5,6 +5,7 @@ var router = express.Router();
 const { mongoose } = require("../db/mongoose");
 
 // import model
+const { User } = require("../models/user");
 const { Item } = require("../models/item");
 
 var multer = require("multer");
@@ -49,10 +50,21 @@ router.post("/", function(req, res, next) {
         const price = req.body.price;
         const location = req.body.location;
         // Everything went fine.
-        console.log(`Seller is: ${seller}`);
+
+        User.findById(seller)
+            .then(user => {
+                console.log(`Seller is: ${seller}`);
+            })
+            .catch(err => {
+                console.log(`Can't find user ${seller}`);
+                res.status(404).send({
+                    flag: false,
+                    error: "Can't find seller"
+                });
+            });
 
         const item = new Item({
-            img: req.file.description + "/" + req.file.filename,
+            img: req.file.destination + "/" + req.file.filename,
             title: title,
             seller: seller,
             price: price,
@@ -62,7 +74,11 @@ router.post("/", function(req, res, next) {
 
         item.save()
             .then(result => {
-                res.send({ flag: true, item: result });
+                User.findById(seller).then(user => {
+                    user.sellings.push(result._id);
+                    user.save();
+                    res.send({ flag: true, item: result });
+                });
             })
             .catch(err => {
                 res.status(400).send({ flag: false, error: err });
