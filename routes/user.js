@@ -4,6 +4,24 @@ var router = express.Router();
 // import model
 const { User } = require("../models/user");
 
+/* 
+    GET user profile information by id
+*/
+router.get("/", function(req, res, next) {
+    const userId = req.session.user || req.body.userId;
+    User.findById(userId, "username email phone profilePicture")
+        .then(user => {
+            if (user === null) {
+                res.status(404).send({ flag: false, error: "Can't find user" });
+            } else {
+                res.send({ flag: true, user: user });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({ flag: false, error: err });
+        });
+});
+
 /* POST to login on /api/user/login */
 router.post("/login", function(req, res, next) {
     const email = req.body.email;
@@ -88,25 +106,25 @@ router.get("/:email", function(req, res, next) {
         })
         .catch(error => {
             res.status(500).send(error);
-        })
+        });
 });
 
 router.patch("/:email", function(req, res, next) {
     const email = req.params.email;
     const { username, blocked } = req.body;
     const body = { username, blocked };
-    User.findOneAndUpdate({ email: email }, { $set: body }, {new: true })
-    .then(user => {
-        console.log(user);
-        if (user) {
-            res.send(user);
-        } else {
-            res.status(404).send();
-        }
-    })
-    .catch(error => {
-        res.status(500).send(error);
-    })
-})
+    User.findOneAndUpdate({ email: email }, { $set: body }, { new: true })
+        .then(user => {
+            console.log(user);
+            if (user) {
+                res.send(user);
+            } else {
+                res.status(404).send();
+            }
+        })
+        .catch(error => {
+            res.status(500).send(error);
+        });
+});
 
 module.exports = router;
