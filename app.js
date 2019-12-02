@@ -8,12 +8,8 @@ var exampleRouter = require("./routes/example");
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
 const biddingRouter = require("./routes/bidding");
-<<<<<<< HEAD
-const settingRouter = require("./routes/setting");
-=======
 const transactionRouter = require("./routes/transaction");
->>>>>>> 9e29326a3863ca96dc1fccdaa2987b437e140afe
-
+const settingRouter = require("./routes/setting");
 // import express cookie session
 const session = require('express-session')
 
@@ -65,12 +61,9 @@ app.use("/example", exampleRouter);
 app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
 app.use("/api/bidding", biddingRouter);
-<<<<<<< HEAD
 app.use("/api/setting", settingRouter);
-=======
 app.use("/api/transaction", transactionRouter);
 
->>>>>>> 9e29326a3863ca96dc1fccdaa2987b437e140afe
 /*** Webpage routes below **********************************/
 // // Serve the build (production)
 // app.use(express.static(__dirname + "/fgnb/build"));
