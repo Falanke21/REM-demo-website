@@ -165,6 +165,12 @@ router.patch("/accept", function(req, res, next) {
                 bidding.accepted = true;
                 bidding.save();
 
+                // Change that item to be not in market
+                Item.findById(bidding.item).then(item => {
+                    item.inMarket = false;
+                    item.save();
+                })
+
                 // Creating transaction
                 transaction = new Transaction({
                     bidding: biddingId,
