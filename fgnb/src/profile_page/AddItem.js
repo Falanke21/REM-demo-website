@@ -91,7 +91,7 @@ export default function AddItem() {
                 </Container>
                 <Container maxWidth="sm">
                     <br />
-                    <Link to="/market">
+                    <Link to="/market" style={{ textDecoration: 'none' }}>
                         <Button
                             size="large"
                             color="primary"
