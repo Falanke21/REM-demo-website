@@ -66,8 +66,8 @@ class UserInspector extends StateReactComponent {
                             />
                         )}
                     </div>
-                    {editing && (
-                        <div align="center">
+                    <div align="center">
+                        {editing ? (
                             <FormControlLabel
                                 control={
                                     <Switch
@@ -81,8 +81,12 @@ class UserInspector extends StateReactComponent {
                                 label="Blocked"
                                 labelPlacement="start"
                             />
-                        </div>
-                    )}
+                        ) : (
+                            <Typography>
+                                { `Blocked: ${blocked}` }
+                            </Typography>
+                        )}
+                    </div>
                     <div align="center">
                         {!editing ? (
                             <div>

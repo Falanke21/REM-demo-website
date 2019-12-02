@@ -23,7 +23,7 @@ export const readCookie = () => {
 export const login = () => {
     const { email, password } = getState("loginForm");
     const request = new Request("http://localhost:3001/api/user/login", {
-        method: "post",
+        method: "POST",
         body: JSON.stringify({ email, password }),
         headers: {
             Accept: "application/json, text/plain, */*",
@@ -58,7 +58,7 @@ export const login = () => {
 export const signUp = () => {
     const { email, password, username } = getState("signUpForm");
     const request = new Request("http://localhost:3001/api/user/signup", {
-        method: "post",
+        method: "POST",
         body: JSON.stringify({ email, password, username }),
         headers: {
             Accept: "application/json, text/plain, */*",
@@ -117,6 +117,30 @@ export const queryUser = () => {
 
 export const updateUser = () => {
     console.log("updating user");
+    const { user, username, blocked } = getState("adminUserInspectForm");
+    const request = new Request(`http://localhost:3001/api/user/${user.email}`, {
+        method: "PATCH",
+        body: JSON.stringify({ username, blocked }),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+    fetch(request)
+    .then(res => {
+        if (res.status === 200) {
+            return res.json();
+        } else {
+            console.log("Cannot update user");
+        }
+    })
+    .then(json => {
+        console.log(json);
+        setState("adminUserInspectForm.user", json);
+    })
+    .catch(error => {
+        console.log(error);
+    })
 };
 
 export const updateLoginForm = field => {

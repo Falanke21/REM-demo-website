@@ -91,4 +91,22 @@ router.get("/:email", function(req, res, next) {
         })
 });
 
+router.patch("/:email", function(req, res, next) {
+    const email = req.params.email;
+    const { username, blocked } = req.body;
+    const body = { username, blocked };
+    User.findOneAndUpdate({ email: email }, { $set: body }, {new: true })
+    .then(user => {
+        console.log(user);
+        if (user) {
+            res.send(user);
+        } else {
+            res.status(404).send();
+        }
+    })
+    .catch(error => {
+        res.status(500).send(error);
+    })
+})
+
 module.exports = router;
