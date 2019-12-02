@@ -112,7 +112,7 @@ router.get("/:email", function(req, res, next) {
 router.patch("/:email", function(req, res, next) {
     const email = req.params.email;
     const { username, blocked } = req.body;
-    const body = { username, blocked };
+    const body = { username, blacklisted: blocked };
     User.findOneAndUpdate({ email: email }, { $set: body }, { new: true })
         .then(user => {
             console.log(user);
