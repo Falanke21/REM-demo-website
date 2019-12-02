@@ -230,6 +230,21 @@
 	border-bottom: #3498db solid 0.1em;
 }
 
+.userDetailInfoBoxText {
+	/* Add properties below */
+	width:25%;
+	float:left;
+	font-size: 90%;
+	text-align: left;
+	display: inline-block;
+}
+.userDetailInfoBoxTextInput {
+	/* Add properties below */
+	font-size: 90%;
+	text-align: left;
+	display: inline-block;
+}
+
 .userDetailButoomBox {
 	/* Add properties below */
 	margin-top: 1.5em;
