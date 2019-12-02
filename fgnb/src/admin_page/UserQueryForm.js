@@ -2,8 +2,17 @@ import React from "react";
 import { Grid, Input, IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 
-class UserQueryForm extends React.Component {
+import StateReactComponent from "../component/StateReactComponent";
+import { updateAdminUserQueryForm, queryUser } from "../utils/user";
+
+class UserQueryForm extends StateReactComponent {
+    filterState({ adminUserQueryForm }) {
+        return { adminUserQueryForm };
+    }
+
     render() {
+        const { adminUserQueryForm } = this.state;
+        const { email } = adminUserQueryForm;
         return (
             <Grid
                 container
@@ -13,15 +22,15 @@ class UserQueryForm extends React.Component {
             >
                 <Grid item>
                     <Input
-                        name="username"
-                        value={this.props.username}
-                        onChange={this.props.handleChange}
-                        type="text"
-                        placeholder="Username"
+                        name="email"
+                        value={email}
+                        onChange={e => updateAdminUserQueryForm(e.target)}
+                        type="email"
+                        placeholder="Email"
                     />
                 </Grid>
                 <Grid item>
-                    <IconButton onClick={this.props.execQuery}>
+                    <IconButton onClick={queryUser}>
                         <SearchIcon />
                     </IconButton>
                 </Grid>

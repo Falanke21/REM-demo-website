@@ -6,6 +6,7 @@ import { setState } from "statezero";
 // - signUpForm state paths are used by the SignUpForm component
 export const setEmptyState = () => {
     setState("currentUser", null);
+
     setState("loginForm", {
         email: "",
         password: ""
@@ -14,5 +15,16 @@ export const setEmptyState = () => {
         email: "",
         password: "",
         username: ""
+    });
+
+    setState("adminUserQueryForm", {
+        email: ""
+    });
+    setState("adminUserInspectForm", {
+        user: null,
+        username: "",
+        password: "",
+        editing: false,
+        blocked: false
     });
 };
