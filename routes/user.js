@@ -4,6 +4,24 @@ var router = express.Router();
 // import model
 const { User } = require("../models/user");
 
+/* 
+    GET user profile information by id
+*/
+router.get("/", function(req, res, next) {
+    const userId = req.session.user || req.body.userId;
+    User.findById(userId, "username email phone profilePicture")
+        .then(user => {
+            if (user === null) {
+                res.status(404).send({ flag: false, error: "Can't find user" });
+            } else {
+                res.send({ flag: true, user: user });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({ flag: false, error: err });
+        });
+});
+
 /* POST to login on /api/user/login */
 router.post("/login", function(req, res, next) {
     const email = req.body.email;

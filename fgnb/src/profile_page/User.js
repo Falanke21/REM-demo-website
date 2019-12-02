@@ -174,7 +174,7 @@ function UserBox() {
             <div className="profile_box">
                 <div className="userIconContainer">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu4JAn8Ri7J-7gD3JqlRJt-YxfWqQCcXO_JE4AA_zrsgHKRUQA&s" alt="yaoshui_pic" className="userIcon"></img>
-                    <div className="userNameContainer"> 
+                    <div className="userNameContainer">
                         <div className="userBoxName"> Name</div>
                         <div className="userBoxEmail">Email</div>
                     </div>
@@ -188,31 +188,55 @@ function DetailUserBox() {
     return (
         <div className="profile_detail_box_container">
             <div className="profile_detail_box">
-            <div className="userDetailBoxName">Account Detail</div>
-            <div className="userDetailInfoBox"> UserName</div>
-            <div className="userDetailInfoBox"> Email</div>
-            <div className="userDetailInfoBox"> PhoneNumber</div>
-            <div className="userDetailButoomBox">
-            <ButtonGroup
-              variant="text"
-              color="#3498db"
-              size="large"
-              aria-label="large contained secondary button group"
-            >  
-              <Link to="./additem" style={{ textDecoration: 'none' }}>
-              <Button >     SELl    </Button>
-              </Link>
-              <Link to="./biddinglist" style={{ textDecoration: 'none' }}>
-              <Button>Bidding to ME</Button>
-              </Link>
-              <Link to="./settings"  style={{ textDecoration: 'none' }}>
-              <Button herf="./settings">  My Bidding </Button>
-              </Link>
-              <Link to="./settings" style={{ textDecoration: 'none' }}>
-              <Button>   Setting   </Button>
-              </Link>
-            </ButtonGroup>
+                <div className="userDetailBoxName">
+                    Account Detail
             </div>
+                <div className="userDetailInfoBox">
+                    <div className="userDetailInfoBoxText">
+                        UserName:
+                    </div>
+                    <div className="userDetailInfoBoxTextInput"> 
+                        XXXName
+                    </div>
+                </div>
+
+                <div className="userDetailInfoBox">
+                    <div className="userDetailInfoBoxText">
+                        Email:
+                    </div>
+                    <div className="userDetailInfoBoxTextInput"> 
+                        XXXEmail
+                    </div>
+                </div>
+                <div className="userDetailInfoBox">
+                    <div className="userDetailInfoBoxText">
+                        PhoneNumber:
+                    </div>
+                    <div className="userDetailInfoBoxTextInput"> 
+                        XXXPhoneNumber
+                    </div>
+                </div>
+                <div className="userDetailButoomBox">
+                    <ButtonGroup
+                        variant="text"
+                        color="primary"
+                        size="large"
+                        aria-label="large contained secondary button group"
+                    >
+                        <Link to="./additem" style={{ textDecoration: 'none' }}>
+                            <Button >     SELl    </Button>
+                        </Link>
+                        <Link to="./biddinglist" style={{ textDecoration: 'none' }}>
+                            <Button>Bidding to ME</Button>
+                        </Link>
+                        <Link to="./buyerBidding" style={{ textDecoration: 'none' }}>
+                            <Button herf="./settings">  My Bidding </Button>
+                        </Link>
+                        <Link to="./settings" style={{ textDecoration: 'none' }}>
+                            <Button>   Setting   </Button>
+                        </Link>
+                    </ButtonGroup>
+                </div>
             </div>
         </div>
     );
@@ -238,10 +262,10 @@ class User extends React.Component {
                         FGNB
                     </h1>
                 </div> */}
-                <div className = "Prfile_box_text">
-                        User Profile
+                <div className="Prfile_box_text">
+                    User Profile
                 </div>
-                
+
                 <UserBox>
                 </UserBox>
                 <DetailUserBox>
