@@ -168,6 +168,19 @@ import { Link } from "react-router-dom";
 <span><img src="uoft.jpg" alt="uoft_pic" class="tweetIcon"></span>
 </div> */}
 
+const getfetched = {
+    "_id" : "5de48e5354c80a4a7689fffe",
+    "phone" : 123456789,
+    "profilePicture" : null,
+    "blacklisted" : true,
+    "sellings" : [],
+    "biddings" : [],
+    "username" : "chrisnew",
+    "email" : "chris@gmail.com",
+    "password" : "$2a$10$HjvKLTaI3c2H5cGZSBwkqOQA4VOObf5BU9f75WIXzJRqPEa3A2MGq",
+    "__v" : 0
+}
+
 function UserBox() {
     return (
         <div className="profile_box_container">
@@ -175,8 +188,14 @@ function UserBox() {
                 <div className="userIconContainer">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu4JAn8Ri7J-7gD3JqlRJt-YxfWqQCcXO_JE4AA_zrsgHKRUQA&s" alt="yaoshui_pic" className="userIcon"></img>
                     <div className="userNameContainer">
-                        <div className="userBoxName"> Name</div>
-                        <div className="userBoxEmail">Email</div>
+                        <div className="userBoxName"> Username:
+                        <div className="userInput"> {getfetched.username}
+                        </div>
+                        </div>
+                        <div className="userBoxEmail">Email:
+                        <div className="userInput"> {getfetched.email}
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,7 +215,7 @@ function DetailUserBox() {
                         UserName:
                     </div>
                     <div className="userDetailInfoBoxTextInput"> 
-                        XXXName
+                    {getfetched.username}
                     </div>
                 </div>
 
@@ -205,7 +224,7 @@ function DetailUserBox() {
                         Email:
                     </div>
                     <div className="userDetailInfoBoxTextInput"> 
-                        XXXEmail
+                    {getfetched.email}
                     </div>
                 </div>
                 <div className="userDetailInfoBox">
@@ -213,7 +232,7 @@ function DetailUserBox() {
                         PhoneNumber:
                     </div>
                     <div className="userDetailInfoBoxTextInput"> 
-                        XXXPhoneNumber
+                    {getfetched.phone}
                     </div>
                 </div>
                 <div className="userDetailButoomBox">
@@ -247,42 +266,11 @@ class User extends React.Component {
         return (
             <div>
                 <Navigation></Navigation>
-                {/* <div style={{ height: "2em" }}>
-                    <h1
-                        style={{
-                            color: "black",
-                            float: "left",
-                            position: "absolute",
-                            left: "5%",
-                            flex: "1",
-                            margin: "0px",
-                            fontSize: "80%"
-                        }}
-                    >
-                        FGNB
-                    </h1>
-                </div> */}
                 <div className="Prfile_box_text">
                     User Profile
                 </div>
-
-                <UserBox>
-                </UserBox>
-                <DetailUserBox>
-                </DetailUserBox>
-                {/* <div>
-                    <UserPassWordBox></UserPassWordBox>
-                </div> */}
-                {/* <div>
-                    <UserPassWordBox></UserPassWordBox>
-                </div>
-                <div>
-                    <LetterAvatars></LetterAvatars>
-                </div>
-                <UserSecondLayerBox></UserSecondLayerBox>
-                <div>
-                    <LetterAvatarsMySales></LetterAvatarsMySales>
-                </div> */}
+                <UserBox></UserBox>
+                <DetailUserBox></DetailUserBox>
             </div>
         );
     }

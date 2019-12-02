@@ -203,14 +203,21 @@
 
 .userBoxName {
 	/* Add properties below */
-	font-size: 50%;
-	margin-top: 10px;
+	font-size: 70%;
+    margin-top: 10px;
+    float: left;
+    text-align: left;
+	display: inline-block;
+	margin-bottom: 1em;
 
 }
 .userBoxEmail {
 	/* Add properties below */
-	margin-top: 10px;
 	font-size: 70%;
+    margin-top: 10px;
+    float: left;
+    text-align: left;
+    display: inline-block;
 }
 
 
@@ -243,6 +250,13 @@
 	font-size: 90%;
 	text-align: left;
 	display: inline-block;
+}
+
+.userInput {
+	/* Add properties below */
+	text-align: left;
+    display: inline-block;
+    margin-left: 0.5em;
 }
 
 .userDetailButoomBox {
