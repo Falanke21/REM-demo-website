@@ -8,6 +8,7 @@ const { mongoose } = require("../db/mongoose");
 const { User } = require("../models/user");
 const { Item } = require("../models/item");
 const { Bidding } = require("../models/bidding");
+const { Transaction } = require("../models/transaction");
 
 /* 
     GET all biddings of a user buyer. Sort by time.
@@ -142,6 +143,36 @@ router.patch("/decline", function(req, res, next) {
                 bidding.accepted = false;
                 bidding.save().then(result => {
                     res.send({ flag: true, bidding: result });
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({ flag: false, error: err });
+        });
+});
+
+/* 
+    PATCH a bidding to accept it.
+*/
+router.patch("/accept", function(req, res, next) {
+    const biddingId = req.body.biddingId;
+
+    Bidding.findById(biddingId)
+        .then(bidding => {
+            if (bidding === null) {
+                res.status(404).send({ flag: false });
+            } else {
+                bidding.accepted = true;
+                bidding.save();
+
+                // Creating transaction
+                transaction = new Transaction({
+                    bidding: biddingId,
+                    finalPrice: bidding.amount,
+                    time: new Date()
+                })
+                transaction.save().then((result) => {
+                    res.send({ flag: true, bidding: bidding });
                 });
             }
         })
