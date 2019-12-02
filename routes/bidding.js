@@ -10,11 +10,11 @@ const { Item } = require("../models/item");
 const { Bidding } = require("../models/bidding");
 
 /* 
-    GET all biddings of a user. Sort by time.
+    GET all biddings of a user buyer. Sort by time.
 */
-router.get("/", function(req, res, next) {
-    const userId = req.session.user || req.body.userId;
-    User.findById(userId)
+router.get("/buyer", function(req, res, next) {
+    const buyer = req.session.user || req.body.buyer;
+    User.findById(buyer)
         .then(user => {
             if (user === null) {
                 res.status(404).send({
@@ -28,6 +28,39 @@ router.get("/", function(req, res, next) {
                         // Sort by time
                         // biddings.sort((a, b) => a.time < b.time);
                         res.send({ flag: true, biddings: biddings });
+                    });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({ flag: false, error: err });
+        });
+});
+
+/* 
+    GET all biddings of a user seller. In other words "bidding to me". Sort by time.
+*/
+router.get("/seller", function(req, res, next) {
+    const seller = req.session.user || req.body.userId;
+    User.findById(seller)
+        .then(user => {
+            if (user === null) {
+                res.status(404).send({
+                    flag: false,
+                    error: "Can't find this seller"
+                });
+            } else {
+                Item.find({ _id: { $in: user.sellings } })
+                    .select("biddings")
+                    .then(items => {
+                        let allBiddingIds = [];
+                        for (let i = 0; i < items.length; i++) {
+                            allBiddingIds = allBiddingIds.concat(items[i].biddings);
+                        }
+                        Bidding.find({ _id: { $in: allBiddingIds } })
+                            .sort({ time: "descending" })
+                            .then(result => {
+                                res.send({ flag: true, biddings: result });
+                            });
                     });
             }
         })
