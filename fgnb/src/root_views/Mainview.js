@@ -9,6 +9,8 @@ import AddItem from "../profile_page/AddItem";
 import BiddingList from "../profile_page/BiddingList";
 import Settings from "../profile_page/Settings";
 import PageNotFound from "../component/NotFoundPage";
+import BuyerBidding from "../profile_page/Buyerbidding";
+import Contact from "../profile_page/Contact";
 import "./Mainview.css";
 
 class Mainview extends React.Component {
@@ -27,7 +29,9 @@ class Mainview extends React.Component {
                     <Route exact path="/item/:itemId" component={ItemDetail} />
                     <Route exact path="/additem" component={AddItem} />
                     <Route exact path="/biddinglist" component={BiddingList} />
+                    <Route exact path="/buyerBidding" component={BuyerBidding} />
                     <Route exact path="/settings" component={Settings} />
+                    <Route exact path="/contact" component={Contact} />
                     <Route component={PageNotFound} />
                 </Switch>
             </div>
