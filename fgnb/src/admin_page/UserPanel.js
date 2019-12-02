@@ -5,37 +5,6 @@ import UserQueryForm from "./UserQueryForm";
 import UserInspector from "./UserInspector";
 
 class UserPanel extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            username: "",
-            currUser: null,
-            // stub data contains all users, to retrieve users from server
-            userList: [
-                {
-                    username: "user1",
-                    password: "user1",
-                    blocked: false
-                },
-                {
-                    username: "user2",
-                    password: "user2",
-                    blocked: true
-                }
-            ]
-        };
-    }
-
-    handleChange = event => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
-
-        this.setState({
-            [name]: value
-        });
-    };
-
     execQuery = () => {
         // currently search from state user list, to integrate with server call
         const res = this.state.userList.filter(u => {
@@ -62,9 +31,7 @@ class UserPanel extends React.Component {
                     <UserQueryForm />
                 </Grid>
                 <Grid item container>
-                    {this.state.currUser && (
-                        <UserInspector user={this.state.currUser} />
-                    )}
+                    <UserInspector />
                 </Grid>
             </Grid>
         );

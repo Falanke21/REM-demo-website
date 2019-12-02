@@ -93,7 +93,31 @@ export const logout = () => {
         });
 };
 
-export const queryUser = () => {};
+export const queryUser = () => {
+    console.log("finding user");
+    const { email } = getState("adminUserQueryForm");
+    const url = `http://localhost:3001/api/user/${email}`;
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json && json.user) {
+                setState("adminUserInspectForm.user", json.user);
+            } else {
+                return Promise.reject("Cannot find user");
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+};
+
+export const updateUser = () => {
+    console.log("updating user");
+};
 
 export const updateLoginForm = field => {
     const { name, value } = field;
@@ -108,4 +132,9 @@ export const updateSignUpForm = field => {
 export const updateAdminUserQueryForm = field => {
     const { name, value } = field;
     setState(`adminUserQueryForm.${name}`, value);
+}
+
+export const updateAdminUserInspectForm = field => {
+    const { name, value } = field;
+    setState(`adminUserInspectForm.${name}`, value);
 }

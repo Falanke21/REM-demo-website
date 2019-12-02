@@ -75,4 +75,20 @@ router.get("/verify", function(req, res, next) {
     }
 });
 
+// find user by email
+router.get("/:email", function(req, res, next) {
+    const email = req.params.email;
+    User.findOne({ email: email })
+        .then(user => {
+            if (user) {
+                res.send({ user });
+            } else {
+                res.status(404).send();
+            }
+        })
+        .catch(error => {
+            res.status(500).send(error);
+        })
+});
+
 module.exports = router;

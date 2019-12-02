@@ -13,108 +13,128 @@ import SubmitIcon from "@material-ui/icons/Done";
 import CancelIcon from "@material-ui/icons/Cancel";
 
 import StateReactComponent from "../component/StateReactComponent";
+import { updateAdminUserInspectForm, updateUser } from "../utils/user";
 
 class UserInspector extends StateReactComponent {
+    state = {
+        editing: false
+    };
+
+    filterState({ adminUserInspectForm }) {
+        return { adminUserInspectForm };
+    }
+
+    setEditing = editing => {
+        updateAdminUserInspectForm({
+            name: "editing",
+            value: editing
+        });
+    };
+
+    setBlocked = blocked => {
+        updateAdminUserInspectForm({
+            name: "blocked",
+            value: blocked
+        });
+    };
+
     render() {
+        const {
+            user,
+            username,
+            editing,
+            blocked
+        } = this.state.adminUserInspectForm;
         const { classes } = this.props;
-        const user = this.props.user;
-        const [username, setUsername] = React.useState("");
-        const [password, setPassword] = React.useState("");
-        const [blocked, setBlocked] = React.useState(false);
-        const [editing, setEditing] = React.useState(false);
-    
+
         return (
-            <Paper classes={{ root: classes.info }}>
-                <Typography align="left" variant="h6">
-                    Username
-                </Typography>
-                {!editing ? (
-                    <Typography>{user.username}</Typography>
-                ) : (
-                    <Input
-                        name="username"
-                        type="text"
-                        value={username}
-                        placeholder={user.username}
-                        onChange={event => {
-                            setUsername(event.target.value);
-                        }}
-                    />
-                )}
-                <Typography align="left" variant="h6">
-                    Password
-                </Typography>
-                {!editing ? (
-                    <Typography>{user.password}</Typography>
-                ) : (
-                    <Input
-                        name="password"
-                        type="text"
-                        value={password}
-                        placeholder={user.password}
-                        onChange={event => {
-                            setPassword(event.target.value);
-                        }}
-                    />
-                )}
-                {!editing ? (
-                    <div>
-                        <IconButton
-                            onClick={() => {
-                                setEditing(true);
-                                setUsername(this.props.user.username);
-                                setPassword(this.props.user.password);
-                            }}
-                        >
-                            <EditIcon />
-                        </IconButton>
+            user && (
+                <Paper classes={{ root: classes.info }}>
+                    <Typography align="left" variant="h6">
+                        Username
+                    </Typography>
+                    <div align="center">
+                        {!editing ? (
+                            <Typography>{user.username}</Typography>
+                        ) : (
+                            <Input
+                                name="username"
+                                type="text"
+                                value={username}
+                                placeholder={user.username}
+                                onChange={e => updateAdminUserInspectForm(e.target)}
+                            />
+                        )}
                     </div>
-                ) : (
-                    <div>
-                        <IconButton
-                            onClick={() => {
-                                user.username = username;
-                                user.password = password;
-                                setEditing(false);
-                            }}
-                        >
-                            <SubmitIcon />
-                        </IconButton>
-                        <IconButton
-                            onClick={() => {
-                                setEditing(false);
-                            }}
-                        >
-                            <CancelIcon />
-                        </IconButton>
+                    {editing && (
+                        <div align="center">
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={blocked}
+                                        onChange={e => {
+                                            this.setBlocked(!blocked);
+                                        }}
+                                        value="blocked"
+                                    />
+                                }
+                                label="Blocked"
+                                labelPlacement="start"
+                            />
+                        </div>
+                    )}
+                    <div align="center">
+                        {!editing ? (
+                            <div>
+                                <IconButton
+                                    onClick={() => {
+                                        this.setEditing(true);
+                                        updateAdminUserInspectForm({
+                                            name: "username",
+                                            value: user.username
+                                        });
+                                        updateAdminUserInspectForm({
+                                            name: "password",
+                                            value: user.password
+                                        });
+                                    }}
+                                >
+                                    <EditIcon />
+                                </IconButton>
+                            </div>
+                        ) : (
+                            <div>
+                                <IconButton
+                                    onClick={() => {
+                                        updateUser();
+                                        this.setEditing(false);
+                                    }}
+                                >
+                                    <SubmitIcon />
+                                </IconButton>
+                                <IconButton
+                                    onClick={() => {
+                                        this.setEditing(false);
+                                    }}
+                                >
+                                    <CancelIcon />
+                                </IconButton>
+                            </div>
+                        )}
                     </div>
-                )}
-                <FormControlLabel
-                    control={
-                        <Switch
-                            checked={user.blocked}
-                            onChange={event => {
-                                setBlocked(!blocked);
-                                user.blocked = !user.blocked;
-                            }}
-                            value="blocked"
-                        />
-                    }
-                    label="Blocked"
-                    labelPlacement="start"
-                />
-            </Paper>
+                </Paper>
+            )
         );
     }
 }
 
 const styles = {
     info: {
-        width: "35%",
+        width: "20%",
         maxWidth: 500,
         margin: "auto",
         padding: 20
     }
-}
+};
 
 export default withStyles(styles)(UserInspector);
