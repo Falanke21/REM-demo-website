@@ -7,19 +7,9 @@ const validator = require("validator");
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
 const TransactionSchema = new mongoose.Schema({
-    itemId: {
+	bidding: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "Item",
-		required: true
-	},
-	seller: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "User",
-		required: true
-	},
-	buyer: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "User",
+		ref: "Bidding",
 		required: true
 	},
 	finalPrice: {

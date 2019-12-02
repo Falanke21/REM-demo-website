@@ -5,13 +5,9 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var exampleRouter = require("./routes/example");
-const signupRouter = require("./routes/signup");
-const loginRouter = require("./routes/login");
+const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
-const verifyRouter = require("./routes/verify");
-
-// mongoose and mongo connection
-const { mongoose } = require("./db/mongoose");
+const biddingRouter = require("./routes/bidding");
 
 // import express cookie session
 const session = require('express-session')
@@ -61,10 +57,9 @@ app.use("/example", exampleRouter);
 */
 
 // REAL JSON APIs
-app.use("/api/signup", signupRouter);
-app.use("/api/login", loginRouter);
+app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
-app.use("/api/verify", verifyRouter);
+app.use("/api/bidding", biddingRouter);
 
 /*** Webpage routes below **********************************/
 // // Serve the build (production)

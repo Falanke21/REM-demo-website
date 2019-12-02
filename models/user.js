@@ -38,6 +38,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    blacklisted: {
+        type: Boolean,
+        default: false
+    },
     sellings: [
         {
             type: mongoose.Schema.Types.ObjectId,
