@@ -38,7 +38,6 @@ router.patch("/", function(req, res, next) {
             return;
         }
         const newPassword = req.body.password;
-        const confirmPassword = req.body.confirmPassword;
         const user = req.session.user || req.body.user;
         // Everything went fine.
         User.findById(user)
