@@ -1,0 +1,124 @@
+.Contact_box_text{
+	display: block;
+    position: relative;
+    left: 2%;
+    font-size: 200%;
+    text-align: left;
+}
+
+
+.Contact_box_text_seller{
+	display: inline-block;
+    position: relative;
+    left: 10%;
+    font-size: 200%;
+    text-align: left;
+}
+
+.Contact_box_text_buyer{
+	display: inline-block;
+    position: relative;
+    left: 65%;
+    font-size: 200%;
+    text-align: left;
+}
+.profile_box_container_Seller {
+	display: inline-block;
+	width: 20em;
+	height: 27em;
+	position: absolute;
+	left: 6em;
+	grid-template-columns: auto;
+	padding: 1px;
+}
+
+.profile_box_container_Buyer {
+	display: inline-block;
+	width: 20em;
+	height: 27em;
+	position: absolute;
+	left: 65em;
+	grid-template-columns: auto;
+	padding: 1px;
+}
+
+.profile_box {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	height:100%;
+	font-size: 30px;
+	text-align: center;
+  }
+.userIconContainer {
+	/* Add properties below */
+	width: 8em;
+    height: 16em;
+    position: relative;
+    float: left;
+    left: 6%;
+}
+
+.userIcon {
+	/* Add properties below */
+	border-radius: 50%;
+	width: 7em;
+    height: 7em;
+}
+
+.userNameContainer {
+	/* Add properties below */
+	width: 7em;
+    height: 7em;
+    position: relative;
+    float: left;
+    left: 6%;
+}
+
+.userBoxName {
+	/* Add properties below */
+	font-size: 70%;
+    margin-top: 10px;
+    float:left;
+    text-align: left;
+	display: inline-block;
+}
+
+.userInput {
+	/* Add properties below */
+	text-align: left;
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+
+.userBoxEmail {
+	/* Add properties below */
+	margin-top: 10px;
+    font-size: 70%;
+    float:left;
+    text-align: left;
+	display: inline-block;
+}
+.userBoxPhone {
+	/* Add properties below */
+	margin-top: 10px;
+    font-size: 70%;
+    float:left;
+    text-align: left;
+	display: inline-block;
+}
+
+.Contact_congrads_box{
+	display: inline-block;
+    left: 2%;
+    font-size: 200%;
+}
+
+
+.Contact_congrads_box_text{
+	display: inline-block;
+    position: relative;
+    font-size: 200%;
+    text-align: left;
+}
