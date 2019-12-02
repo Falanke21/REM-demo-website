@@ -8,6 +8,7 @@ var exampleRouter = require("./routes/example");
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
 const biddingRouter = require("./routes/bidding");
+const transactionRouter = require("./routes/transaction");
 
 // import express cookie session
 const session = require('express-session')
@@ -60,6 +61,7 @@ app.use("/example", exampleRouter);
 app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
 app.use("/api/bidding", biddingRouter);
+app.use("/api/transaction", transactionRouter);
 
 /*** Webpage routes below **********************************/
 // // Serve the build (production)
