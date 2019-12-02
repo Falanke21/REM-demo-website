@@ -26,5 +26,5 @@ export const setEmptyState = () => {
         password: "",
         editing: false,
         blocked: false
-    })
+    });
 };

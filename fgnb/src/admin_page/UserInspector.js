@@ -62,7 +62,9 @@ class UserInspector extends StateReactComponent {
                                 type="text"
                                 value={username}
                                 placeholder={user.username}
-                                onChange={e => updateAdminUserInspectForm(e.target)}
+                                onChange={e =>
+                                    updateAdminUserInspectForm(e.target)
+                                }
                             />
                         )}
                     </div>
@@ -83,7 +85,7 @@ class UserInspector extends StateReactComponent {
                             />
                         ) : (
                             <Typography>
-                                { `Blocked: ${blocked}` }
+                                {`Blocked: ${user.blacklisted}`}
                             </Typography>
                         )}
                     </div>
@@ -101,6 +103,7 @@ class UserInspector extends StateReactComponent {
                                             name: "password",
                                             value: user.password
                                         });
+                                        this.setBlocked(user.blacklisted);
                                     }}
                                 >
                                     <EditIcon />
