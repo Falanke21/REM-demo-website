@@ -10,7 +10,7 @@ const { Item } = require("../models/item");
 const { Bidding } = require("../models/bidding");
 
 /* 
-    GET all biddings of a user.
+    GET all biddings of a user. Sort by time.
 */
 router.get("/", function(req, res, next) {
     const userId = req.session.user || req.body.userId;
@@ -23,6 +23,8 @@ router.get("/", function(req, res, next) {
                 });
             } else {
                 Bidding.find({ _id: { $in: user.biddings } }).then(biddings => {
+                    // Sort by time
+                    biddings.sort((a, b) => a.time < b.time);
                     res.send({ flag: true, biddings: biddings });
                 });
             }
