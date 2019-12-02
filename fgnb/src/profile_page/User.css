@@ -101,3 +101,140 @@
 	height: 180%;
 }
 
+
+
+
+
+
+
+
+
+.profile_textBox{
+	border: 1px solid #3498db;
+	width: 100%;
+}
+
+.Prfile_box_text{
+	display: block;
+    color: black;
+    height: 2em;
+    position: relative;
+    left: 2%;
+    flex: 1 1;
+    margin: 0px;
+    font-size: 200%;
+    text-align: left;
+}
+.profile_box_container {
+	display: inline-block;
+	width: 20em;
+	height: 27em;
+	position: absolute;
+	left: 2em;
+	grid-template-columns: auto;
+	padding: 1px;
+  }
+  
+  .profile_box {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	height:100%;
+	font-size: 30px;
+	text-align: center;
+  }
+
+
+
+
+
+  .profile_detail_box_container {
+	display: inline-block;
+	width: 60em;
+    left: 10%;
+	position: relative;
+	height: 30em;
+	grid-template-columns: auto;
+	padding: 1px;
+  }
+  
+  .profile_detail_box {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	height:100%;
+	font-size: 30px;
+	text-align: center;
+  }
+
+  .img_profile {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	height:100%;
+	font-size: 30px;
+	text-align: center;
+  }
+
+  .userIconContainer {
+	/* Add properties below */
+	width: 8em;
+    height: 16em;
+    position: relative;
+    float: left;
+    left: 6%;
+}
+
+.userIcon {
+	/* Add properties below */
+	border-radius: 50%;
+	width: 7em;
+    height: 7em;
+}
+
+.userNameContainer {
+	/* Add properties below */
+	width: 7em;
+    height: 7em;
+    position: relative;
+    float: left;
+    left: 6%;
+}
+
+.userBoxName {
+	/* Add properties below */
+	font-size: 50%;
+	margin-top: 10px;
+
+}
+.userBoxEmail {
+	/* Add properties below */
+	margin-top: 10px;
+	font-size: 70%;
+}
+
+
+.userDetailBoxName {
+	/* Add properties below */
+	font-size: 90%;
+	margin-top: 2em;
+	text-align: left;
+	border-bottom: #3498db solid 0.1em
+}
+
+.userDetailInfoBox {
+	/* Add properties below */
+	font-size: 90%;
+	margin-top: 2em;
+	text-align: left;
+	border-bottom: #3498db solid 0.1em;
+}
+
+.userDetailButoomBox {
+	/* Add properties below */
+	margin-top: 1.5em;
+    height: 2.5em;
+}
+
+
+
