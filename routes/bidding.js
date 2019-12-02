@@ -22,11 +22,13 @@ router.get("/", function(req, res, next) {
                     error: "Can't find this user"
                 });
             } else {
-                Bidding.find({ _id: { $in: user.biddings } }).then(biddings => {
-                    // Sort by time
-                    biddings.sort((a, b) => a.time < b.time);
-                    res.send({ flag: true, biddings: biddings });
-                });
+                Bidding.find({ _id: { $in: user.biddings } })
+                    .sort({ time: "descending" })
+                    .then(biddings => {
+                        // Sort by time
+                        // biddings.sort((a, b) => a.time < b.time);
+                        res.send({ flag: true, biddings: biddings });
+                    });
             }
         })
         .catch(err => {
