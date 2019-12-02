@@ -3,7 +3,7 @@ import { setState, getState } from "statezero";
 import { setEmptyState } from "./helpers";
 
 export const readCookie = () => {
-    const url = "http://localhost:3001/api/verify";
+    const url = "http://localhost:3001/api/user/verify";
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -22,7 +22,7 @@ export const readCookie = () => {
 
 export const login = () => {
     const { email, password } = getState("loginForm");
-    const request = new Request("http://localhost:3001/api/login", {
+    const request = new Request("http://localhost:3001/api/user/login", {
         method: "post",
         body: JSON.stringify({ email, password }),
         headers: {
@@ -57,7 +57,7 @@ export const login = () => {
 
 export const signUp = () => {
     const { email, password, username } = getState("signUpForm");
-    const request = new Request("http://localhost:3001/api/signup", {
+    const request = new Request("http://localhost:3001/api/user/signup", {
         method: "post",
         body: JSON.stringify({ email, password, username }),
         headers: {
@@ -83,7 +83,7 @@ export const signUp = () => {
 };
 
 export const logout = () => {
-    const url = "http://localhost:3001/api/logout";
+    const url = "http://localhost:3001/api/user/logout";
     fetch(url)
         .then(res => {
             setEmptyState();
