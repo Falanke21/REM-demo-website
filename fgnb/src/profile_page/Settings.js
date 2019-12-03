@@ -10,16 +10,18 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {updateSetting, updateSettingForm, getUserInfo} from "../utils/user";
 
-export default function Settings() {
+class  Settings extends React.Component {
+componentWillMount(){
     const userInfo = getUserInfo();
+    console.log(userInfo);
     const userEmail = userInfo.email;
-    // const [itemName, setItemName] = React.useState("");
-    // const [itemDescription, setItemDescription] = React.useState("");
-    // const [itemPrice, setItemPrice] = React.useState("");
-    // const [itemLocation, setItemLocation] = React.useState("");
-
-    // TODO add server call of user information
-    // Hard code data here
+}
+render(){
+    const userInfo= getUserInfo();
+    console.log(userInfo);
+    const userEmail = userInfo.email;
+    const username = userInfo.username;
+    console.log(username);
     return (
         <div>
             <Navigation />
@@ -108,3 +110,12 @@ export default function Settings() {
         </div>
     );
 }
+}
+export default Settings;
+    // const [itemName, setItemName] = React.useState("");
+    // const [itemDescription, setItemDescription] = React.useState("");
+    // const [itemPrice, setItemPrice] = React.useState("");
+    // const [itemLocation, setItemLocation] = React.useState("");
+
+    // TODO add server call of user information
+    // Hard code data here

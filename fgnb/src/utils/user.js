@@ -147,23 +147,47 @@ export const updateUser = () => {
 
 export const getUserInfo = () =>{
     const userInfo = getState("loginForm");
-    console.log(userInfo);
-    return userInfo
+    const userEmail = userInfo.email;
+    const userName = getUserName();
+    console.log(getState("settingForm"));
+    return{
+        email:userEmail,
+        username:userName
+    }
 }
-
+export const getUserName = () =>{
+    loadUserName();
+    return getState("settingForm");
+}
 export const getUserId = () =>{
     return getState("currentUser");
 }
 
-// export const getUserName = () =>{
-//     const userId = getUserId();
-//     const url = "http://localhost:3001/api/user"
-//     const request = new Request(url, {
-//         method: "GET",
-//         body: JSON.stringify({userId})
-//     });
-//     console.log(request);
-// }
+export const loadUserName = () =>{
+    var result;
+    const userId = getUserId();
+    const url = `http://localhost:3001/api/user/${userId}`
+    const request = new Request(url, {
+        method: "GET"
+    });
+    fetch(request)
+    .then(res => {
+        if (res.status === 200) {
+            return res.json();
+        }else{
+            console.log("cannot find the user");
+        }
+    })
+    .then(json => {
+        result = json.user.username;
+        setState("settingForm.userName", json.user.username);
+        return json.user.username;
+    })
+    .catch(error => {
+    })
+    return result;
+};
+
 export const updateSetting = () =>{
     console.log((getState("loginForm")));
     console.log("Update setting");

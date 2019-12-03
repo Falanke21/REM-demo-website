@@ -31,5 +31,6 @@ export const setEmptyState = () => {
         email: "",
         password: "",
         username: ""
-    })
+    });
+    setState("userName", "")
 };
