@@ -14,7 +14,7 @@ const { Transaction } = require("../models/transaction");
     GET all biddings of a user buyer. Sort by time.
 */
 router.get("/buyer", function(req, res, next) {
-    const buyer = req.session.user || req.body.buyer;
+    const buyer = req.session.user || req.body.userId;
     User.findById(buyer)
         .then(user => {
             if (user === null) {
