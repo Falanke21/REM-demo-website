@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
     },
     profilePicture: {
         type: String,
-        default: null
+        default: "/static/profilephotos/default.jpg"
     },
     blacklisted: {
         type: Boolean,
