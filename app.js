@@ -50,6 +50,9 @@ app.use("/example", exampleRouter);
     ALL HTML file routes stay in this file
 */
 
+// serve static files
+app.use('/static', express.static('public'))
+
 // REAL JSON APIs
 app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);

@@ -62,7 +62,7 @@ router.post("/", function(req, res, next) {
             });
 
         const item = new Item({
-            img: req.file.destination + "/" + req.file.filename,
+            img: "images/" + req.file.filename,
             title: title,
             seller: seller,
             price: price,
@@ -88,13 +88,24 @@ router.post("/", function(req, res, next) {
     GET all items that are available in the market.
 */
 router.get("/", function(req, res, next) {
-    Item.find({ inMarket: true })
+    const itemId = req.body.itemId;
+    if (itemId === undefined) {
+        Item.find({ inMarket: true })
         .then(result => {
             res.send({ flag: true, items: result });
         })
         .catch(err => {
             res.status(500).send();
         });
+    } else {
+        Item.find({ inMarket: true, _id: itemId })
+        .then(result => {
+            res.send({ flag: true, item: result });
+        })
+        .catch(err => {
+            res.status(500).send();
+        });
+    }
 });
 
 /*
