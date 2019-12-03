@@ -10,10 +10,14 @@ class Authview extends React.Component {
         console.log("Authview rendered");
         return (
             <div className="Authview">
-                    <Switch>
-                        <Route exact path="/signup" component={SignUp} />
-                        <Route component={Login} />
-                    </Switch>
+                <Switch>
+                    <Route
+                        exact
+                        path="/signup"
+                        render={({ history }) => <SignUp history={history} />}
+                    />
+                    <Route component={Login} />
+                </Switch>
             </div>
         );
     }

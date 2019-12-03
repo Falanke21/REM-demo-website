@@ -43,7 +43,14 @@ const useStylesButton = makeStyles({
 function SignUpButton(props) {
     const classes = useStylesButton();
     return (
-        <Button onClick={signUp} variant="outlined" className={classes.button}>
+        <Button
+            onClick={e => {
+                signUp();
+                props.history.push("/market");
+            }}
+            variant="outlined"
+            className={classes.button}
+        >
             Finish
         </Button>
     );
@@ -133,8 +140,8 @@ class SignUp extends React.Component {
                         <span className="signUptext">
                             Welcome to join us!!!!
                         </span>
-                        <SignUpButton />
-                        <Link to={"./"}>
+                        <SignUpButton history={this.props.history} />
+                        <Link to={"/"}>
                             <BackButton />
                         </Link>
                     </p>
