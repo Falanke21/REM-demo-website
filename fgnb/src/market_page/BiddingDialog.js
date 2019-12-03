@@ -10,8 +10,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 export default function BiddingDialog(prop) {
-	const [open, setOpen] = React.useState(false);
-	const [bidAmount, setBitAmount] = React.useState(0);
+    const [open, setOpen] = React.useState(false);
+    const [bidAmount, setBitAmount] = React.useState(undefined);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -19,17 +19,47 @@ export default function BiddingDialog(prop) {
 
     const handleClose = () => {
         setOpen(false);
-	};
+    };
 
-	const handleChange = (event) => {
-		setBitAmount(event.target.value);
-	}
-	
-	const handleSubmit = () => {
-		handleClose();
-		// TODO add server call here
-		alert(`Item id is ${prop.itemId}, The amount submitted is ${bidAmount}`);
-	}
+    const handleChange = event => {
+        setBitAmount(event.target.value);
+    };
+
+    const handleSubmit = () => {
+        handleClose();
+        console.log(
+            `Item id is ${prop.itemId}, The amount submitted is ${bidAmount}`
+        );
+
+        fetch("http://localhost:3001/api/bidding", {
+            method: "POST",
+            body: JSON.stringify({
+                itemId: prop.itemId,
+                amount: bidAmount
+            }),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => {
+                if (res.status === 400) {
+                    return Promise.reject("Bad Request");
+                } else if (res.status === 500) {
+                    return Promise.reject("Server Internal Error");
+                } else if (res.status === 404) {
+                    return Promise.reject("Not found");
+                } else {
+                    return res.json();
+                }
+            })
+            .then(json => {
+                alert(`Bidding created with amount ${json.bidding.amount}`);
+            })
+            .catch(err => {
+                alert(err);
+            });
+    };
 
     return (
         <div>
@@ -48,7 +78,9 @@ export default function BiddingDialog(prop) {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
-                <DialogTitle id="form-dialog-title">Submit a bidding</DialogTitle>
+                <DialogTitle id="form-dialog-title">
+                    Submit a bidding
+                </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         To submit a bidding, please enter your target amount
@@ -57,12 +89,12 @@ export default function BiddingDialog(prop) {
                     <TextField
                         autoFocus
                         margin="normal"
-						helperText="Amount is in CAD"
+                        helperText="Amount is in CAD"
                         label="Your Bidding"
                         type="number"
-						fullWidth
-						value={bidAmount}
-						onChange={handleChange}
+                        fullWidth
+                        value={bidAmount}
+                        onChange={handleChange}
                     />
                 </DialogContent>
                 <DialogActions>

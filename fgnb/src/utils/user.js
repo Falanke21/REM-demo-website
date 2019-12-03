@@ -1,6 +1,7 @@
 import { setState, getState } from "statezero";
 
 import { setEmptyState } from "./helpers";
+import { get } from "mongoose";
 
 export const readCookie = () => {
     const url = "http://localhost:3001/api/user/verify";
@@ -142,6 +143,62 @@ export const updateUser = () => {
         console.log(error);
     })
 };
+
+
+export const getUserEmail = () =>{
+    const userInfo = getState("loginForm");
+    const userEmail = userInfo.email;
+    return userEmail
+}
+
+export const getUserId = () =>{
+    return getState("currentUser");
+}
+
+export const getUserName = () =>{
+    var result;
+    const userId = getUserId();
+    const url = `http://localhost:3001/api/user/${userId}`
+    const request = new Request(url, {
+        method: "GET"
+    });
+    fetch(request)
+    .then(res => {
+        if (res.status === 200) {
+            return res.json();
+        }else{
+            console.log("cannot find the user");
+        }
+    })
+    .then(json => {
+        setState("userName", json.user.username);
+    })
+    .catch(error => {
+    })
+};
+
+export const updateSetting = () =>{
+    console.log((getState("loginForm")));
+    console.log("Update setting");
+    const {newPassword, confirmPassword} = getState("settingForm");
+    console.log(newPassword);
+    console.log(confirmPassword);
+    if (newPassword !== confirmPassword){
+        console.log("Password Mismatch");
+        alert("Password Mismatch");
+    }
+    else{
+        const request = new Request(`http://localhost:3001/api/setting`);
+        alert("Request send");
+    }
+}
+export const updateSettingForm = field =>{
+    const {name, value} = field;
+    setState(`settingForm.${name}`, value);
+    console.log(name);
+    console.log(value);
+    console.log(getState("settingForm"))
+}
 
 export const updateLoginForm = field => {
     const { name, value } = field;
