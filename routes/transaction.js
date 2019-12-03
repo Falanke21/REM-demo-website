@@ -7,7 +7,7 @@ const { Bidding } = require("../models/bidding");
 const { User } = require("../models/user");
 const { ObjectID } = require("mongodb");
 
-// get all transactions
+// get all transactions ADMIN only
 router.get("/", function(req, res, next) {
     Transaction.find()
         .then(result => {
@@ -59,7 +59,7 @@ router.get("/:id", function(req, res, next) {
         });
 });
 
-// update a transaction
+// update a transaction ADMIN only
 router.patch("/:id", function(req, res, next) {
     const id = req.params.id;
     const { bidding, finalPrice, time } = req.body;
@@ -80,7 +80,7 @@ router.patch("/:id", function(req, res, next) {
         });
 });
 
-// delete a transaction
+// delete a transaction ADMIN only
 router.delete("/:id", function(req, res, next) {
     const id = req.params.id;
     if (!ObjectID.isValid(id)) {

@@ -111,7 +111,7 @@ router.get("/admin", function(req, res, next) {
 });
 
 /*
-    DELETE an item
+    DELETE an item ADMIN only
 */
 router.delete("/", function(req, res, next) {
     Item.findByIdAndDelete(req.body.itemId).then(result => {
@@ -126,7 +126,7 @@ router.delete("/", function(req, res, next) {
 });
 
 /*
-    PATCH an item
+    PATCH an item ADMIN only
 */
 router.patch("/", function(req, res, next) {
     const itemId = req.body.itemId;
