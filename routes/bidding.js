@@ -56,7 +56,6 @@ router.get("/seller", function(req, res, next) {
                 });
             } else {
                 Item.find({ _id: { $in: user.sellings } })
-                    .select("biddings")
                     .then(items => {
                         let allBiddingIds = [];
                         for (let i = 0; i < items.length; i++) {
@@ -64,7 +63,17 @@ router.get("/seller", function(req, res, next) {
                         }
                         Bidding.find({ _id: { $in: allBiddingIds } })
                             .sort({ time: "descending" })
-                            .then(result => {
+                            .then(biddings => {
+                                // Get that bidding title
+                                const result = [];
+                                for (let i = 0; i < biddings.length; i++) {
+                                    result.push(biddings[i].toObject());
+                                    for (let item of items) {
+                                        if (item.biddings.includes(biddings[i]._id)) {
+                                            result[i].title = item.title;
+                                        }
+                                    }
+                                }
                                 res.send({ flag: true, biddings: result });
                             });
                     });
