@@ -11,7 +11,7 @@ const { authenticateAdmin } = require("../middlewares");
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
-        callback(null, "images");
+        callback(null, "public/images");
     },
     filename: function(req, file, callback) {
         // TODO: ADD MORE FILE TYPE HERE !!!!!
@@ -63,7 +63,7 @@ router.post("/", function(req, res, next) {
             });
 
         const item = new Item({
-            img: req.file.destination + "/" + req.file.filename,
+            img: "static/images/" + req.file.filename,
             title: title,
             seller: seller,
             price: price,
@@ -86,9 +86,9 @@ router.post("/", function(req, res, next) {
 });
 
 /* 
-    GET all items that are available in the market.
+    GET all item that are available in the market.
 */
-router.get("/", function(req, res, next) {
+router.get("/all", function(req, res) {
     Item.find({ inMarket: true })
         .then(result => {
             res.send({ flag: true, items: result });
@@ -105,6 +105,20 @@ router.get("/admin", authenticateAdmin, function(req, res, next) {
     Item.find()
         .then(result => {
             res.send({ flag: true, items: result });
+        })
+        .catch(err => {
+            res.status(500).send();
+        });
+});
+
+/* 
+    GET one item in the market.
+*/
+router.get("/:id", function(req, res, next) {
+    const itemId = req.params.id;
+    Item.findOne({ inMarket: true, _id: itemId })
+        .then(result => {
+            res.send({ flag: true, item: result });
         })
         .catch(err => {
             res.status(500).send();

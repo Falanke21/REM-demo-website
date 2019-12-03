@@ -72,10 +72,10 @@ function GridBox(props) {
                     <GridListTile
                         key={tile.id}
                         component={Link}
-                        to={`/item/${tile.id}`}
+                        to={`/item/${tile._id}`}
                         className={classes.gridListTile}
                         onClick={() =>
-                            console.log(`Grid id ${tile.id} clicked!`)
+                            console.log(`Grid id ${tile._id} clicked!`)
                         }
                         cols={tile.featured ? 2 : 2}
                         rows={tile.featured ? 1 : 1}
@@ -103,7 +103,7 @@ function LineGridBox(props) {
                     <GridListTile
                         key={tile.img}
                         component={Link}
-                        to={`/item/${tile.id}`}
+                        to={`/item/${tile._id}`}
                     >
                         <img src={tile.img} alt={tile.title} height="90px" />
                         <GridListTileBar
@@ -129,7 +129,7 @@ class ItemGrid extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/api/item", {
+        fetch("http://localhost:3001/api/item/all", {
             method: "GET"
         })
             .then(res => {
@@ -141,7 +141,7 @@ class ItemGrid extends Component {
             })
             .then(json => {
                 for (let x of json.items) {
-                    x.img = "http://localhost:3001/static/" + x.img;
+                    x.img = "http://localhost:3001/" + x.img;
                 }
                 this.setState({ tileData: json.items });
             })

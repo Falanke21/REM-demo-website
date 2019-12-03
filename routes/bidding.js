@@ -13,8 +13,8 @@ const { Transaction } = require("../models/transaction");
 /* 
     GET all biddings of a user buyer. Sort by time.
 */
-router.get("/buyer", function(req, res, next) {
-    const buyer = req.session.user || req.body.buyer;
+router.get("/buyer/:id", function(req, res, next) {
+    const buyer = req.session.user || req.params.id;
     User.findById(buyer)
         .then(user => {
             if (user === null) {
@@ -45,8 +45,8 @@ router.get("/buyer", function(req, res, next) {
 /* 
     GET all biddings of a user seller. In other words "bidding to me". Sort by time.
 */
-router.get("/seller", function(req, res, next) {
-    const seller = req.session.user || req.body.userId;
+router.get("/seller/:id", function(req, res, next) {
+    const seller = req.session.user || req.params.id;
     User.findById(seller)
         .then(user => {
             if (user === null) {
@@ -56,7 +56,6 @@ router.get("/seller", function(req, res, next) {
                 });
             } else {
                 Item.find({ _id: { $in: user.sellings } })
-                    .select("biddings")
                     .then(items => {
                         let allBiddingIds = [];
                         for (let i = 0; i < items.length; i++) {
@@ -64,7 +63,17 @@ router.get("/seller", function(req, res, next) {
                         }
                         Bidding.find({ _id: { $in: allBiddingIds } })
                             .sort({ time: "descending" })
-                            .then(result => {
+                            .then(biddings => {
+                                // Get that bidding title
+                                const result = [];
+                                for (let i = 0; i < biddings.length; i++) {
+                                    result.push(biddings[i].toObject());
+                                    for (let item of items) {
+                                        if (item.biddings.includes(biddings[i]._id)) {
+                                            result[i].title = item.title;
+                                        }
+                                    }
+                                }
                                 res.send({ flag: true, biddings: result });
                             });
                     });
@@ -78,8 +87,8 @@ router.get("/seller", function(req, res, next) {
 /* 
     GET all biddings to an item.
 */
-router.get("/item", function(req, res, next) {
-    const itemId = req.body.itemId;
+router.get("/item/:id", function(req, res, next) {
+    const itemId = req.params.itemId;
     Item.findById(itemId)
         .then(item => {
             if (item === null) {
