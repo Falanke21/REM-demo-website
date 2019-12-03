@@ -1,7 +1,7 @@
 import { setState, getState } from "statezero";
 
-export const getAllTransactions = () => {
-    const url = "http://localhost:3001/api/transaction";
+export const getAllItems = () => {
+    const url = "http://localhost:3001/api/item/admin";
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -9,8 +9,8 @@ export const getAllTransactions = () => {
             }
         })
         .then(json => {
-            if (json && json.transactions) {
-                setState("adminTransactionList", json.transactions);
+            if (json && json.items) {
+                setState("adminItemList", json.items);
             } else {
                 return Promise.reject();
             }
@@ -20,10 +20,10 @@ export const getAllTransactions = () => {
         });
 };
 
-export const updateTransaction = (id, data) => {
-    const { finalPrice } = data;
-    const body = { finalPrice };
-    const request = new Request(`http://localhost:3001/api/transaction/${id}`, {
+export const updateItem = (id, data) => {
+    const { title, price, description, location } = data;
+    const body = { itemId: id, title, price, description, location };
+    const request = new Request("http://localhost:3001/api/item", {
         method: "PATCH",
         body: JSON.stringify(body),
         headers: {
@@ -36,22 +36,23 @@ export const updateTransaction = (id, data) => {
             if (res.status === 200) {
                 return res.json();
             } else {
-                console.log("Cannot update transaction");
+                console.log("Cannot update item");
             }
         })
         .then(json => {
             console.log(json);
-            getAllTransactions(); // refresh transaction list
+            getAllItems(); // refresh item list
         })
         .catch(error => {
             console.log(error);
         });
 };
 
-export const deleteTransaction = (id) => {
-    const request = new Request(`http://localhost:3001/api/transaction/${id}`, {
+export const deleteItem = id => {
+    const body = { itemId: id };
+    const request = new Request("http://localhost:3001/api/item/", {
         method: "DELETE",
-        // body: JSON.stringify(id),
+        body: JSON.stringify(body),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
@@ -62,14 +63,14 @@ export const deleteTransaction = (id) => {
             if (res.status === 200) {
                 return res.json();
             } else {
-                console.log("Cannot update transaction");
+                return Promise.reject();
             }
         })
         .then(json => {
             console.log(json);
-            getAllTransactions(); // refresh transaction list
+            getAllItems(); // refresh item list
         })
         .catch(error => {
             console.log(error);
         });
-}
+};

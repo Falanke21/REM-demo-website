@@ -34,4 +34,6 @@ export const setEmptyState = () => {
     });
     setState("userName", "")
     setState("adminTransactionList", []);
+
+    setState("adminItemList", []);
 };
