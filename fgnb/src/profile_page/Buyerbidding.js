@@ -1,16 +1,14 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import Navigation from "../navigation/Navigation";
-import Bidding from "./Bidding";
 import "./Buyerbidding.css";
-import Button from '@material-ui/core/Button';
 
 const getfetched = [
     {
         "accepted": true,
         "time": "2019-",
         "_id": "5de4",
-        "item": "5de428",
+        "item": "5de42",
         "buyer": "5de4a0",
         "seller": "5dea0",
         "amount": 100,
@@ -48,15 +46,15 @@ const getfetched = [
     //     "__v": 0
     // }
 ]
-function Givestatus(stautsObj) {
+function Givestatus(statusObj) {
     //Hard code bidding information, add server call later
-    console.log(stautsObj)
-    if (stautsObj.stauts==true) {
+    if (statusObj.status==true) {
         return (
             <div class="grid-item">
-            <Link to="./Contact" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="secondary">     Contact Now!    </Button>
-            </Link>
+            {/* <Link to="./Contact" style={{ textDecoration: 'none' }}>
+            <button id="me-button" type="button" className="center-button"
+		    >Contact Now!</button>
+            </Link> */}
             accepted
             </div>);
     }
@@ -66,6 +64,27 @@ function Givestatus(stautsObj) {
             rejected
             </div>)
     };
+}
+function GiveButton(statusObj){
+    if (statusObj.status==true) {
+        return (
+            <div class="grid-item">
+            <Link to="./Contact" style={{ textDecoration: 'none' }}>
+            <button id="me-button" type="button" className="center-button"
+		    >Contact Now!</button>
+            </Link>
+            </div>);
+    }
+    else {
+        return (
+            <div class="grid-item">
+            <Link to="./Contact" style={{ textDecoration: 'none' }}>
+            <button disabled id="me-button" type="button" className="center-button"
+		    >Contact Now!</button>
+            </Link>
+            </div>);
+    };
+
 }
 
 
@@ -80,16 +99,17 @@ class Buyerbidding extends React.Component {
                 <div class="grid-container">
                     <div class="grid-item">Item</div>
                     <div class="grid-item">Price</div>
-                    <div class="grid-item">Buyer</div>
                     <div class="grid-item">Status</div>
+                    <div class="grid-item">acceptNow</div>
                 </div>
                 <div>
                     {getfetched.map(bid => (
                         <div class="grid-container">
                             <div class="grid-item"> {bid.item}</div>
                             <div class="grid-item"> {bid.amount}</div>
-                            <div class="grid-item"> {bid.buyer}</div>
-                            <Givestatus stauts={bid.accepted}></Givestatus>
+                            <Givestatus status={bid.accepted}></Givestatus>
+                            <GiveButton status={bid.accepted}></GiveButton>
+                            {/* <div class="grid-item"> {bid.buyer}</div> */}
                             {/* <div class="grid-item"> {bid.accepted}</div> */}
                         </div>
                     ))}
