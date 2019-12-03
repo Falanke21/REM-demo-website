@@ -14,8 +14,8 @@
     text-align: left;
   }
 
-  .center-button {
-    display: block;
+  .center-button-accept {
+    display: inline-block;
     margin: 0.5em auto;
     border: white solid 0.07em;
     border-radius: 2em;
@@ -29,14 +29,43 @@
     -webkit-animation: displayButton 2s;
     -webkit-animation-delay: 7.5s;
   }
+
+  .center-button-decline {
+    display: inline-block;
+    margin: 0.5em auto;
+    border: white solid 0.07em;
+    border-radius: 2em;
+    color: white;
+    background-color:red;
+    font-size: 0.75em;
+    padding: 0.5em;
+    transition: 1.5s;
+    animation: displayButton 2s;
+    animation-delay: 7.5s;
+    -webkit-animation: displayButton 2s;
+    -webkit-animation-delay: 7.5s;
+  }
   
-  .center-button:hover {
+  .center-button-decline:hover {
     color: black;
     background-color: white;
     cursor: pointer;
   }
 
-  .center-button:disabled,
+  .center-button-decline:disabled,
+  button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+  
+  .center-button-accept:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .center-button-accept:disabled,
   button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
