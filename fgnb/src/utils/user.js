@@ -188,17 +188,18 @@ export const updateSetting = () =>{
     }
     else{
         const userId = getUserId();
-        const body = {
-            user: userId,
-            password: newPassword
+        const file = new FormData();
+        file.append("user", userId);
+        file.append("password", newPassword);
+        if(getState("settingForm.profilePic")){
+            file.append("uploadPicture", getState("settingForm.profilePic"));
         }
         const url = urlPrefix + `/api/setting`
         const request = new Request(url, {
             method: "PATCH",
-            body: JSON.stringify(body),
+            body: file,
             headers: {
             Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
             }
         });
         console.log(request);
@@ -223,6 +224,11 @@ export const updateSettingForm = field =>{
     console.log(name);
     console.log(value);
     console.log(getState("settingForm"))
+}
+
+export const updateProfilePic = fiele =>{
+    const {name, value} = field;
+    setState(`settingForm.profilePict`, value);
 }
 
 export const updateLoginForm = field => {
