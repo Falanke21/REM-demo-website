@@ -63,9 +63,9 @@ router.get("/:id", function(req, res, next) {
 // update a transaction ADMIN only
 router.patch("/:id", authenticateAdmin, function(req, res, next) {
     const id = req.params.id;
-    const { bidding, finalPrice, time } = req.body;
-    const body = { bidding, finalPrice, time };
-    if (!ObjectID.isValid(id) || !ObjectID.isValid(bidding)) {
+    const { finalPrice } = req.body;
+    const body = { finalPrice };
+    if (!ObjectID.isValid(id)) {
         res.status(404).send();
     }
     Transaction.findByIdAndUpdate(id, { $set: body }, { new: true })
@@ -84,6 +84,7 @@ router.patch("/:id", authenticateAdmin, function(req, res, next) {
 // delete a transaction ADMIN only
 router.delete("/:id", authenticateAdmin, function(req, res, next) {
     const id = req.params.id;
+    console.log(id);
     if (!ObjectID.isValid(id)) {
         res.status(404).send();
     }
