@@ -26,9 +26,14 @@ router.get("/buyer", function(req, res, next) {
                 Bidding.find({ _id: { $in: user.biddings } })
                     .sort({ time: "descending" })
                     .then(biddings => {
-                        // Sort by time
-                        // biddings.sort((a, b) => a.time < b.time);
-                        res.send({ flag: true, biddings: biddings });
+                        // Replace each itemId to a json representation of Item.
+                        itemIdList = biddings.map(x => x.item);
+                        Item.find({_id: {$in: itemIdList}}).then(itemList => {
+                            for (let i = 0; i < itemList.length; i++) {
+                                biddings[i].item = itemList[i];
+                            }
+                            res.send({ flag: true, biddings: biddings });
+                        })
                     });
             }
         })
@@ -79,8 +84,10 @@ router.get("/item", function(req, res, next) {
         .then(item => {
             if (item === null) {
                 res.status(404).send({ flag: false, error: "can't find item" });
+            } else if (!item.inMarket) {
+                res.status(401).send({flag: false, error: "Item sold"})
             } else {
-                Bidding.find({ _id: { $in: item.biddings } }).then(biddings => {
+                Bidding.find({ _id: { $in: item.biddings }, accepted: null }).then(biddings => {
                     res.send({ flag: true, biddings: biddings });
                 });
             }
@@ -164,6 +171,12 @@ router.patch("/accept", function(req, res, next) {
             } else {
                 bidding.accepted = true;
                 bidding.save();
+
+                // Change that item to be not in market
+                Item.findById(bidding.item).then(item => {
+                    item.inMarket = false;
+                    item.save();
+                })
 
                 // Creating transaction
                 transaction = new Transaction({

@@ -3,6 +3,7 @@ var router = express.Router();
 
 // import model
 const { User } = require("../models/user");
+const { authenticateAdmin } = require("../middlewares");
 
 /* 
     GET user profile information by id
@@ -93,7 +94,7 @@ router.get("/verify", function(req, res, next) {
     }
 });
 
-// find user by email
+// find user by email ADMIN only
 router.get("/:email", function(req, res, next) {
     const email = req.params.email;
     User.findOne({ email: email })
@@ -109,6 +110,7 @@ router.get("/:email", function(req, res, next) {
         });
 });
 
+// ADMIN only
 router.patch("/:email", function(req, res, next) {
     const email = req.params.email;
     const { username, blocked } = req.body;

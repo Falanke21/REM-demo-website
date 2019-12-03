@@ -1,8 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
-// mongoose and mongo connection
-const { mongoose } = require("../db/mongoose");
+const { ObjectID } = require("mongodb");
 
 // import model
 const { User } = require("../models/user");
@@ -102,7 +100,7 @@ router.get("/", function(req, res, next) {
 /*
     GET all items that are in database, THIS IS FOR ADMIN USE
 */
-router.get("/", function(req, res, next) {
+router.get("/admin", function(req, res, next) {
     Item.find()
         .then(result => {
             res.send({ flag: true, items: result });
@@ -113,20 +111,41 @@ router.get("/", function(req, res, next) {
 });
 
 /*
-    DELETE an item
+    DELETE an item ADMIN only
 */
 router.delete("/", function(req, res, next) {
-    Item.findByIdAndDelete(req.body.itemId)
-        .then(result => {
-            res.send({ flag: true, items: result });
-            User.findById(result.seller, (err, user) => {
-                user.sellings.filter((x) => x !== result._id);
-                user.save();
-            })
-        .catch(err => {
+    Item.findByIdAndDelete(req.body.itemId).then(result => {
+        res.send({ flag: true, items: result });
+        User.findById(result.seller, (err, user) => {
+            user.sellings.filter(x => x !== result._id);
+            user.save();
+        }).catch(err => {
             res.status(500).send({ flag: false, error: err });
         });
     });
+});
+
+/*
+    PATCH an item ADMIN only
+*/
+router.patch("/", function(req, res, next) {
+    const itemId = req.body.itemId;
+    const { title, price, description, location } = req.body;
+    const body = { title, price, description, location };
+    if (!ObjectID.isValid(itemId)) {
+        res.status(404).send();
+    }
+    Item.findByIdAndUpdate(itemId, { $set: body }, { new: true })
+        .then(item => {
+            if (item) {
+                res.send(item);
+            } else {
+                res.status(404).send();
+            }
+        })
+        .catch(error => {
+            res.status(500).send(error);
+        });
 });
 
 module.exports = router;

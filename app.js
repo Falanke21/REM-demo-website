@@ -3,15 +3,15 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const session = require('express-session')
 
+const { authenticate } = require("./middlewares");
 var exampleRouter = require("./routes/example");
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
 const biddingRouter = require("./routes/bidding");
 const transactionRouter = require("./routes/transaction");
-
-// import express cookie session
-const session = require('express-session')
+const settingRouter = require("./routes/setting");
 
 var app = express();
 
@@ -38,16 +38,9 @@ app.use(session({
     }
 }));
 
-// I MIGHT OR MIGHT NOT NEED TO USE THIS :)
-// Our own express middleware to check for 
-// an active user on the session cookie (indicating a logged in user.)
-const sessionChecker = (req, res, next) => {
-    if (req.session.user) {
-        res.redirect('/market'); // redirect to dashboard if logged in.
-    } else {
-        next(); // next() moves on to the route.
-    }    
-};
+// TODO: uncomment when in production
+// match all routes except for path contains "login" or "signup"
+// app.all(/^((?!login|signup).)*$/, authenticate);
 
 // EXAMPLES
 app.use("/example", exampleRouter);
@@ -61,6 +54,7 @@ app.use("/example", exampleRouter);
 app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
 app.use("/api/bidding", biddingRouter);
+app.use("/api/setting", settingRouter);
 app.use("/api/transaction", transactionRouter);
 
 /*** Webpage routes below **********************************/
