@@ -62,7 +62,7 @@ router.post("/", function(req, res, next) {
             });
 
         const item = new Item({
-            img: "images/" + req.file.filename,
+            img: "static/images/" + req.file.filename,
             title: title,
             seller: seller,
             price: price,
@@ -115,7 +115,7 @@ router.get("/admin", authenticateAdmin, function(req, res, next) {
 */
 router.get("/:id", function(req, res, next) {
     const itemId = req.params.id;
-    Item.find({ inMarket: true, _id: itemId })
+    Item.findOne({ inMarket: true, _id: itemId })
         .then(result => {
             res.send({ flag: true, item: result });
         })
