@@ -19,12 +19,6 @@ class Mainview extends React.Component {
         return (
             <div className="Mainview">
                 <Switch>
-                    <Route
-                        exact
-                        path={["/", "/market"]}
-                        render={({ history }) => <Market history={history} />}
-                    />
-                    <Route exact path="/admindash" component={AdminDashBoard} />
                     <Route exact path="/user" component={User} />
                     <Route exact path="/item/:itemId" component={ItemDetail} />
                     <Route exact path="/additem" component={AddItem} />
@@ -32,7 +26,9 @@ class Mainview extends React.Component {
                     <Route exact path="/buyerBidding" component={BuyerBidding} />
                     <Route exact path="/settings" component={Settings} />
                     <Route exact path="/contact" component={Contact} />
-                    <Route component={PageNotFound} />
+                    <Route
+                        render={({ history }) => <Market history={history} />}
+                    />
                 </Switch>
             </div>
         );
