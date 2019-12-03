@@ -16,7 +16,8 @@ const ItemSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        minlength: 1
     },
     seller: {
         // Well, owner

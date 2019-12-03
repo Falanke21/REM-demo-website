@@ -41,10 +41,10 @@ router.post("/", function(req, res, next) {
             return;
         } else if (err) {
             // An unknown error occurred when uploading.
-            res.status(400).send({ flag: false, error: err });
+            res.status(500).send({ flag: false, error: err });
             return;
         }
-        const seller = req.body.seller;
+        const seller = req.session.user || req.body.seller;
         const title = req.body.title;
         const description = req.body.description;
         const price = req.body.price;
