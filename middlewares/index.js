@@ -32,4 +32,12 @@ const authenticate = (req, res, next) => {
     }
 };
 
-module.exports = { sessionChecker, authenticate };
+const authenticateAdmin = (req, res, next) => {
+    if (req.session.user === "admin") {
+        next();
+    } else {
+        res.status(401).send("Restricted access");
+    }
+}
+
+module.exports = { sessionChecker, authenticate, authenticateAdmin };
