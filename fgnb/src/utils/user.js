@@ -145,25 +145,17 @@ export const updateUser = () => {
 };
 
 
-export const getUserInfo = () =>{
+export const getUserEmail = () =>{
     const userInfo = getState("loginForm");
     const userEmail = userInfo.email;
-    const userName = getUserName();
-    console.log(getState("settingForm"));
-    return{
-        email:userEmail,
-        username:userName
-    }
+    return userEmail
 }
-export const getUserName = () =>{
-    loadUserName();
-    return getState("settingForm");
-}
+
 export const getUserId = () =>{
     return getState("currentUser");
 }
 
-export const loadUserName = () =>{
+export const getUserName = () =>{
     var result;
     const userId = getUserId();
     const url = `http://localhost:3001/api/user/${userId}`
@@ -179,13 +171,10 @@ export const loadUserName = () =>{
         }
     })
     .then(json => {
-        result = json.user.username;
-        setState("settingForm.userName", json.user.username);
-        return json.user.username;
+        setState("userName", json.user.username);
     })
     .catch(error => {
     })
-    return result;
 };
 
 export const updateSetting = () =>{

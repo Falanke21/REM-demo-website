@@ -8,20 +8,20 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import {updateSetting, updateSettingForm, getUserInfo} from "../utils/user";
+import StateReactComponent from "../component/StateReactComponent";
+import {updateSetting, updateSettingForm, getUserEmail, getUserName} from "../utils/user";
 
-class  Settings extends React.Component {
+class  Settings extends  StateReactComponent{
 componentWillMount(){
-    const userInfo = getUserInfo();
-    console.log(userInfo);
-    const userEmail = userInfo.email;
+    super.componentWillMount();
+    getUserName();
+}
+filterState({ userName }){
+    return { username: userName };
 }
 render(){
-    const userInfo= getUserInfo();
-    console.log(userInfo);
-    const userEmail = userInfo.email;
-    const username = userInfo.username;
-    console.log(username);
+    const {username} = this.state;
+    const userEmail = getUserEmail();
     return (
         <div>
             <Navigation />
@@ -38,7 +38,7 @@ render(){
                         label="Name goes here"
                         type="text"
                         fullWidth
-                        value="A person Here"
+                        value={username}
                     />
                 </Container>
 
