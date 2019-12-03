@@ -27,4 +27,6 @@ export const setEmptyState = () => {
         editing: false,
         blocked: false
     });
+
+    setState("adminTransactionList", []);
 };
