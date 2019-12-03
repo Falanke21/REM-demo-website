@@ -72,10 +72,10 @@ function GridBox(props) {
                     <GridListTile
                         key={tile.id}
                         component={Link}
-                        to={`/item/${tile.id}`}
+                        to={`/item/${tile._id}`}
                         className={classes.gridListTile}
                         onClick={() =>
-                            console.log(`Grid id ${tile.id} clicked!`)
+                            console.log(`Grid id ${tile._id} clicked!`)
                         }
                         cols={tile.featured ? 2 : 2}
                         rows={tile.featured ? 1 : 1}
@@ -103,7 +103,7 @@ function LineGridBox(props) {
                     <GridListTile
                         key={tile.img}
                         component={Link}
-                        to={`/item/${tile.id}`}
+                        to={`/item/${tile._id}`}
                     >
                         <img src={tile.img} alt={tile.title} height="90px" />
                         <GridListTileBar
