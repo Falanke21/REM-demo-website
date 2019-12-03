@@ -26,9 +26,14 @@ router.get("/buyer", function(req, res, next) {
                 Bidding.find({ _id: { $in: user.biddings } })
                     .sort({ time: "descending" })
                     .then(biddings => {
-                        // Sort by time
-                        // biddings.sort((a, b) => a.time < b.time);
-                        res.send({ flag: true, biddings: biddings });
+                        // Replace each itemId to a json representation of Item.
+                        itemIdList = biddings.map(x => x.item);
+                        Item.find({_id: {$in: itemIdList}}).then(itemList => {
+                            for (let i = 0; i < itemList.length; i++) {
+                                biddings[i].item = itemList[i];
+                            }
+                            res.send({ flag: true, biddings: biddings });
+                        })
                     });
             }
         })
