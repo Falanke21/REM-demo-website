@@ -25,10 +25,10 @@ export default function ItemCard(prop) {
                             {prop.item.title}
                         </Typography>
                         <Typography variant="subtitle1" component="h5">
-                            Price goes here
+                            Target Price: {prop.item.price}CAD
                         </Typography>
                         <Typography variant="subtitle1" component="h5">
-                            Location goes here
+                            Location: {prop.item.location}
                         </Typography>
 
                         <Typography
@@ -36,7 +36,7 @@ export default function ItemCard(prop) {
                             color="textSecondary"
                             component="p"
                         >
-                            Description goes here
+                            Description: {prop.item.description}
                         </Typography>
                     </CardContent>
                 </Card>

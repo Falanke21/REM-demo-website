@@ -96,7 +96,7 @@ export const logout = () => {
 export const queryUser = () => {
     console.log("finding user");
     const { email } = getState("adminUserQueryForm");
-    const url = `http://localhost:3001/api/user/${email}`;
+    const url = `http://localhost:3001/api/user/admin/${email}`;
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -118,7 +118,7 @@ export const queryUser = () => {
 export const updateUser = () => {
     console.log("updating user");
     const { user, username, blocked } = getState("adminUserInspectForm");
-    const request = new Request(`http://localhost:3001/api/user/${user.email}`, {
+    const request = new Request(`http://localhost:3001/api/user/admin/${user.email}`, {
         method: "PATCH",
         body: JSON.stringify({ username, blocked }),
         headers: {

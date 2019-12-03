@@ -33,7 +33,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 60000,  // one minute  // this might need to be changed to "maxAge"
+        maxAge: 600000,  // ten minute
         httpOnly: true
     }
 }));
@@ -49,6 +49,9 @@ app.use("/example", exampleRouter);
     ALL JSON APIs goes to routes directory
     ALL HTML file routes stay in this file
 */
+
+// serve static files
+app.use('/static', express.static('public'))
 
 // REAL JSON APIs
 app.use("/api/user", userRouter);
