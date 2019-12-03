@@ -27,11 +27,11 @@ router.get("/info/:id", function(req, res, next) {
 router.post("/login", function(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
+    console.log("Logging in " + req.body);
 
     // examine admin condition? TODO: discuss about this
     if (email === "admin" && password === "admin") {
         req.session.user = "admin";
-        console.log(`Logged in, current session user: ${req.session.user}`);
         res.send({ user: "admin", admin: true });
     } else {
         User.findByEmailPassword(email, password)

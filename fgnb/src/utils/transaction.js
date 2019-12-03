@@ -1,7 +1,11 @@
-import { setState, getState } from "statezero";
+import { setState } from "statezero";
+
+import config from "../config.json";
+
+const urlPrefix = config.prefix;
 
 export const getAllTransactions = () => {
-    const url = "http://localhost:3001/api/transaction";
+    const url = urlPrefix + "/api/transaction";
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -23,7 +27,7 @@ export const getAllTransactions = () => {
 export const updateTransaction = (id, data) => {
     const { finalPrice } = data;
     const body = { finalPrice };
-    const request = new Request(`http://localhost:3001/api/transaction/${id}`, {
+    const request = new Request(urlPrefix + `/api/transaction/${id}`, {
         method: "PATCH",
         body: JSON.stringify(body),
         headers: {
@@ -49,7 +53,7 @@ export const updateTransaction = (id, data) => {
 };
 
 export const deleteTransaction = (id) => {
-    const request = new Request(`http://localhost:3001/api/transaction/${id}`, {
+    const request = new Request(urlPrefix + `/api/transaction/${id}`, {
         method: "DELETE",
         // body: JSON.stringify(id),
         headers: {

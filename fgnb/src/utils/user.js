@@ -1,10 +1,12 @@
 import { setState, getState } from "statezero";
 
 import { setEmptyState } from "./helpers";
-import { get } from "mongoose";
+import config from "../config.json";
+
+const urlPrefix = config.prefix;
 
 export const readCookie = () => {
-    const url = "http://localhost:3001/api/user/verify";
+    const url = urlPrefix + "/api/user/verify";
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -23,7 +25,7 @@ export const readCookie = () => {
 
 export const login = () => {
     const { email, password } = getState("loginForm");
-    const request = new Request("http://localhost:3001/api/user/login", {
+    const request = new Request(urlPrefix + "/api/user/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: {
@@ -58,7 +60,7 @@ export const login = () => {
 
 export const signUp = () => {
     const { email, password, username } = getState("signUpForm");
-    const request = new Request("http://localhost:3001/api/user/signup", {
+    const request = new Request(urlPrefix + "/api/user/signup", {
         method: "POST",
         body: JSON.stringify({ email, password, username }),
         headers: {
@@ -84,7 +86,7 @@ export const signUp = () => {
 };
 
 export const logout = () => {
-    const url = "http://localhost:3001/api/user/logout";
+    const url = urlPrefix + "/api/user/logout";
     fetch(url)
         .then(res => {
             setEmptyState();
@@ -97,7 +99,7 @@ export const logout = () => {
 export const queryUser = () => {
     console.log("finding user");
     const { email } = getState("adminUserQueryForm");
-    const url = `http://localhost:3001/api/user/admin/${email}`;
+    const url = urlPrefix + `/api/user/admin/${email}`;
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -119,7 +121,7 @@ export const queryUser = () => {
 export const updateUser = () => {
     console.log("updating user");
     const { user, username, blocked } = getState("adminUserInspectForm");
-    const request = new Request(`http://localhost:3001/api/user/admin/${user.email}`, {
+    const request = new Request(urlPrefix + `/api/user/admin/${user.email}`, {
         method: "PATCH",
         body: JSON.stringify({ username, blocked }),
         headers: {
@@ -158,7 +160,7 @@ export const getUserId = () =>{
 export const getUserName = () =>{
     var result;
     const userId = getUserId();
-    const url = `http://localhost:3001/api/user/${userId}`
+    const url = urlPrefix + `/api/user/${userId}`
     const request = new Request(url, {
         method: "GET"
     });
@@ -190,7 +192,7 @@ export const updateSetting = () =>{
             user: userId,
             password: newPassword
         }
-        const url = `http://localhost:3001/api/setting`
+        const url = urlPrefix + `/api/setting`
         const request = new Request(url, {
             method: "PATCH",
             body: JSON.stringify(body),

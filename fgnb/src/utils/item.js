@@ -1,7 +1,11 @@
-import { setState, getState } from "statezero";
+import { setState } from "statezero";
+
+import config from "../config.json";
+
+const urlPrefix = config.prefix;
 
 export const getAllItems = () => {
-    const url = "http://localhost:3001/api/item/admin";
+    const url = urlPrefix + "/api/item/admin";
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -23,7 +27,7 @@ export const getAllItems = () => {
 export const updateItem = (id, data) => {
     const { title, price, description, location } = data;
     const body = { itemId: id, title, price, description, location };
-    const request = new Request("http://localhost:3001/api/item", {
+    const request = new Request(urlPrefix + "/api/item", {
         method: "PATCH",
         body: JSON.stringify(body),
         headers: {
@@ -50,7 +54,7 @@ export const updateItem = (id, data) => {
 
 export const deleteItem = id => {
     const body = { itemId: id };
-    const request = new Request("http://localhost:3001/api/item/", {
+    const request = new Request(urlPrefix + "/api/item/", {
         method: "DELETE",
         body: JSON.stringify(body),
         headers: {
