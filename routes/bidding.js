@@ -84,8 +84,10 @@ router.get("/item", function(req, res, next) {
         .then(item => {
             if (item === null) {
                 res.status(404).send({ flag: false, error: "can't find item" });
+            } else if (!item.inMarket) {
+                res.status(401).send({flag: false, error: "Item sold"})
             } else {
-                Bidding.find({ _id: { $in: item.biddings } }).then(biddings => {
+                Bidding.find({ _id: { $in: item.biddings }, accepted: null }).then(biddings => {
                     res.send({ flag: true, biddings: biddings });
                 });
             }
