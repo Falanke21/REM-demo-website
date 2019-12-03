@@ -62,7 +62,7 @@ router.post("/", function(req, res, next) {
             });
 
         const item = new Item({
-            img: "static/images/" + req.file.filename,
+            img: "/static/images/" + req.file.filename,
             title: title,
             seller: seller,
             price: price,
