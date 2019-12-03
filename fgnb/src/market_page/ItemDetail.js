@@ -8,13 +8,10 @@ import CurrentBiddings from "./CurrentBiddings";
 
 export default function ItemDetail({ match }) {
     const [item, setItem] = useState({});
-    // const item = tileData.find(x => match.params.itemId === x.id);
+    const itemId = match.params.itemId;
     useEffect(() => {
-        fetch("http://localhost:3001/api/item", {
-            method: "GET",
-            body: JSON.stringify({
-                itemId: match.params.itemId
-            })
+        fetch("http://localhost:3001/api/item/" + itemId, {
+            method: "GET"
         })
             .then(res => {
                 if (res.status === 200) {

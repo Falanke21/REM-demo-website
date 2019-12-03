@@ -85,27 +85,16 @@ router.post("/", function(req, res, next) {
 });
 
 /* 
-    GET all items that are available in the market.
+    GET all item that are available in the market.
 */
-router.get("/", function(req, res, next) {
-    const itemId = req.body.itemId;
-    if (itemId === undefined) {
-        Item.find({ inMarket: true })
+router.get("/all", function(req, res) {
+    Item.find({ inMarket: true })
         .then(result => {
             res.send({ flag: true, items: result });
         })
         .catch(err => {
             res.status(500).send();
         });
-    } else {
-        Item.find({ inMarket: true, _id: itemId })
-        .then(result => {
-            res.send({ flag: true, item: result });
-        })
-        .catch(err => {
-            res.status(500).send();
-        });
-    }
 });
 
 /*
@@ -115,6 +104,20 @@ router.get("/admin", authenticateAdmin, function(req, res, next) {
     Item.find()
         .then(result => {
             res.send({ flag: true, items: result });
+        })
+        .catch(err => {
+            res.status(500).send();
+        });
+});
+
+/* 
+    GET one item in the market.
+*/
+router.get("/:id", function(req, res, next) {
+    const itemId = req.params.id;
+    Item.find({ inMarket: true, _id: itemId })
+        .then(result => {
+            res.send({ flag: true, item: result });
         })
         .catch(err => {
             res.status(500).send();
