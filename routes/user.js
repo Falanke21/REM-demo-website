@@ -8,8 +8,8 @@ const { authenticateAdmin } = require("../middlewares");
 /* 
     GET user profile information by id
 */
-router.get("/", function(req, res, next) {
-    const userId = req.session.user || req.body.userId;
+router.get("/:id", function(req, res, next) {
+    const userId = req.session.user || req.params.id;
     User.findById(userId, "username email phone profilePicture")
         .then(user => {
             if (user === null) {
@@ -97,7 +97,7 @@ router.get("/verify", function(req, res, next) {
 });
 
 // find user by email ADMIN only
-router.get("/:email", authenticateAdmin, function(req, res, next) {
+router.get("/admin/:email", authenticateAdmin, function(req, res, next) {
     const email = req.params.email;
     User.findOne({ email: email })
         .then(user => {
@@ -113,7 +113,7 @@ router.get("/:email", authenticateAdmin, function(req, res, next) {
 });
 
 // ADMIN only
-router.patch("/:email", authenticateAdmin, function(req, res, next) {
+router.patch("/admin/:email", authenticateAdmin, function(req, res, next) {
     const email = req.params.email;
     const { username, blocked } = req.body;
     const body = { username, blacklisted: blocked };

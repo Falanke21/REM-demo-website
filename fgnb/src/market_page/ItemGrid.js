@@ -129,7 +129,7 @@ class ItemGrid extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/api/item", {
+        fetch("http://localhost:3001/api/item/all", {
             method: "GET"
         })
             .then(res => {
