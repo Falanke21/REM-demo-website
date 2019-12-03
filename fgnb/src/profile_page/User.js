@@ -9,179 +9,15 @@ import LineGridBox from "./ProfileWishListGrid";
 import ItemGridForSale from "./MySalesItems";
 import { deepOrange, deepPurple } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
-// import List from "@material-ui/core/List";
-// import Divider from "@material-ui/core/Divider";
-// import Avatar from "@material-ui/core/Avatar";
-// import Grid from "@material-ui/core/Grid";
-// import { makeStyles } from "@material-ui/core/styles";
+import { getState } from "statezero";
 
-// const useStyles = makeStyles(theme => ({
-//     toolbar: {
-//         paddingRight: 24 // keep right padding when drawer closed
-//     },
-//     toolbarIcon: {
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "flex-end",
-//         padding: "0 8px",
-//         ...theme.mixins.toolbar
-//     },
-//     appBar: {
-//         zIndex: theme.zIndex.drawer + 1,
-//         transition: theme.transitions.create(["width", "margin"], {
-//             easing: theme.transitions.easing.sharp,
-//             duration: theme.transitions.duration.leavingScreen
-//         })
-//     },
-//     menuButton: {
-//         marginRight: 36
-//     },
-//     menuButtonHidden: {
-//         display: "none"
-//     },
-//     title: {
-//         flexGrow: 1
-//     },
-//     drawerPaperClose: {
-//         overflowX: "hidden",
-//         transition: theme.transitions.create("width", {
-//             easing: theme.transitions.easing.sharp,
-//             duration: theme.transitions.duration.leavingScreen
-//         }),
-//         width: theme.spacing(7),
-//         [theme.breakpoints.up("sm")]: {
-//             width: theme.spacing(9)
-//         }
-//     },
-//     appBarSpacer: theme.mixins.toolbar,
-//     content: {
-//         flexGrow: 1,
-//         height: "100vh",
-//         overflow: "auto"
-//     },
-//     paper: {
-//         padding: theme.spacing(2),
-//         display: "flex",
-//         overflow: "auto",
-//         flexDirection: "column"
-//     },
-//     fixedHeight: {
-//         height: 240
-//     },
-//     ToolBarContainer: {
-//         paddingTop: theme.spacing(4),
-//         paddingBottom: theme.spacing(4),
-//         paddingRight: theme.spacing(155),
-//         display: "flex",
-//         width: "40px"
-//     },
-//     bigAvatar: {
-//         width: 250,
-//         height: 250,
-//         display: "flex",
-//         position: "relative",
-//         top: 40,
-//         left: 1000,
-//     },
-//     bigGrid: {
-//         width: 20,
-//         height: 20,
-//         top: 40,
-//         left: 600,
-//         display: "flex",
-//         position: "absolute",
-//         background: "pink"
-//     }
-// }));
 
-// function UserPassWordBox() {
 
-//     return (
-//         <div className={classes.ToolBarContainer}>
-//             <Divider />
-//             <List>{mainListItems}</List>
-//             <Divider />
-//             {/* <ImageAvatars></ImageAvatars> test purposes */}
-//             <FullWidthGrid> </FullWidthGrid>
-//             <Grid container justify="center" alignItems="center">
-//                 {/* <Avatar
-//                     alt="IMAGE"
-// 					src={require("./static/images/yaoshui.jpg")}
-//                     className={classes.bigAvatar}
-//                 /> */}
-//             </Grid>
-//         </div>
-//     );
-// }
 
-// function UserSecondLayerBox() {
-//     const classes = useStyles();
-//     return (
-//         <div className={classes.ToolBarContainer}>
-//             <List>{secondaryListItems}</List>
-//             <Grid container justify="center" alignItems="center">
-//                 <LineGridBox></LineGridBox>
-//                 <ItemGridForSale></ItemGridForSale>
-//             </Grid>
-//         </div>
-//     );
-// }
 
-// const avatarletterstyle = makeStyles({
-//     orangeAvatar: {
-//         width: 200,
-//         margin: 10,
-//         color: "#fff",
-//         backgroundColor: deepOrange[500],
-//         position: "absolute",
-//         top: '45%',
-//         left: 150
-//     },
-//     purpleAvatar: {
-//         width: 200,
-//         margin: 10,
-//         color: "#ggg",
-//         backgroundColor: deepPurple[500],
-//         position: "absolute",
-//         top: '72%',
-//         left: 150
-//     }
-// });
 
-// function LetterAvatars() {
-//     const classes = avatarletterstyle();
-//     return (
-//         <Grid container justify="center" alignItems="center">
-//             <Avatar className={classes.orangeAvatar}>MyBidding</Avatar>
-//         </Grid>
-//     );
-// }
-// function LetterAvatarsMySales() {
-//     const classes = avatarletterstyle();
-//     return (
-//         <Grid container justify="center" alignItems="center">
-//             <Avatar className={classes.purpleAvatar}>MySells</Avatar>
-//         </Grid>
-//     );
-// }
-{/* <div class='tweetIconContainer'>
-<span><img src="uoft.jpg" alt="uoft_pic" class="tweetIcon"></span>
-</div> */}
-
-const getfetched = {
-    "_id" : "5de48e5354c80a4a7689fffe",
-    "phone" : 123456789,
-    "profilePicture" : null,
-    "blacklisted" : true,
-    "sellings" : [],
-    "biddings" : [],
-    "username" : "chrisnew",
-    "email" : "chris@gmail.com",
-    "password" : "$2a$10$HjvKLTaI3c2H5cGZSBwkqOQA4VOObf5BU9f75WIXzJRqPEa3A2MGq",
-    "__v" : 0
-}
-
-function UserBox() {
+function UserBox(getfetched) {
+    {console.log(getfetched.getfetched)}
     return (
         <div className="profile_box_container">
             <div className="profile_box">
@@ -189,11 +25,11 @@ function UserBox() {
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu4JAn8Ri7J-7gD3JqlRJt-YxfWqQCcXO_JE4AA_zrsgHKRUQA&s" alt="yaoshui_pic" className="userIcon"></img>
                     <div className="userNameContainer">
                         <div className="userBoxName"> Username:
-                        <div className="userInput"> {getfetched.username}
+                        <div className="userInput"> {getfetched.getfetched.username}
                         </div>
                         </div>
                         <div className="userBoxEmail">Email:
-                        <div className="userInput"> {getfetched.email}
+                        <div className="userInput"> {getfetched.getfetched.email}
                         </div>
                         </div>
                     </div>
@@ -203,7 +39,8 @@ function UserBox() {
     );
 }
 
-function DetailUserBox() {
+function DetailUserBox(getfetched) {
+    {console.log(getfetched.getfetched)}
     return (
         <div className="profile_detail_box_container">
             <div className="profile_detail_box">
@@ -215,7 +52,7 @@ function DetailUserBox() {
                         UserName:
                     </div>
                     <div className="userDetailInfoBoxTextInput"> 
-                    {getfetched.username}
+                    {getfetched.getfetched.username}
                     </div>
                 </div>
 
@@ -224,7 +61,7 @@ function DetailUserBox() {
                         Email:
                     </div>
                     <div className="userDetailInfoBoxTextInput"> 
-                    {getfetched.email}
+                    {getfetched.getfetched.email}
                     </div>
                 </div>
                 <div className="userDetailInfoBox">
@@ -232,7 +69,7 @@ function DetailUserBox() {
                         PhoneNumber:
                     </div>
                     <div className="userDetailInfoBoxTextInput"> 
-                    {getfetched.phone}
+                    {getfetched.getfetched.phone}
                     </div>
                 </div>
                 <div className="userDetailButoomBox">
@@ -260,17 +97,61 @@ function DetailUserBox() {
         </div>
     );
 }
+// const getfetched = {
+//     "_id" : "5de48e5354c80a4a7689fffe",
+//     "phone" : 123456789,
+//     "profilePicture" : null,
+//     "blacklisted" : true,
+//     "sellings" : [],
+//     "biddings" : [],
+//     "username" : "chrisnew",
+//     "email" : "chris@gmail.com",
+//     "password" : "$2a$10$HjvKLTaI3c2H5cGZSBwkqOQA4VOObf5BU9f75WIXzJRqPEa3A2MGq",
+//     "__v" : 0
+// }
 
 class User extends React.Component {
+    state = {
+        user: {phone: null, profilePicture: null, _id: null, username: null, email:null}
+    };
+
+    componentWillMount() {
+        console.log(getState("currentUser"));
+        const id = getState("currentUser");
+        const url = `http://localhost:3001/api/user/${id}`;
+        fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                return Promise.reject();
+            }
+        })
+        .then(json => {
+            console.log(json);
+            if (json.flag && json.user) {
+                this.setState({
+                    user: json.user
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     render() {
+        console.log(this.state.user);
+        const getfetched = this.state.user
         return (
             <div>
                 <Navigation></Navigation>
                 <div className="Prfile_box_text">
                     User Profile
                 </div>
-                <UserBox></UserBox>
-                <DetailUserBox></DetailUserBox>
+                {console.log(getfetched)}
+                <UserBox getfetched={getfetched}></UserBox>
+                <DetailUserBox getfetched={getfetched}></DetailUserBox>
             </div>
         );
     }
