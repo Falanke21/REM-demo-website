@@ -192,7 +192,7 @@ router.patch("/accept", function(req, res, next) {
                 res.status(404).send({ flag: false });
             } else {
                 bidding.accepted = true;
-                bidding.save();
+                
 
                 // Change that item to be not in market
                 Item.findById(bidding.item).then(item => {
@@ -206,8 +206,12 @@ router.patch("/accept", function(req, res, next) {
                     finalPrice: bidding.amount,
                     time: new Date()
                 })
+
+                bidding.transaction = transaction._id;
+                bidding.save();
+
                 transaction.save().then((result) => {
-                    res.send({ flag: true, bidding: bidding });
+                    res.send({ flag: true, bidding: bidding, transaction: result });
                 });
             }
         })

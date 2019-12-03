@@ -26,15 +26,20 @@ const BiddingSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 0
-	},
-	accepted: {
-		type: Boolean,
-		default: null
-	},
-	time: {
-		type: Date,
-		default: new Date()
-	}
+    },
+    accepted: {
+        type: Boolean,
+        default: null
+    },
+    time: {
+        type: Date,
+        default: new Date()
+    },
+    transaction: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "trasaction",
+        default: null
+    }
 });
 
 // make a model using the Bidding schema
