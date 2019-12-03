@@ -33,6 +33,7 @@ const authenticate = (req, res, next) => {
 };
 
 const authenticateAdmin = (req, res, next) => {
+    console.log(`Authenticating admin, get: ${req.session.user}`);
     if (req.session.user === "admin") {
         next();
     } else {
