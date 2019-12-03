@@ -88,7 +88,7 @@ router.get("/seller/:id", function(req, res, next) {
     GET all biddings to an item.
 */
 router.get("/item/:id", function(req, res, next) {
-    const itemId = req.params.itemId;
+    const itemId = req.params.id;
     Item.findById(itemId)
         .then(item => {
             if (item === null) {
@@ -97,7 +97,20 @@ router.get("/item/:id", function(req, res, next) {
                 res.status(401).send({flag: false, error: "Item sold"})
             } else {
                 Bidding.find({ _id: { $in: item.biddings }, accepted: null }).then(biddings => {
-                    res.send({ flag: true, biddings: biddings });
+                    const allBuyerId = biddings.map(x => x.buyer);
+                    const result = biddings.map(x => x.toObject());
+                    
+                    User.find({ _id: { $in: allBuyerId }}).then(allBuyers => {
+                        for (let i = 0; i < result.length; i++) {
+                            for (let buyer of allBuyers) {
+                                if (result[i].buyer.equals(buyer._id)) {
+                                    result[i].username = buyer.username;
+                                }
+                            }
+                        }
+                        res.send({ flag: true, biddings: result });
+                    })
+
                 });
             }
         })

@@ -30,6 +30,19 @@
     -webkit-animation-delay: 7.5s;
   }
 
+  .center-button-accept:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .center-button-accept:disabled,
+  button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
   .center-button-decline {
     display: inline-block;
     margin: 0.5em auto;
@@ -59,15 +72,32 @@
   color: #666666;
 }
   
-  .center-button-accept:hover {
+.center-button-Contact {
+    display: inline-block;
+    margin: 0.5em auto;
+    border: white solid 0.07em;
+    border-radius: 2em;
+    color: white;
+    background-color:paleturquoise;
+    font-size: 0.75em;
+    padding: 0.5em;
+    transition: 1.5s;
+    animation: displayButton 2s;
+    animation-delay: 7.5s;
+    -webkit-animation: displayButton 2s;
+    -webkit-animation-delay: 7.5s;
+  }
+
+  .center-button-Contact:hover {
     color: black;
     background-color: white;
     cursor: pointer;
   }
 
-  .center-button-accept:disabled,
+  .center-button-Contact:disabled,
   button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
 }
+

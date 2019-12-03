@@ -141,7 +141,7 @@ class ItemGrid extends Component {
             })
             .then(json => {
                 for (let x of json.items) {
-                    x.img = "http://localhost:3001/static/" + x.img;
+                    x.img = "http://localhost:3001/" + x.img;
                 }
                 this.setState({ tileData: json.items });
             })
