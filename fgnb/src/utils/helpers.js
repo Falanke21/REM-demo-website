@@ -29,4 +29,6 @@ export const setEmptyState = () => {
     });
 
     setState("adminTransactionList", []);
+
+    setState("adminItemList", []);
 };

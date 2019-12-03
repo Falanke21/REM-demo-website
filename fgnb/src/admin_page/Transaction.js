@@ -91,7 +91,9 @@ class Transaction extends React.Component {
                             <EditIcon />
                         </IconButton>
                         <IconButton
-                            onClick={e => deleteTransaction(this.state.id)}
+                            onClick={e =>
+                                deleteTransaction(this.props.transaction._id)
+                            }
                         >
                             <DeleteIcon />
                         </IconButton>

@@ -5,14 +5,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SubmitIcon from "@material-ui/icons/Done";
 import CancelIcon from "@material-ui/icons/Cancel";
 
-function createItem(id, name, price, location, description) {
-    return { id, name, price, location, description };
-}
+import { updateItem, deleteItem } from "../utils/item";
 
 class Item extends React.Component {
     state = {
         id: "",
-        name: "",
+        title: "",
         price: "",
         location: "",
         description: "",
@@ -23,8 +21,8 @@ class Item extends React.Component {
         const i = this.props.item;
         const cur = this.state.isEditing;
         this.setState({
-            id: i.id,
-            name: i.name,
+            id: i._id,
+            title: i.title,
             price: i.price,
             location: i.location,
             description: i.description,
@@ -36,31 +34,24 @@ class Item extends React.Component {
         const target = event.target;
         const name = target.name;
         const value = target.value;
-
         this.setState({
             [name]: value
         });
     };
 
-    render() {
-        const { item, updateItem, removeItem } = this.props;
-        const sumbitChange = () => {
-            this.toggleIsEditing();
-            updateItem.bind(this, item)(
-                createItem(
-                    this.state.id,
-                    this.state.name,
-                    this.state.price,
-                    this.state.location,
-                    this.state.description
-                )
-            );
-        };
+    sumbitChange = () => {
+        const { id, title, price, location, description } = this.state;
+        const data = { title, price, location, description };
+        this.toggleIsEditing();
+        updateItem(id, data);
+    };
 
+    render() {
+        const { item } = this.props;
         return this.state.isEditing ? (
             <TableRow key={item.id}>
                 <TableCell align="center" style={{ width: "10%" }}>
-                    <IconButton onClick={sumbitChange}>
+                    <IconButton onClick={this.sumbitChange}>
                         <SubmitIcon />
                     </IconButton>
                     <IconButton onClick={this.toggleIsEditing}>
@@ -71,19 +62,19 @@ class Item extends React.Component {
                     component="th"
                     scope="row"
                     align="right"
-                    style={{ width: "5%" }}
+                    style={{ width: "10%" }}
                 >
-                    {item.id.toString()}
+                    {item._id}
                 </TableCell>
                 <TableCell align="right" style={{ width: "20%" }}>
                     <Input
                         name="name"
-                        value={this.state.name}
+                        value={this.state.title}
                         onChange={this.handleChange}
                         type="text"
                     />
                 </TableCell>
-                <TableCell align="right" style={{ width: "5%" }}>
+                <TableCell align="right" style={{ width: "10%" }}>
                     <Input
                         name="price"
                         value={this.state.price}
@@ -109,12 +100,12 @@ class Item extends React.Component {
                 </TableCell>
             </TableRow>
         ) : (
-            <TableRow key={item.id}>
+            <TableRow key={item._id}>
                 <TableCell align="center" style={{ width: "10%" }}>
                     <IconButton onClick={this.toggleIsEditing}>
                         <EditIcon />
                     </IconButton>
-                    <IconButton onClick={removeItem.bind(this, item)}>
+                    <IconButton onClick={e => deleteItem(this.props.item._id)}>
                         <DeleteIcon />
                     </IconButton>
                 </TableCell>
@@ -122,14 +113,14 @@ class Item extends React.Component {
                     component="th"
                     scope="row"
                     align="right"
-                    style={{ width: "5%" }}
+                    style={{ width: "10%" }}
                 >
-                    {item.id.toString()}
+                    {item._id}
                 </TableCell>
                 <TableCell align="right" style={{ width: "20%" }}>
-                    {item.name}
+                    {item.title}
                 </TableCell>
-                <TableCell align="right" style={{ width: "5%" }}>
+                <TableCell align="right" style={{ width: "10%" }}>
                     {item.price}
                 </TableCell>
                 <TableCell align="right" style={{ width: "20%" }}>

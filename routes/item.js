@@ -128,6 +128,7 @@ router.get("/:id", function(req, res, next) {
     DELETE an item ADMIN only
 */
 router.delete("/", authenticateAdmin, function(req, res, next) {
+    console.log(req.body);
     Item.findByIdAndDelete(req.body.itemId).then(result => {
         res.send({ flag: true, items: result });
         User.findById(result.seller, (err, user) => {
@@ -136,6 +137,9 @@ router.delete("/", authenticateAdmin, function(req, res, next) {
         }).catch(err => {
             res.status(500).send({ flag: false, error: err });
         });
+    })
+    .catch(error => {
+        res.status(500).send({ flag: false, error: error });
     });
 });
 

@@ -8,7 +8,6 @@ import {
     Paper
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
-import { getState } from "statezero";
 
 import Transaction from "./Transaction";
 import StateReactComponent from "../component/StateReactComponent";
