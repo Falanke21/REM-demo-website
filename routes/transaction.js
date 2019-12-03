@@ -19,8 +19,8 @@ router.get("/", function(req, res, next) {
 });
 
 // get one transaction
-router.get("/one", function(req, res, next) {
-    const transactionId = req.body.transactionId;
+router.get("/:id", function(req, res, next) {
+    const transactionId = req.params.id;
     Transaction.findById(transactionId)
         .then(transaction => {
             if (transaction === null) {
