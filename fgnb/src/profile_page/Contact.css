@@ -113,6 +113,7 @@
 	display: inline-block;
     left: 2%;
     font-size: 200%;
+    height: 15em
 }
 
 
@@ -122,3 +123,37 @@
     font-size: 200%;
     text-align: left;
 }
+
+.Contact_congrads_box_pic{
+	display: block;
+    position: relative;
+    height:20em
+}
+.bounding-box {
+    max-height: 60%;
+    position: absolute;
+    display: block;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.link-line-left {
+    max-height: 60%;
+    position: absolute;
+    display: block;
+    top: 30%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+}
+
+.link-line-right {
+    max-height: 60%;
+    position: absolute;
+    display: block;
+    top: 30%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+}
+
+

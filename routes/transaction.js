@@ -1,14 +1,15 @@
 var express = require("express");
 var router = express.Router();
+const { ObjectID } = require("mongodb");
 
 const { Transaction } = require("../models/transaction");
 const { Item } = require("../models/item");
 const { Bidding } = require("../models/bidding");
 const { User } = require("../models/user");
-const { ObjectID } = require("mongodb");
+const { authenticateAdmin } = require("../middlewares");
 
-// get all transactions
-router.get("/", function(req, res, next) {
+// get all transactions ADMIN only
+router.get("/", authenticateAdmin, function(req, res, next) {
     Transaction.find()
         .then(result => {
             res.send({ transactions: result });
@@ -19,8 +20,8 @@ router.get("/", function(req, res, next) {
 });
 
 // get one transaction
-router.get("/one", function(req, res, next) {
-    const transactionId = req.body.transactionId;
+router.get("/:id", function(req, res, next) {
+    const transactionId = req.params.id;
     Transaction.findById(transactionId)
         .then(transaction => {
             if (transaction === null) {
@@ -59,8 +60,8 @@ router.get("/one", function(req, res, next) {
         });
 });
 
-// update a transaction
-router.patch("/:id", function(req, res, next) {
+// update a transaction ADMIN only
+router.patch("/:id", authenticateAdmin, function(req, res, next) {
     const id = req.params.id;
     const { bidding, finalPrice, time } = req.body;
     const body = { bidding, finalPrice, time };
@@ -80,8 +81,8 @@ router.patch("/:id", function(req, res, next) {
         });
 });
 
-// delete a transaction
-router.delete("/:id", function(req, res, next) {
+// delete a transaction ADMIN only
+router.delete("/:id", authenticateAdmin, function(req, res, next) {
     const id = req.params.id;
     if (!ObjectID.isValid(id)) {
         res.status(404).send();
