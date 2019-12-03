@@ -8,7 +8,7 @@ const { authenticateAdmin } = require("../middlewares");
 /* 
     GET user profile information by id
 */
-router.get("/:id", function(req, res, next) {
+router.get("/info/:id", function(req, res, next) {
     const userId = req.session.user || req.params.id;
     User.findById(userId, "username email phone profilePicture")
         .then(user => {
@@ -27,11 +27,11 @@ router.get("/:id", function(req, res, next) {
 router.post("/login", function(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
+    console.log("Logging in " + req.body);
 
     // examine admin condition? TODO: discuss about this
     if (email === "admin" && password === "admin") {
         req.session.user = "admin";
-        console.log(`Logged in, current session user: ${req.session.user}`);
         res.send({ user: "admin", admin: true });
     } else {
         User.findByEmailPassword(email, password)
@@ -89,6 +89,7 @@ router.get("/logout", function(req, res, next) {
 // check if cookie is valid
 router.get("/verify", function(req, res, next) {
     const user = req.session.user;
+    console.log(`Verifying user: ${user}`);
     if (user) {
         res.send({ user });
     } else {

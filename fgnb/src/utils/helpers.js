@@ -27,4 +27,13 @@ export const setEmptyState = () => {
         editing: false,
         blocked: false
     });
+    setState("settingForm", {
+        email: "",
+        password: "",
+        username: ""
+    });
+    setState("userName", "")
+    setState("adminTransactionList", []);
+
+    setState("adminItemList", []);
 };

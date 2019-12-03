@@ -1,171 +1,59 @@
 import React from "react";
 import {
-    Grid,
     Table,
     TableHead,
     TableBody,
     TableRow,
     TableCell,
-    IconButton,
-    Input,
     Paper
 } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from "@material-ui/styles";
 
 import Transaction from "./Transaction";
+import StateReactComponent from "../component/StateReactComponent";
+import { getAllTransactions } from "../utils/transaction";
 
 const ContainedPaper = withStyles({
     root: {
         width: "90%",
-        maxWidth: 1000,
+        maxWidth: 1080,
+        marginTop: 20,
         margin: "auto",
         padding: 20
     }
 })(Paper);
 
-function createTranx(id, from, to) {
-    return { id, from, to };
-}
-
-class TransactionList extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            id: "",
-            from: "",
-            to: "",
-            // stub data contains all transactions, to retrieve info from server
-            data: [
-                createTranx(0, "user1", "user2"),
-                createTranx(1, "user2", "user1")
-            ]
-        };
+class TransactionList extends StateReactComponent {
+    componentWillMount() {
+        super.componentWillMount();
+        getAllTransactions();
     }
 
-    addTransaction = () => {
-        // currently push to state transaction list, to synchroinze with server database
-        let transactions = this.state.data;
-        if (
-            transactions.filter(t => {
-                return t.id === this.state.id;
-            }).length > 0
-        ) {
-            alert("Invalid ID");
-        } else {
-            transactions.push(
-                createTranx(this.state.id, this.state.from, this.state.to)
-            );
-            this.setState({
-                data: transactions
-            });
-        }
-    };
-
-    updateTransaction = (transaction, id, from, to) => {
-        // currently push to state transaction list, to synchroinze with server database
-        const newList = this.state.data.map(t => {
-            if (t.id === transaction.id) {
-                return {
-                    id: id,
-                    from: from,
-                    to: to
-                };
-            } else {
-                return t;
-            }
-        });
-        this.setState({
-            data: newList
-        });
-    };
-
-    removeTransaction = transaction => {
-        // currently push to state transaction list, to synchroinze with server database
-        const toKeep = this.state.data.filter(t => {
-            return t.id !== transaction.id;
-        });
-        this.setState({
-            data: toKeep
-        });
-    };
-
-    handleChange = event => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
-
-        this.setState({
-            [name]: value
-        });
-    };
+    filterState({ adminTransactionList }) {
+        return { transactionList: adminTransactionList };
+    }
 
     render() {
-        const transactionList = this.state.data;
+        const { transactionList } = this.state;
         return (
             <div>
-                <Grid
-                    container
-                    direction="row"
-                    justify="center"
-                    alignItems="center"
-                    spacing={1}
-                >
-                    <Grid item xs={1}>
-                        <IconButton onClick={this.addTransaction}>
-                            <AddIcon />
-                        </IconButton>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Input
-                            name="id"
-                            value={this.state.id}
-                            onChange={this.handleChange}
-                            type="number"
-                            placeholder="ID"
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Input
-                            name="from"
-                            value={this.state.from}
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder="From"
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Input
-                            name="to"
-                            value={this.state.to}
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder="To"
-                        />
-                    </Grid>
-                </Grid>
                 <ContainedPaper>
                     <Table size="small">
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center">Actions</TableCell>
                                 <TableCell align="right">ID</TableCell>
-                                <TableCell align="right">From</TableCell>
-                                <TableCell align="right">To</TableCell>
+                                <TableCell align="right">Bidding</TableCell>
+                                <TableCell align="right">Price</TableCell>
+                                <TableCell align="right">Time</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {transactionList.map(transaction => {
                                 return (
                                     <Transaction
-                                        key={transaction.id}
+                                        key={transaction._id}
                                         transaction={transaction}
-                                        updateTransaction={
-                                            this.updateTransaction
-                                        }
-                                        removeTransaction={
-                                            this.removeTransaction
-                                        }
                                     />
                                 );
                             })}

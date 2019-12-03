@@ -5,11 +5,14 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SubmitIcon from "@material-ui/icons/Done";
 import CancelIcon from "@material-ui/icons/Cancel";
 
+import { updateTransaction, deleteTransaction } from "../utils/transaction";
+
 class Transaction extends React.Component {
     state = {
         id: "",
-        from: "",
-        to: "",
+        bidding: "",
+        finalPrice: 0,
+        time: "",
         isEditing: false
     };
 
@@ -17,43 +20,38 @@ class Transaction extends React.Component {
         const t = this.props.transaction;
         const cur = this.state.isEditing;
         this.setState({
-            id: t.id,
-            from: t.from,
-            to: t.to,
+            id: t._id,
+            bidding: t.bidding,
+            finalPrice: t.finalPrice,
+            time: t.time,
             isEditing: !cur
         });
+    };
+
+    sumbitChange = () => {
+        const { id, finalPrice } = this.state;
+        const data = { finalPrice };
+        this.toggleIsEditing();
+        updateTransaction(id, data);
     };
 
     handleChange = event => {
         const target = event.target;
         const name = target.name;
         const value = target.value;
-
         this.setState({
             [name]: value
         });
     };
 
     render() {
-        const {
-            transaction,
-            updateTransaction,
-            removeTransaction
-        } = this.props;
-        const sumbitChange = () => {
-            this.toggleIsEditing();
-            updateTransaction.bind(this, transaction)(
-                this.state.id,
-                this.state.from,
-                this.state.to
-            );
-        };
-
+        const { transaction } = this.props;
+        // console.log(transaction);
         if (this.state.isEditing) {
             return (
                 <TableRow key={transaction.id}>
                     <TableCell align="center" style={{ width: "20%" }}>
-                        <IconButton onClick={sumbitChange}>
+                        <IconButton onClick={this.sumbitChange}>
                             <SubmitIcon />
                         </IconButton>
                         <IconButton onClick={this.toggleIsEditing}>
@@ -64,33 +62,24 @@ class Transaction extends React.Component {
                         component="th"
                         scope="row"
                         align="right"
-                        style={{ width: "10%" }}
+                        style={{ width: "25%" }}
                     >
+                        {transaction._id}
+                    </TableCell>
+                    <TableCell align="right" style={{ width: "25%" }}>
+                        {transaction.bidding}
+                    </TableCell>
+                    <TableCell align="right" style={{ width: "10%" }}>
                         <Input
-                            name="id"
-                            value={this.state.id}
+                            name="finalPrice"
+                            value={this.state.finalPrice}
                             onChange={this.handleChange}
                             type="number"
-                            placeholder={transaction.id.toString()}
+                            // placeholder={parseInt(transaction.finalPrice)}
                         />
                     </TableCell>
-                    <TableCell align="right" style={{ width: "35%" }}>
-                        <Input
-                            name="from"
-                            value={this.state.from}
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder={transaction.from}
-                        />
-                    </TableCell>
-                    <TableCell align="right" style={{ width: "35%" }}>
-                        <Input
-                            name="to"
-                            value={this.state.to}
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder={transaction.to}
-                        />
+                    <TableCell align="right" style={{ width: "20%" }}>
+                        {transaction.time}
                     </TableCell>
                 </TableRow>
             );
@@ -102,7 +91,9 @@ class Transaction extends React.Component {
                             <EditIcon />
                         </IconButton>
                         <IconButton
-                            onClick={removeTransaction.bind(this, transaction)}
+                            onClick={e =>
+                                deleteTransaction(this.props.transaction._id)
+                            }
                         >
                             <DeleteIcon />
                         </IconButton>
@@ -111,15 +102,18 @@ class Transaction extends React.Component {
                         component="th"
                         scope="row"
                         align="right"
-                        style={{ width: "10%" }}
+                        style={{ width: "25%" }}
                     >
-                        {transaction.id}
+                        {transaction._id}
                     </TableCell>
-                    <TableCell align="right" style={{ width: "35%" }}>
-                        {transaction.from}
+                    <TableCell align="right" style={{ width: "25%" }}>
+                        {transaction.bidding}
                     </TableCell>
-                    <TableCell align="right" style={{ width: "35%" }}>
-                        {transaction.to}
+                    <TableCell align="right" style={{ width: "10%" }}>
+                        {transaction.finalPrice}
+                    </TableCell>
+                    <TableCell align="right" style={{ width: "20%" }}>
+                        {transaction.time}
                     </TableCell>
                 </TableRow>
             );

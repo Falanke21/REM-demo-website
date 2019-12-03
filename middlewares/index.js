@@ -14,9 +14,14 @@ const sessionChecker = (req, res, next) => {
 };
 
 // authenticate if session is logged in
+const excludeRoutes = ["/login", "/signup"];
 const authenticate = (req, res, next) => {
     const user = req.session.user;
-    if (user && user === "admin") {
+    const match = excludeRoutes.filter(r => r === req.path);
+    if (match.length > 0) {
+        console.log("Excluded route");
+        next();
+    } else if (user && user === "admin") {
         next();
     } else if (user && ObjectID.isValid(user)) {
         const id = user;
@@ -36,17 +41,13 @@ const authenticate = (req, res, next) => {
     }
 };
 
-// const authenticateAdmin = (req, res, next) => {
-//     console.log(`Authenticating admin, get: ${req.session.user}`);
-//     if (req.session.user === "admin") {
-//         next();
-//     } else {
-//         res.status(401).send("Restricted access");
-//     }
-// }
-// use below to disable admin auth for local testing
 const authenticateAdmin = (req, res, next) => {
-    next();
-};
+    console.log(`Authenticating admin, get: ${req.session.user}`);
+    if (req.session.user === "admin") {
+        next();
+    } else {
+        res.status(401).send("Restricted access");
+    }
+}
 
 module.exports = { sessionChecker, authenticate, authenticateAdmin };

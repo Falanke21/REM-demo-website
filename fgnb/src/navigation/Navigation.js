@@ -14,7 +14,7 @@ class Navigation extends Component {
                 <img id="logo" src={logo} alt={"logo image"} />
                 </Link>
                 <ul>
-                    <Link to={"/"}>
+                    <Link to={"/login"}>
                         <li>
                             <Button
                                 size="large"

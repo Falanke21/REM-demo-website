@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -14,39 +14,20 @@ import Avatar from "@material-ui/core/Avatar";
 
 import yaoshui from "../static/images/yaoshui.jpg"
 
-function Biddings(prop) {
+function Biddings(props) {
     // Hard code bidding information, add server call later
-    const bidArray = [
-        {
-            bidderId: 1,
-            username: "Yaoshui",
-            profilePic: "SOMETHING FROM DATABASE",
-            amount: 100
-        },
-        {
-            bidderId: 2,
-            username: "Falanke",
-            profilePic: "SOMETHING FROM DATABASE",
-            amount: 87
-        },
-        {
-            bidderId: 3,
-            username: "Why do I have the same photo as the other two",
-            profilePic: "SOMETHING FROM DATABASE",
-            amount: 85
-        }
-    ];
+    const bidArray = props.biddings;
 
     return (
         <List>
             {bidArray.map(bid => (
-                <Container>
+                <Container key={bid._id}>
                     <ListItem>
                         <ListItemAvatar>
                             {
                             // This to be replaced by external image sources
                             }
-                            <Avatar src={yaoshui} />
+                            <Avatar src={bid.profilePicture} />
                             {
                                 // why react why
                             }
@@ -62,7 +43,7 @@ function Biddings(prop) {
     );
 }
 
-export default function CurrentBiddings(prop) {
+export default function CurrentBiddings(props) {
     return (
         <div>
             <br />
@@ -72,7 +53,7 @@ export default function CurrentBiddings(prop) {
                         <Typography gutterBottom variant="h4" component="h2">
                             Current Biddings
                         </Typography>
-                        <Biddings />
+                        <Biddings biddings={props.biddings} />
                     </CardContent>
                 </Card>
             </Container>

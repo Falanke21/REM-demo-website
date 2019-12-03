@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Market from "../market_page/Market";
-import AdminDashBoard from "../admin_page/AdminDashBoard";
 import User from "../profile_page/User";
 import ItemDetail from "../market_page/ItemDetail";
 import AddItem from "../profile_page/AddItem";
@@ -23,11 +22,22 @@ class Mainview extends React.Component {
                     <Route exact path="/item/:itemId" component={ItemDetail} />
                     <Route exact path="/additem" component={AddItem} />
                     <Route exact path="/biddinglist" component={BiddingList} />
-                    <Route exact path="/buyerBidding" component={BuyerBidding} />
+                    <Route
+                        exact
+                        path="/buyerBidding"
+                        component={BuyerBidding}
+                    />
                     <Route exact path="/settings" component={Settings} />
                     <Route exact path="/contact" component={Contact} />
                     <Route
+                        exact
+                        path={["/", "/market"]}
                         render={({ history }) => <Market history={history} />}
+                    />
+                    <Route
+                        render={({ history }) => (
+                            <PageNotFound history={history} />
+                        )}
                     />
                 </Switch>
             </div>

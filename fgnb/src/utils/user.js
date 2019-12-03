@@ -1,9 +1,12 @@
 import { setState, getState } from "statezero";
 
 import { setEmptyState } from "./helpers";
+import config from "../config.json";
+
+const urlPrefix = config.prefix;
 
 export const readCookie = () => {
-    const url = "http://localhost:3001/api/user/verify";
+    const url = urlPrefix + "/api/user/verify";
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -22,7 +25,7 @@ export const readCookie = () => {
 
 export const login = () => {
     const { email, password } = getState("loginForm");
-    const request = new Request("http://localhost:3001/api/user/login", {
+    const request = new Request(urlPrefix + "/api/user/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: {
@@ -57,7 +60,7 @@ export const login = () => {
 
 export const signUp = () => {
     const { email, password, username } = getState("signUpForm");
-    const request = new Request("http://localhost:3001/api/user/signup", {
+    const request = new Request(urlPrefix + "/api/user/signup", {
         method: "POST",
         body: JSON.stringify({ email, password, username }),
         headers: {
@@ -83,7 +86,7 @@ export const signUp = () => {
 };
 
 export const logout = () => {
-    const url = "http://localhost:3001/api/user/logout";
+    const url = urlPrefix + "/api/user/logout";
     fetch(url)
         .then(res => {
             setEmptyState();
@@ -96,7 +99,7 @@ export const logout = () => {
 export const queryUser = () => {
     console.log("finding user");
     const { email } = getState("adminUserQueryForm");
-    const url = `http://localhost:3001/api/user/admin/${email}`;
+    const url = urlPrefix + `/api/user/admin/${email}`;
     fetch(url)
         .then(res => {
             if (res.status === 200) {
@@ -118,7 +121,7 @@ export const queryUser = () => {
 export const updateUser = () => {
     console.log("updating user");
     const { user, username, blocked } = getState("adminUserInspectForm");
-    const request = new Request(`http://localhost:3001/api/user/admin/${user.email}`, {
+    const request = new Request(urlPrefix + `/api/user/admin/${user.email}`, {
         method: "PATCH",
         body: JSON.stringify({ username, blocked }),
         headers: {
@@ -142,6 +145,85 @@ export const updateUser = () => {
         console.log(error);
     })
 };
+
+
+export const getUserEmail = () =>{
+    const userInfo = getState("loginForm");
+    const userEmail = userInfo.email;
+    return userEmail
+}
+
+export const getUserId = () =>{
+    return getState("currentUser");
+}
+
+export const getUserName = () =>{
+    var result;
+    const userId = getUserId();
+    const url = urlPrefix + `/api/user/${userId}`
+    const request = new Request(url, {
+        method: "GET"
+    });
+    fetch(request)
+    .then(res => {
+        if (res.status === 200) {
+            return res.json();
+        }else{
+            console.log("cannot find the user");
+        }
+    })
+    .then(json => {
+        setState("userName", json.user.username);
+    })
+    .catch(error => {
+    })
+};
+
+export const updateSetting = () =>{
+    console.log((getState("loginForm")));
+    console.log("Update setting");
+    const {newPassword, confirmPassword} = getState("settingForm");
+    if (newPassword !== confirmPassword){
+        alert("Password Mismatch");
+    }
+    else{
+        const userId = getUserId();
+        const body = {
+            user: userId,
+            password: newPassword
+        }
+        const url = urlPrefix + `/api/setting`
+        const request = new Request(url, {
+            method: "PATCH",
+            body: JSON.stringify(body),
+            headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+            }
+        });
+        console.log(request);
+        fetch(request).then(res => {
+            if (res.status === 200){
+                console.log("Success patch data");
+                return res.json();
+            }
+            else{
+                console.log("cannot update info formtaion")
+            }
+        }).then(json => {
+            console.log(json);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+}
+export const updateSettingForm = field =>{
+    const {name, value} = field;
+    setState(`settingForm.${name}`, value);
+    console.log(name);
+    console.log(value);
+    console.log(getState("settingForm"))
+}
 
 export const updateLoginForm = field => {
     const { name, value } = field;

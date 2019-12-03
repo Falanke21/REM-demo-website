@@ -25,7 +25,7 @@ class AdminDashBoard extends React.Component {
         this.props.history.push("/admindash");
         this.state = {
             sideList: false,
-            currPage: "User"
+            currPage: "Item"
         };
     }
 

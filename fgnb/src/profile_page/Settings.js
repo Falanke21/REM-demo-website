@@ -3,21 +3,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Navigation from "../navigation/Navigation";
-
+import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import StateReactComponent from "../component/StateReactComponent";
+import {updateSetting, updateSettingForm, getUserEmail, getUserName} from "../utils/user";
 
-export default function Settings() {
-    // const [itemName, setItemName] = React.useState("");
-    // const [itemDescription, setItemDescription] = React.useState("");
-    // const [itemPrice, setItemPrice] = React.useState("");
-    // const [itemLocation, setItemLocation] = React.useState("");
-
-    // TODO add server call of user information
-    // Hard code data here
-
+class  Settings extends  StateReactComponent{
+componentWillMount(){
+    super.componentWillMount();
+    getUserName();
+}
+filterState({ userName }){
+    return { username: userName };
+}
+render(){
+    const {username} = this.state;
+    const userEmail = getUserEmail();
     return (
         <div>
             <Navigation />
@@ -34,11 +38,7 @@ export default function Settings() {
                         label="Name goes here"
                         type="text"
                         fullWidth
-                        value="Falanke"
-                        // value={itemName}
-                        // onChange={e => {
-                        //     setItemName(e.target.value);
-                        // }}
+                        value={username}
                     />
                 </Container>
 
@@ -50,11 +50,7 @@ export default function Settings() {
                         label="The email of this account"
                         type="text"
                         fullWidth
-                        value="falanke.ihatematerialui.com"
-                        // value={itemDescription}
-                        // onChange={e => {
-                        //     setItemDescription(e.target.value);
-                        // }}
+                        value={userEmail}
                     />
                 </Container>
 
@@ -64,11 +60,12 @@ export default function Settings() {
                         helperText="Password"
                         label="Change your password here"
                         type="password"
+                        name="newPassword"
                         fullWidth
-                        // value={itemPrice}
-                        // onChange={e => {
-                        //     setItemPrice(e.target.value);
-                        // }}
+                        onChange={e => {
+                            updateSettingForm(e.target);
+                        }
+                        }
                     />
                 </Container>
 
@@ -78,11 +75,11 @@ export default function Settings() {
                         helperText="Confirm Password"
                         label="Confirm your password"
                         type="password"
+                        name="confirmPassword"
                         fullWidth
-                        // value={itemLocation}
-                        // onChange={e => {
-                        //     setItemLocation(e.target.value);
-                        // }}
+                        onChange={e => {
+                            updateSettingForm(e.target);
+                        }}
                     />
                 </Container>
 
@@ -93,6 +90,9 @@ export default function Settings() {
                         type="file"
                         name="pic"
                         accept="image/*"
+                        onChange={e => {
+                            updateSettingForm(e.target);
+                        }}
                     />
                 </Container>
                 <Container maxWidth="sm">
@@ -103,11 +103,7 @@ export default function Settings() {
                             color="primary"
                             fullWidth
                             variant="contained"
-                            // onClick={() =>
-                            //     alert(
-                            //         `${itemName}, ${itemDescription}, ${itemPrice}, ${itemLocation}`
-                            //     )
-                            // }
+                            onClick={updateSetting}
                         >
                             Update my information
                         </Button>
@@ -117,3 +113,12 @@ export default function Settings() {
         </div>
     );
 }
+}
+export default Settings;
+    // const [itemName, setItemName] = React.useState("");
+    // const [itemDescription, setItemDescription] = React.useState("");
+    // const [itemPrice, setItemPrice] = React.useState("");
+    // const [itemLocation, setItemLocation] = React.useState("");
+
+    // TODO add server call of user information
+    // Hard code data here

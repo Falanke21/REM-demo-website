@@ -54,6 +54,8 @@ app.use("/example", exampleRouter);
 app.use('/static', express.static('public'))
 
 // REAL JSON APIs
+const routes = ["/api/user", "/api/item", "/api/bidding", "/api/setting", "/api/transaction"];
+app.use(routes, authenticate);
 app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
 app.use("/api/bidding", biddingRouter);
@@ -61,17 +63,17 @@ app.use("/api/setting", settingRouter);
 app.use("/api/transaction", transactionRouter);
 
 /*** Webpage routes below **********************************/
-// // Serve the build (production)
-// app.use(express.static(__dirname + "/fgnb/build"));
+// Serve the build (production)
+app.use(express.static(__dirname + "/fgnb/build"));
 
-// app.get("/", (req, res) => {
-//     res.sendFile(__dirname + '/fgnb/build/index.html');
-// });
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + '/fgnb/build/index.html');
+});
 
-// // All routes other than above will go to index.html
-// app.get("*", (req, res) => {
-//     res.sendFile(__dirname + '/fgnb/build/index.html');
-// })
+// All routes other than above will go to index.html
+app.get("*", (req, res) => {
+    res.sendFile(__dirname + '/fgnb/build/index.html');
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
