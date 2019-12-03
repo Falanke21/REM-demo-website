@@ -226,7 +226,7 @@ export const updateSettingForm = field =>{
     console.log(getState("settingForm"))
 }
 
-export const updateProfilePic = fiele =>{
+export const updateProfilePic = field =>{
     const {name, value} = field;
     setState(`settingForm.profilePict`, value);
 }
