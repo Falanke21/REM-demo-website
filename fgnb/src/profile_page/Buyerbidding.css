@@ -3,7 +3,7 @@
     grid-template-columns: auto auto auto auto auto;
     background-color:white;
     padding: 10px;
-    border: black solid 0.01em
+    border: grey solid 0.01em
   }
 .grid-item {
     /* background-color: rgba(255, 255, 255, 0.8); */
