@@ -34,6 +34,7 @@ var upload = multer({ storage: storage }).single("uploadPicture");
     POST a item into the database
 */
 router.post("/", function(req, res, next) {
+    console.log("Enter Settings")
     upload(req, res, function(err) {
         if (err instanceof multer.MulterError) {
             // A Multer error occurred when uploading.
