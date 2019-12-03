@@ -90,6 +90,9 @@ render(){
                         type="file"
                         name="pic"
                         accept="image/*"
+                        onChange={e => {
+                            updateSettingForm(e.target);
+                        }}
                     />
                 </Container>
                 <Container maxWidth="sm">

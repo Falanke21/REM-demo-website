@@ -181,15 +181,38 @@ export const updateSetting = () =>{
     console.log((getState("loginForm")));
     console.log("Update setting");
     const {newPassword, confirmPassword} = getState("settingForm");
-    console.log(newPassword);
-    console.log(confirmPassword);
     if (newPassword !== confirmPassword){
-        console.log("Password Mismatch");
         alert("Password Mismatch");
     }
     else{
-        const request = new Request(`http://localhost:3001/api/setting`);
-        alert("Request send");
+        const userId = getUserId();
+        const body = {
+            user: userId,
+            password: newPassword
+        }
+        const url = `http://localhost:3001/api/setting`
+        const request = new Request(url, {
+            method: "PATCH",
+            body: JSON.stringify(body),
+            headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+            }
+        });
+        console.log(request);
+        fetch(request).then(res => {
+            if (res.status === 200){
+                console.log("Success patch data");
+                return res.json();
+            }
+            else{
+                console.log("cannot update info formtaion")
+            }
+        }).then(json => {
+            console.log(json);
+        }).catch(error => {
+            console.log(error);
+        })
     }
 }
 export const updateSettingForm = field =>{
