@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
@@ -6,7 +6,6 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import tileData from "../tileData";
 import { whileStatement } from "@babel/types";
 
 import { Link } from "react-router-dom";
@@ -59,7 +58,7 @@ const useStylesSquareimgs = makeStyles(theme => ({
         color: "white"
     }
 }));
-function GridBox() {
+function GridBox(props) {
     const classes = useStylesSquareimgs();
     return (
         <div className={classes.root}>
@@ -69,7 +68,7 @@ function GridBox() {
                 className={classes.gridList}
                 cols={6.0}
             >
-                {tileData.map(tile => (
+                {props.tileData.map(tile => (
                     <GridListTile
                         key={tile.id}
                         component={Link}
@@ -95,12 +94,12 @@ function GridBox() {
     );
 }
 
-function LineGridBox() {
+function LineGridBox(props) {
     const classes = useStylesLineimgs();
     return (
         <div className={classes.root}>
             <GridList className={classes.gridList} cols={10.0} cellHeight={150}>
-                {tileData.map(tile => (
+                {props.tileData.map(tile => (
                     <GridListTile
                         key={tile.img}
                         component={Link}
@@ -122,10 +121,39 @@ function LineGridBox() {
 }
 
 class ItemGrid extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tileData: []
+        };
+    }
+
+    componentDidMount() {
+        fetch("http://localhost:3001/api/item", {
+            method: "GET"
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    return res.json();
+                } else {
+                    return Promise.reject("Internal server error");
+                }
+            })
+            .then(json => {
+                for (let x of json.items) {
+                    x.img = "http://localhost:3001/static/" + x.img;
+                }
+                this.setState({ tileData: json.items });
+            })
+            .catch(err => {
+                alert(err);
+            });
+    }
+
     render() {
         return (
             <div>
-                <GridBox></GridBox>
+                <GridBox tileData={this.state.tileData}></GridBox>
                 <br></br>
                 <br></br>
                 <br></br>
@@ -133,7 +161,7 @@ class ItemGrid extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                <LineGridBox></LineGridBox>
+                <LineGridBox tileData={this.state.tileData}></LineGridBox>
             </div>
         );
     }

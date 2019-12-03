@@ -3,6 +3,7 @@ var router = express.Router();
 
 // import model
 const { User } = require("../models/user");
+const { authenticateAdmin } = require("../middlewares");
 
 /* 
     GET user profile information by id
@@ -30,6 +31,7 @@ router.post("/login", function(req, res, next) {
     // examine admin condition? TODO: discuss about this
     if (email === "admin" && password === "admin") {
         req.session.user = "admin";
+        console.log(`Logged in, current session user: ${req.session.user}`);
         res.send({ user: "admin", admin: true });
     } else {
         User.findByEmailPassword(email, password)
@@ -74,6 +76,7 @@ router.post("/signup", function(req, res, next) {
 
 // logout on /api/user/logout
 router.get("/logout", function(req, res, next) {
+    console.log(`Logging out, prev session: ${req.session.user}`);
     req.session.destroy(error => {
         if (error) {
             res.status(500).send(error);
@@ -93,8 +96,8 @@ router.get("/verify", function(req, res, next) {
     }
 });
 
-// find user by email
-router.get("/:email", function(req, res, next) {
+// find user by email ADMIN only
+router.get("/:email", authenticateAdmin, function(req, res, next) {
     const email = req.params.email;
     User.findOne({ email: email })
         .then(user => {
@@ -109,7 +112,8 @@ router.get("/:email", function(req, res, next) {
         });
 });
 
-router.patch("/:email", function(req, res, next) {
+// ADMIN only
+router.patch("/:email", authenticateAdmin, function(req, res, next) {
     const email = req.params.email;
     const { username, blocked } = req.body;
     const body = { username, blacklisted: blocked };

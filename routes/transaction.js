@@ -1,11 +1,15 @@
 var express = require("express");
 var router = express.Router();
-
-const { Transaction } = require("../models/transaction");
 const { ObjectID } = require("mongodb");
 
-// get all transactions
-router.get("/", function(req, res, next) {
+const { Transaction } = require("../models/transaction");
+const { Item } = require("../models/item");
+const { Bidding } = require("../models/bidding");
+const { User } = require("../models/user");
+const { authenticateAdmin } = require("../middlewares");
+
+// get all transactions ADMIN only
+router.get("/", authenticateAdmin, function(req, res, next) {
     Transaction.find()
         .then(result => {
             res.send({ transactions: result });
@@ -15,8 +19,49 @@ router.get("/", function(req, res, next) {
         });
 });
 
-// update a transaction
-router.patch("/:id", function(req, res, next) {
+// get one transaction
+router.get("/:id", function(req, res, next) {
+    const transactionId = req.params.id;
+    Transaction.findById(transactionId)
+        .then(transaction => {
+            if (transaction === null) {
+                res.status(404).send({
+                    flag: false,
+                    error: "transaction not found"
+                });
+            } else {
+                result = { transaction: transaction };
+                // Get bidding info
+                Bidding.findById(transaction.bidding).then(bidding => {
+                    result.bidding = bidding;
+                    // Item info
+                    Item.findById(result.bidding.item).then(item => {
+                        result.item = item;
+                        User.findById(result.bidding.seller)
+                            .select("-password")
+                            .then(seller => {
+                                result.seller = seller;
+                                User.findById(result.bidding.buyer)
+                                    .select("-password")
+                                    .then(buyer => {
+                                        result.buyer = buyer;
+                                        res.send({
+                                            flag: true,
+                                            result: result
+                                        });
+                                    });
+                            });
+                    });
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({ flag: false, error: err });
+        });
+});
+
+// update a transaction ADMIN only
+router.patch("/:id", authenticateAdmin, function(req, res, next) {
     const id = req.params.id;
     const { bidding, finalPrice, time } = req.body;
     const body = { bidding, finalPrice, time };
@@ -36,8 +81,8 @@ router.patch("/:id", function(req, res, next) {
         });
 });
 
-// delete a transaction
-router.delete("/:id", function(req, res, next) {
+// delete a transaction ADMIN only
+router.delete("/:id", authenticateAdmin, function(req, res, next) {
     const id = req.params.id;
     if (!ObjectID.isValid(id)) {
         res.status(404).send();

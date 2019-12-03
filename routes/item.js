@@ -1,19 +1,17 @@
 var express = require("express");
 var router = express.Router();
-
-// mongoose and mongo connection
-const { mongoose } = require("../db/mongoose");
+const { ObjectID } = require("mongodb");
+var multer = require("multer");
+const uuidv1 = require("uuid/v1");
 
 // import model
 const { User } = require("../models/user");
 const { Item } = require("../models/item");
-
-var multer = require("multer");
-const uuidv1 = require("uuid/v1");
+const { authenticateAdmin } = require("../middlewares");
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
-        callback(null, "public/images");
+        callback(null, "images");
     },
     filename: function(req, file, callback) {
         // TODO: ADD MORE FILE TYPE HERE !!!!!
@@ -42,10 +40,10 @@ router.post("/", function(req, res, next) {
             return;
         } else if (err) {
             // An unknown error occurred when uploading.
-            res.status(400).send({ flag: false, error: err });
+            res.status(500).send({ flag: false, error: err });
             return;
         }
-        const seller = req.body.seller;
+        const seller = req.session.user || req.body.seller;
         const title = req.body.title;
         const description = req.body.description;
         const price = req.body.price;
@@ -103,7 +101,7 @@ router.get("/", function(req, res, next) {
 /*
     GET all items that are in database, THIS IS FOR ADMIN USE
 */
-router.get("/", function(req, res, next) {
+router.get("/admin", authenticateAdmin, function(req, res, next) {
     Item.find()
         .then(result => {
             res.send({ flag: true, items: result });
@@ -114,20 +112,41 @@ router.get("/", function(req, res, next) {
 });
 
 /*
-    DELETE an item
+    DELETE an item ADMIN only
 */
-router.delete("/", function(req, res, next) {
-    Item.findByIdAndDelete(req.body.itemId)
-        .then(result => {
-            res.send({ flag: true, items: result });
-            User.findById(result.seller, (err, user) => {
-                user.sellings.filter((x) => x !== result._id);
-                user.save();
-            })
-        .catch(err => {
+router.delete("/", authenticateAdmin, function(req, res, next) {
+    Item.findByIdAndDelete(req.body.itemId).then(result => {
+        res.send({ flag: true, items: result });
+        User.findById(result.seller, (err, user) => {
+            user.sellings.filter(x => x !== result._id);
+            user.save();
+        }).catch(err => {
             res.status(500).send({ flag: false, error: err });
         });
     });
+});
+
+/*
+    PATCH an item ADMIN only
+*/
+router.patch("/", authenticateAdmin, function(req, res, next) {
+    const itemId = req.body.itemId;
+    const { title, price, description, location } = req.body;
+    const body = { title, price, description, location };
+    if (!ObjectID.isValid(itemId)) {
+        res.status(404).send();
+    }
+    Item.findByIdAndUpdate(itemId, { $set: body }, { new: true })
+        .then(item => {
+            if (item) {
+                res.send(item);
+            } else {
+                res.status(404).send();
+            }
+        })
+        .catch(error => {
+            res.status(500).send(error);
+        });
 });
 
 module.exports = router;
