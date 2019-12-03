@@ -10,7 +10,9 @@ class Navigation extends Component {
     render() {
         return (
             <div className="navigator">
+                <Link to="./market" style={{ textDecoration: 'none' }}>
                 <img id="logo" src={logo} alt={"logo image"} />
+                </Link>
                 <ul>
                     <Link to={"/"}>
                         <li>

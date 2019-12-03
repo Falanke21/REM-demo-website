@@ -36,6 +36,8 @@ const getfetched = [
     }
 ];
 
+const getfetchedPic = "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1566956144418"
+
 function UserBoxSeller() {
     return (
         <div className="profile_box_container_Seller">
@@ -138,8 +140,7 @@ class Contact extends React.Component {
                     </div>
                     <div className="Contact_congrads_box_pic">
                         <img
-                            src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1566956144418
-"
+                            src = {getfetchedPic}
                             className="bounding-box"
                         ></img>
                         <img
