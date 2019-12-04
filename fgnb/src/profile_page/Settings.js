@@ -21,6 +21,7 @@ filterState({ userName }){
 }
 render(){
     const {username} = this.state;
+    console.log(username);
     const userEmail = getUserEmail();
     return (
         <div>

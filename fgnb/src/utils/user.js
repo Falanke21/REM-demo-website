@@ -160,7 +160,7 @@ export const getUserId = () =>{
 export const getUserName = () =>{
     var result;
     const userId = getUserId();
-    const url = urlPrefix + `/api/user/${userId}`
+    const url = urlPrefix + `/api/user/info/${userId}`
     const request = new Request(url, {
         method: "GET"
     });
@@ -173,6 +173,7 @@ export const getUserName = () =>{
         }
     })
     .then(json => {
+        console.log(json.user.username);
         setState("userName", json.user.username);
     })
     .catch(error => {
@@ -217,6 +218,7 @@ export const updateSetting = () =>{
             }
         }).then(json => {
             console.log(json);
+            alert("Request send successfully")
         }).catch(error => {
             console.log(error);
         })

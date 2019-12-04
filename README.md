@@ -1,5 +1,8 @@
 # team23
 
+# Deploy Website
+# https://quiet-taiga-35783.herokuapp.com/
+
 # Some messages for my teammates: 
 - **fgnb** folder is now the front-end, others are the back-end
 - `cd` into **fgnb**
