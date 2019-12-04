@@ -102,18 +102,7 @@ team23
         |   ├── helpers.js
         |   ├── item.js
         |   ├── transction.js
-        |   ├── user.js
-        │   └── BaseReactComponent
-        │   │   └── index.js
-        │   ├── Dashboard
-        │   │   └── index.js
-        │   ├── StudentForm
-        │   │   ├── index.js
-        │   │   └── styles.css
-        │   ├── Student
-        │   │   ├── index.js
-        │   │   └── styles.css
-        │   └── ...
+        |   └── user.js
         ├── index.js
         ├── index.css
         ├── App.js
