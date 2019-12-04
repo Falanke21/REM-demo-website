@@ -160,7 +160,7 @@ export const getUserId = () =>{
 export const getUserName = () =>{
     var result;
     const userId = getUserId();
-    const url = urlPrefix + `/api/user/${userId}`
+    const url = urlPrefix + `/api/user/info/${userId}`
     const request = new Request(url, {
         method: "GET"
     });
@@ -173,6 +173,7 @@ export const getUserName = () =>{
         }
     })
     .then(json => {
+        console.log(json.user.username);
         setState("userName", json.user.username);
     })
     .catch(error => {
@@ -188,20 +189,25 @@ export const updateSetting = () =>{
     }
     else{
         const userId = getUserId();
-        const body = {
-            user: userId,
-            password: newPassword
+        const file = new FormData();
+        file.append("user", userId);
+        file.append("password", newPassword);
+        if(getState("settingForm.profilePic")){
+            file.append("uploadPicture", getState("settingForm.profilePic"));
         }
-        const url = urlPrefix + `/api/setting`
+        console.log(userId);
+        console.log(newPassword);
+        console.log(getState("settingForm.profilePic"));
+        const url = urlPrefix + "/api/setting"
+        console.log(file);
         const request = new Request(url, {
             method: "PATCH",
-            body: JSON.stringify(body),
+            body: file,
             headers: {
             Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
             }
         });
-        console.log(request);
+        console.log(request.body);
         fetch(request).then(res => {
             if (res.status === 200){
                 console.log("Success patch data");
@@ -212,6 +218,7 @@ export const updateSetting = () =>{
             }
         }).then(json => {
             console.log(json);
+            alert("Request send successfully")
         }).catch(error => {
             console.log(error);
         })
@@ -223,6 +230,11 @@ export const updateSettingForm = field =>{
     console.log(name);
     console.log(value);
     console.log(getState("settingForm"))
+}
+
+export const updateProfilePic = field =>{
+    console.log(field);
+    setState(`settingForm.profilePic`, field);
 }
 
 export const updateLoginForm = field => {

@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import StateReactComponent from "../component/StateReactComponent";
-import {updateSetting, updateSettingForm, getUserEmail, getUserName} from "../utils/user";
+import {updateSetting, updateSettingForm, getUserEmail, getUserName, updateProfilePic} from "../utils/user";
 
 class  Settings extends  StateReactComponent{
 componentWillMount(){
@@ -21,6 +21,7 @@ filterState({ userName }){
 }
 render(){
     const {username} = this.state;
+    console.log(username);
     const userEmail = getUserEmail();
     return (
         <div>
@@ -63,6 +64,7 @@ render(){
                         name="newPassword"
                         fullWidth
                         onChange={e => {
+                            console.log(e.target.value);
                             updateSettingForm(e.target);
                         }
                         }
@@ -78,6 +80,7 @@ render(){
                         name="confirmPassword"
                         fullWidth
                         onChange={e => {
+                            console.log(e.target.value);
                             updateSettingForm(e.target);
                         }}
                     />
@@ -91,7 +94,8 @@ render(){
                         name="pic"
                         accept="image/*"
                         onChange={e => {
-                            updateSettingForm(e.target);
+                            console.log(e.target.files[0]);
+                            updateProfilePic(e.target.files[0]);
                         }}
                     />
                 </Container>

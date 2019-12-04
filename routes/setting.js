@@ -48,7 +48,7 @@ router.patch("/", function(req, res, next) {
                 }
                 else{
                     if(req.file){
-                        const img = req.file.destination + "/" + req.file.filename
+                        const img = "/static/profilephotos" + "/" + req.file.filename
                         userFromDataBase.profilePicture = img;
                     }
                     userFromDataBase.password = newPassword;
