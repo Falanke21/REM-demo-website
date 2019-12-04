@@ -218,6 +218,7 @@ export const updateSetting = () =>{
             }
         }).then(json => {
             console.log(json);
+            alert("Request send successfully")
         }).catch(error => {
             console.log(error);
         })
