@@ -48,6 +48,7 @@ export default function AddItem() {
             .then(json => {
                 console.log(json.error);
                 alert("Item created!");
+                window.location.reload()
             })
             .catch(err => {
                 alert(err);
