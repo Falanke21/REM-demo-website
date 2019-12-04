@@ -60,7 +60,7 @@ class AdminDashBoard extends React.Component {
                             color="primary"
                             align="left"
                         >
-                            Dashboard
+                            {`Dashboard - ${this.state.currPage}`}
                         </Typography>
                         <Button
                             color="primary"

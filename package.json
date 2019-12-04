@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "setup": "npm install && cd fgnb && npm install && cd ..",
     "start": "node ./bin/www",
-    "damn": "nodemon ./bin/www",
-    "setup": "npm install && cd client && npm install && cd ..",
     "heroku-postbuild": "cd fgnb && npm install && npm run build"
   },
   "dependencies": {
