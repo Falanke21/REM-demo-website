@@ -31,15 +31,15 @@ const getfetched =  [
 
 
 
-function Givestatus(statusObj) {
+function Givestatus(props) {
     //Hard code bidding information, add server call later
-    if (statusObj.status==true) {
+    if (props.status==true) {
         return (
             <div class="grid-item">
             accepted
             </div>);
     }
-    if(statusObj.status==null) {
+    if(props.status==null) {
         return (
             <div class="grid-item">
             Pending
@@ -52,11 +52,11 @@ function Givestatus(statusObj) {
             </div>);
     }
 }
-function GiveButton(statusObj){
-    if (statusObj.status==true) {
+function GiveButton(props){
+    if (props.status==true) {
         return (
             <div class="grid-item">
-            <Link to="./Contact" style={{ textDecoration: 'none' }}>
+            <Link to={"./Contact/" + props.transactionId} style={{ textDecoration: 'none' }}>
             <button id="me-button" type="button" className="center-button"
 		    >Contact Now!</button>
             </Link>
@@ -65,10 +65,8 @@ function GiveButton(statusObj){
     else {
         return (
             <div class="grid-item">
-            <Link to="./Contact" style={{ textDecoration: 'none' }}>
             <button disabled id="me-button" type="button" className="center-button"
 		    >Contact Now!</button>
-            </Link>
             </div>);
     };
 
@@ -146,7 +144,7 @@ class Buyerbidding extends React.Component {
                             <div class="grid-item"> {bid.amount}</div>
                             <div class="grid-item"> {bid.time.slice(0,10)}</div>
                             <Givestatus status={bid.accepted}></Givestatus>
-                            <GiveButton status={bid.accepted}></GiveButton>
+                            <GiveButton status={bid.accepted} transactionId={bid.transaction} ></GiveButton>
                             {/* <div class="grid-item"> {bid.buyer}</div> */}
                             {/* <div class="grid-item"> {bid.accepted}</div> */}
                         </div>

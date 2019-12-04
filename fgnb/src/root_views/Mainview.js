@@ -28,7 +28,7 @@ class Mainview extends React.Component {
                         component={BuyerBidding}
                     />
                     <Route exact path="/settings" component={Settings} />
-                    <Route exact path="/contact" component={Contact} />
+                    <Route exact path="/contact/:transactionId" component={Contact} />
                     <Route
                         exact
                         path={["/", "/market"]}

@@ -57,11 +57,11 @@ function DeclineNewBidding(BiddingObj) {
 }
 
 
-function GiveAccept(statusObj) {
-    console.log(statusObj)
-    if (statusObj.bidjason.accepted == true) {
+function GiveAccept(props) {
+    console.log(props)
+    if (props.bidjason.accepted == true) {
         return (
-            <Link to="./Contact" style={{ textDecoration: 'none' }}>
+            <Link to={"./Contact/" + props.transactionId} style={{ textDecoration: 'none' }}>
                 <button id="me-button" type="button" className="center-button-Contact"
                 >Contact Now!</button>
             </Link>
@@ -69,7 +69,7 @@ function GiveAccept(statusObj) {
     }
     else {
         return (
-            <button id="me-button" type="button" onClick={e => AccepteNewBidding(statusObj)} className="center-button-accept"
+            <button id="me-button" type="button" onClick={e => AccepteNewBidding(props)} className="center-button-accept"
             >Accept!</button>
         )
     }
@@ -79,10 +79,8 @@ function GiveDecline(statusObj) {
     //Hard code bidding information, add server call later
     if (statusObj.bidjason.accepted == true) {
         return (
-            <Link to="./Contact" style={{ textDecoration: 'none' }}>
                 <button disabled id="me-button-decline" type="button" className="center-button-decline"
                 >Decline!</button>
-            </Link>
         )
     }
     else {
@@ -152,7 +150,7 @@ class BiddingList extends React.Component {
                             <div class="grid-item"> {bid.amount}</div>
                             <div class="grid-item"> {bid.time.slice(0, 10)}</div>
                             <div class="grid-item">
-                                <GiveAccept bidjason={bid}></GiveAccept>
+                                <GiveAccept bidjason={bid} transactionId={bid.transaction}></GiveAccept>
                             </div>
                             <div class="grid-item">
                                 <GiveDecline bidjason={bid}></GiveDecline>
