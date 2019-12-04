@@ -88,10 +88,50 @@ router.delete("/:id", authenticateAdmin, function(req, res, next) {
     if (!ObjectID.isValid(id)) {
         res.status(404).send();
     }
+    let deleted = null;
     Transaction.findByIdAndRemove(id)
         .then(transaction => {
             if (transaction) {
-                res.send(transaction);
+                deleted = transaction;
+                return transaction.bidding;
+            } else {
+                res.status(404).send();
+            }
+        })
+        .then(biddingId => {
+            if (biddingId) {
+                return Bidding.findById(biddingId);
+            } else {
+                res.status(404).send();
+            }
+        })
+        .then(bidding => {
+            if (bidding) {
+                bidding.transaction = null;
+                bidding.accepted = null;
+                return bidding.save();
+            } else {
+                res.status(404).send();
+            }
+        })
+        .then(bidding => {
+            if (bidding && bidding.item) {
+                return Item.findById(bidding.item);
+            } else {
+                res.status(404).send();
+            }
+        })
+        .then(item => {
+            if (item) {
+                item.inMarket = true;
+                return item.save();
+            } else {
+                res.status(404).send();
+            }
+        })
+        .then(item => {
+            if (item) {
+                res.send(deleted);
             } else {
                 res.status(404).send();
             }

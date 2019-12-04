@@ -3,17 +3,8 @@ import Navigation from "../navigation/Navigation";
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import "./User.css";
-import { mainListItems, secondaryListItems } from "./ProfilelistItmes";
-import FullWidthGrid from "./Profilebox";
-import LineGridBox from "./ProfileWishListGrid";
-import ItemGridForSale from "./MySalesItems";
-import { deepOrange, deepPurple } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
 import { getState } from "statezero";
-
-
-
-
 
 
 function UserBox(getfetched) {
@@ -22,7 +13,7 @@ function UserBox(getfetched) {
         <div className="profile_box_container">
             <div className="profile_box">
                 <div className="userIconContainer">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu4JAn8Ri7J-7gD3JqlRJt-YxfWqQCcXO_JE4AA_zrsgHKRUQA&s" alt="yaoshui_pic" className="userIcon"></img>
+                    <img src={getfetched.getfetched.profilePicture} className="userIcon"></img>
                     <div className="userNameContainer">
                         <div className="userBoxName"> Username:
                         <div className="userInput"> {getfetched.getfetched.username}
@@ -118,7 +109,7 @@ class User extends React.Component {
     componentWillMount() {
         console.log(getState("currentUser"));
         const id = getState("currentUser");
-        const url = `http://localhost:3001/api/user/${id}`;
+        const url = `http://localhost:3001/api/user/info/${id}`;
         fetch(url)
         .then(res => {
             if (res.status === 200) {
