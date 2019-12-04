@@ -9,7 +9,7 @@ const uuidv1 = require("uuid/v1");
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
-        callback(null, "public/images");
+        callback(null, "public/profilephotos");
     },
     filename: function(req, file, callback) {
         // TODO: ADD MORE FILE TYPE HERE !!!!!
