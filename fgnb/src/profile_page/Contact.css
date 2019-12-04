@@ -85,7 +85,8 @@
 }
 
 .userInput {
-	/* Add properties below */
+    /* Add properties below */
+    font-size: 60%;
 	text-align: left;
     display: inline-block;
     margin-left: 0.5em;

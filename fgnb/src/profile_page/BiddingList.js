@@ -27,11 +27,11 @@ function AccepteNewBidding(BiddingObj) {
     .catch(error => {
         console.log(error);
     })
-    // window.location.reload()
+    window.location.reload()
     }
 
 function DeclineNewBidding(BiddingObj) {
-    // window.location.reload()
+    window.location.reload()
     console.log(BiddingObj)
     const Bidding_id = BiddingObj.bidjason._id
     console.log(Bidding_id)
