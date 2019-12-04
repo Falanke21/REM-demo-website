@@ -104,7 +104,7 @@ team23
 ```
 
 ## Admin Dashboard
-This page serves the puepose of website admin managing various information and assets. Dashboard can be navigated to by logging in using credential of username and password of "admin".  
+This page serves the puepose of website admin managing various information and assets. Dashboard can be navigated to by logging in using email: "admin" and password: "admin".  
 Within the dashboard there are three subpages, each can be navigated to using the side drawer on the left:
 
  - **User**  
@@ -121,26 +121,39 @@ Within the dashboard there are three subpages, each can be navigated to using th
 
  ## Normal User
   - **Login**  
-A normal user is able to enter the main app by input: Account - user and Password - user. Once a user logs in, he/she can log out anywhere just be clicking the logout button in the navigation bar. 
+A normal user is able to enter the main app by email and password. Once a user logs in, he/she can log out anywhere just be clicking the logout button in the navigation bar. 
+
+User can also sign up using email, username and password. 
+
+Two demo users: 
+
+user1 - email: user1@gmail.com, password: useruser
+
+user2 - email: user2@gmail.com, password: useruser
 
 The main web app is divided into two major parts, Market and Profile, as indicated in the navigation bar at top.   
 
 ### Market
-In the market page, both the main grid and the bottom grid display the items that are selling online. You can click on any of the item to go to the item-detail page. 
+In the market page, both the main grid and the bottom grid display the items that are selling online. You can click on any of the item to go to the item-detail page. These items sync with our database. Only in Market items are displayed. 
 
  - **Item Detail**  
 The detail page displays the item photo, name, price, location and description. Also all biddings that other buyers submit will be displayed at "Current Bidding" section. You can submit your bidding here. By clicking "Submit a bidding", a dialog pops up and ask you for how much you want to bid on this item. 
 
 ### Profile
-Let's go back to the profile page. User information is displayed here. Below the user information box, there are two grids, represent all biddings this user submitted and all item he is currently selling. You can click on it to visit the detail page of the item. 
-
-To the left of the profile page, there's a list of buttons, right now only three of them are functioning. We may or may not need all of these buttons at the end of the project, but we leave them there in case we need them. 
+Let's go back to the profile page. User information is displayed here. Below the user information box, there are four buttons. 
 
  - **Sell**  
-"Sell" button takes us to the add-item page where you can enter your item's information and publish it online. You can and you need to upload an image of your item. 
+"Sell" button takes us to the add-item page where you can enter your item's information and publish it online. You can and you need to upload an image of your item. Location and description are optional. 
 
  - **Biddings to me**  
-Now go back to the profile page. Under "sell" button we have "Bidding to me", where a seller can see all the biddings he receives on his selling items. He may choose to accept or decline this offer of bid. Back to profile page. 
+Now go back to the profile page. Next to "sell" button we have "Bidding to me", where a seller can see all the biddings he receives on his selling items. He may choose to accept or decline this offer of bid. 
+If he accept the bidding, he can now access the contact page of the app. Also he can decline the bidding. The bidder will see the decision that seller make in the next functionality. 
+
+ - **My Bidding**
+This page displays all biddings one user make when he wants to buy some of the items in market. The user may see the decision that seller made for each bidding. If the seller accepts a bidding, the buyer will also have access to the contact page. 
+
+ - **Contact Page**
+This page is for sellers and buyers to exchange their contact information. 
 
  - **Settings**  
-Under "Bidding to me" button there's the settings. The user is able to modify and update his information here. 
+Under "Bidding to me" button there's the settings. The user is able to modify and update his information here. User may update his/her profile picture here. We don't allow users to change their username and email. 
