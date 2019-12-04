@@ -4,8 +4,13 @@ import Navigation from "../navigation/Navigation";
 import Bidding from "./Bidding";
 import "./Contact.css";
 import Button from "@material-ui/core/Button";
+import { getState } from "statezero";
 
-const getfetched = {
+//hard coded biddingId, need to be parsed everytime when we press the contact now 
+
+
+
+let getfetched = {
     flag: true,
     result: {
         transaction: {
@@ -61,7 +66,8 @@ const getfetched = {
             __v: 3
         }
     }
-};
+}
+
 
 function GetSellerPic(){
     let sellerPic = getfetched.result.seller.profilePicture
@@ -105,9 +111,6 @@ function GetBuyerPhone(){
     return(
         buyerPhone)
 }
-
-const getfetchedPic = getfetched.result.item.img
-    // "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1566956144418";
 
 function UserBoxSeller() {
     return (
@@ -187,6 +190,39 @@ function UserBoxBuyer() {
 }
 
 class Contact extends React.Component {
+    state = {
+        currentState: this.props.match.params.transactionId,
+        transaction:{},
+    }
+
+    componentWillMount() {
+        const id = this.state.currentState
+        console.log(id)
+        const url = `http://localhost:3001/api/transaction/${id}`;
+        fetch(url)
+            .then(res => {
+                console.log(res)
+                if (res.status === 200) {
+                    return res.json();
+                } else {
+                    return Promise.reject();
+                }
+            })
+            .then(json => {
+                console.log(json)
+                if (json.flag) {
+                    this.setState({
+                        transaction: json
+                    });
+
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        getfetched = this.transaction
+    }
+
     render() {
         return (
             <div>
@@ -204,7 +240,7 @@ class Contact extends React.Component {
                         congratulation!
                     </div>
                     <div className="Contact_congrads_box_pic">
-                        <img src={getfetchedPic} className="bounding-box"></img>
+                        <img src={getfetched.result.item.img} className="bounding-box"></img>
                         <img
                             src="http://s.aigei.com/src/img/png/13/133d8084d3ba4d01922365fb631f415b.png?imageMogr2/auto-orient/thumbnail/!52x152r/gravity/Center/crop/52x152/quality/85/&e=1735488000&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:bIfkc9DQrdr629xHIAFmGXWR5vs=
 "
