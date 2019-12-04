@@ -8,7 +8,7 @@ import { getState } from "statezero";
 function AccepteNewBidding(BiddingObj) {
     const Bidding_id = BiddingObj.bidjason._id
     console.log(Bidding_id)
-    const request = new Request("http://localhost:3001/api/bidding/accept", {   
+    const request = new Request("/api/bidding/accept", {   
         method: "PATCH",
         body: JSON.stringify({ biddingId: Bidding_id }),
         headers: {
@@ -35,7 +35,7 @@ function DeclineNewBidding(BiddingObj) {
     console.log(BiddingObj)
     const Bidding_id = BiddingObj.bidjason._id
     console.log(Bidding_id)
-    const request = new Request("http://localhost:3001/api/bidding/decline", {
+    const request = new Request("/api/bidding/decline", {
         method: "PATCH",
         body: JSON.stringify({ biddingId: Bidding_id }),
         headers: {
@@ -102,7 +102,7 @@ class BiddingList extends React.Component {
     componentWillMount() {
         console.log(getState("currentUser"));
         const id = getState("currentUser");
-        const url = `http://localhost:3001/api/bidding/seller/${id}`;
+        const url = `/api/bidding/seller/${id}`;
         fetch(url)
             .then(res => {
                 console.log(res)

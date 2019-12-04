@@ -129,7 +129,7 @@ class ItemGrid extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/api/item/all", {
+        fetch("/api/item/all", {
             method: "GET"
         })
             .then(res => {
@@ -141,7 +141,7 @@ class ItemGrid extends Component {
             })
             .then(json => {
                 for (let x of json.items) {
-                    x.img = "http://localhost:3001" + x.img;
+                    x.img = "" + x.img;
                 }
                 this.setState({ tileData: json.items });
             })

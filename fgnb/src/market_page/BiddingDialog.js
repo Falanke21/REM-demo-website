@@ -31,7 +31,7 @@ export default function BiddingDialog(prop) {
             `Item id is ${prop.itemId}, The amount submitted is ${bidAmount}`
         );
 
-        fetch("http://localhost:3001/api/bidding", {
+        fetch("/api/bidding", {
             method: "POST",
             body: JSON.stringify({
                 itemId: prop.itemId,

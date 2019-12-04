@@ -143,7 +143,7 @@ class Contact extends React.Component {
     _getData() {
         const id = this.props.match.params.transactionId
         console.log(id)
-        const url = `http://localhost:3001/api/transaction/${id}`;
+        const url = `/api/transaction/${id}`;
         fetch(url)
             .then(res => {
                 console.log(res)
