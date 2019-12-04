@@ -24,7 +24,7 @@ export default function AddItem() {
 
         formData.append("uploadPicture", itemPicture);
 
-        const request = new Request("http://localhost:3001/api/item", {
+        const request = new Request("/api/item", {
             method: "POST",
             headers: {
                 // "Content-Type": "multipart/form-data",

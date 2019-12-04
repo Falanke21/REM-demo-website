@@ -109,7 +109,7 @@ class User extends React.Component {
     componentWillMount() {
         console.log(getState("currentUser"));
         const id = getState("currentUser");
-        const url = `http://localhost:3001/api/user/info/${id}`;
+        const url = `/api/user/info/${id}`;
         fetch(url)
         .then(res => {
             if (res.status === 200) {

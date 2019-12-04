@@ -198,7 +198,7 @@ class Contact extends React.Component {
     componentWillMount() {
         const id = this.state.currentState
         console.log(id)
-        const url = `http://localhost:3001/api/transaction/${id}`;
+        const url = `/api/transaction/${id}`;
         fetch(url)
             .then(res => {
                 console.log(res)

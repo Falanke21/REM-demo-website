@@ -101,7 +101,7 @@ class Buyerbidding extends React.Component {
     componentWillMount() {
         console.log(getState("currentUser"));
         const id = getState("currentUser");
-        const url = `http://localhost:3001/api/bidding/buyer/${id}`;
+        const url = `/api/bidding/buyer/${id}`;
         fetch(url)
             .then(res => {
                 console.log(res)

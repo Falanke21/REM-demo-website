@@ -11,7 +11,7 @@ export default function ItemDetail({ match }) {
     const [biddings, setBiddings] = useState([])
     const itemId = match.params.itemId;
     useEffect(() => {
-        fetch("http://localhost:3001/api/item/" + itemId, {
+        fetch("/api/item/" + itemId, {
             method: "GET"
         })
             .then(res => {
@@ -25,7 +25,7 @@ export default function ItemDetail({ match }) {
             })
             .then(json => {
                 setItem(json.item);
-                return fetch("http://localhost:3001/api/bidding/item/" + itemId, {
+                return fetch("/api/bidding/item/" + itemId, {
                     method: "GET"
                 })
             })
