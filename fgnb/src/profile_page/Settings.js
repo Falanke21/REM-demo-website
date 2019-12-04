@@ -63,7 +63,8 @@ render(){
                         name="newPassword"
                         fullWidth
                         onChange={e => {
-                            updateSettingForm(e.target.value);
+                            console.log(e.target.value);
+                            updateSettingForm(e.target);
                         }
                         }
                     />
@@ -78,7 +79,8 @@ render(){
                         name="confirmPassword"
                         fullWidth
                         onChange={e => {
-                            updateSettingForm(e.target.value);
+                            console.log(e.target.value);
+                            updateSettingForm(e.target);
                         }}
                     />
                 </Container>
@@ -91,6 +93,7 @@ render(){
                         name="pic"
                         accept="image/*"
                         onChange={e => {
+                            console.log(e.target.files[0]);
                             updateProfilePic(e.target.files[0]);
                         }}
                     />
