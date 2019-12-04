@@ -186,6 +186,8 @@ export const updateSetting = () =>{
     const {newPassword, confirmPassword} = getState("settingForm");
     if (newPassword !== confirmPassword){
         alert("Password Mismatch");
+    } else if (newPassword === "" || newPassword === undefined) {
+        alert("Please Enter Your Password");
     }
     else{
         const userId = getUserId();
