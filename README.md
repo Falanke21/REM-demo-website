@@ -3,16 +3,6 @@
 # Deploy Website
 # https://quiet-taiga-35783.herokuapp.com/
 
-# Some messages for my teammates: 
-- **fgnb** folder is now the front-end, others are the back-end
-- `cd` into **fgnb**
-- run `npm start` to load react front-end on http://localhost:3000
-- `cd` back to root directory
-- run `npm install` in root directory
-- On MacOS, run the app with this command:
-- `$ DEBUG=myapp:* npm start`, or just `npm start` ;)
-- Then you can use postman to send request to http://localhost:3001/, or using browser on http://localhost:3000 to access the app.
-
 ## Directory Structure
 
 ```
