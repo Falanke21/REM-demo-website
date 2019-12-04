@@ -90,8 +90,20 @@ team23
         |   ├── Settings.js
         |   ├── User.css
         |   └── User.js
-        ├── 
-        │   ├── BaseReactComponent
+        ├── root_views
+        |   ├── Adminview.js
+        |   ├── Authview.css
+        |   ├── Authview.js
+        |   ├── Mainview.css
+        |   └── Mainview.js
+        ├── signup_page
+        |   └── SignUp.js
+        ├── utils
+        |   ├── helpers.js
+        |   ├── item.js
+        |   ├── transction.js
+        |   ├── user.js
+        │   └── BaseReactComponent
         │   │   └── index.js
         │   ├── Dashboard
         │   │   └── index.js
