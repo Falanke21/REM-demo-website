@@ -194,7 +194,11 @@ export const updateSetting = () =>{
         if(getState("settingForm.profilePic")){
             file.append("uploadPicture", getState("settingForm.profilePic"));
         }
-        const url = urlPrefix + `/api/setting`
+        console.log(userId);
+        console.log(newPassword);
+        console.log(getState("settingForm.profilePic"));
+        const url = urlPrefix + "/api/setting"
+        console.log(file);
         const request = new Request(url, {
             method: "PATCH",
             body: file,
@@ -202,7 +206,7 @@ export const updateSetting = () =>{
             Accept: "application/json, text/plain, */*",
             }
         });
-        console.log(request);
+        console.log(request.body);
         fetch(request).then(res => {
             if (res.status === 200){
                 console.log("Success patch data");
@@ -227,8 +231,8 @@ export const updateSettingForm = field =>{
 }
 
 export const updateProfilePic = field =>{
-    const {name, value} = field;
-    setState(`settingForm.profilePict`, value);
+    console.log(field);
+    setState(`settingForm.profilePic`, field);
 }
 
 export const updateLoginForm = field => {
