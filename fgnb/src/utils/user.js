@@ -148,8 +148,7 @@ export const updateUser = () => {
 
 
 export const getUserEmail = () =>{
-    const userInfo = getState("loginForm");
-    const userEmail = userInfo.email;
+    const userEmail = getState("settingForm.email");
     return userEmail
 }
 
@@ -175,6 +174,7 @@ export const getUserName = () =>{
     .then(json => {
         console.log(json.user.username);
         setState("userName", json.user.username);
+        setState("settingForm.email", json.user.email);
     })
     .catch(error => {
     })
