@@ -221,6 +221,7 @@ export const updateSetting = () =>{
         }).then(json => {
             console.log(json);
             alert("Request send successfully")
+            window.location.reload()
         }).catch(error => {
             console.log(error);
         })
