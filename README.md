@@ -13,6 +13,104 @@
 - `$ DEBUG=myapp:* npm start`, or just `npm start` ;)
 - Then you can use postman to send request to http://localhost:3001/, or using browser on http://localhost:3000 to access the app.
 
+## Directory Structure
+
+```
+team23
+├── db
+│   └── mongoose.js
+├── models
+│   ├── user.js
+│   ├── bidding.js
+│   ├── item.js
+│   ├── transaction.js
+├── middlewares
+│   ├── index.js
+├── routes
+│   ├── bidding.js
+│   ├── example.js
+│   ├── item.js
+│   ├── setting.js
+│   ├── transaction.js
+│   ├── user.js
+├── bin
+│   ├── www
+├── package.json
+├── app.js
+└── fgnb
+    ├── public
+    │   ├── index.html
+    │   └── ...
+    ├── tests
+    │   └── ...
+    └── src
+        ├── admin_page
+        |   ├── AdminDashBoard.js
+        |   ├── Item.js
+        |   ├── IteamAddForm.js
+        |   ├── ItemList.js
+        |   ├── Transaction.js
+        |   ├── TransactionList.js
+        |   ├── UserInspector.js
+        |   ├── UserPanel.js
+        |   └── UserQueryForm.js 
+        ├── asset
+        |   └── ...
+        ├── Component
+        |   ├── NotFoundPage.js
+        |   └── StateReactComponent.js
+        ├── login_page
+        |   ├── AuthForm.css
+        |   ├── Login.css
+        |   ├── Login.js
+        |   └── LoginForm.js
+        ├──  market_page
+        |   ├── BiddingDialog.js
+        |   ├── CurrentBiddings.js
+        |   ├── ItemCard.js
+        |   ├── ItemDetail.js
+        |   ├── ItemGrid.js
+        |   └── Market.js
+        ├── navigation
+        |   ├── Navigation.css
+        |   └── Navigation.js
+        ├── profile_page
+        |   ├── AddItem.js
+        |   ├── Bidding.js
+        |   ├── BiddingList.css
+        |   ├── BiddingList.js
+        |   ├── Buyerbidding.css
+        |   ├── BuerBidding.js
+        |   ├── Contact.css
+        |   ├── Contact.js
+        |   ├── MySalesItems.js
+        |   ├── Profilebox.js
+        |   ├── ProfilelistItmes.js
+        |   ├── ProfileWishListGrid.js
+        |   ├── Settings.js
+        |   ├── User.css
+        |   └── User.js
+        ├── 
+        │   ├── BaseReactComponent
+        │   │   └── index.js
+        │   ├── Dashboard
+        │   │   └── index.js
+        │   ├── StudentForm
+        │   │   ├── index.js
+        │   │   └── styles.css
+        │   ├── Student
+        │   │   ├── index.js
+        │   │   └── styles.css
+        │   └── ...
+        ├── index.js
+        ├── index.css
+        ├── App.js
+        ├── App.css
+        ├── MainView.js
+        ├── package.json
+        └── serviceWorker.js
+```
+
 ## Admin Dashboard
 This page serves the puepose of website admin managing various information and assets. Dashboard can be navigated to by logging in using credential of username and password of "admin".  
 Within the dashboard there are three subpages, each can be navigated to using the side drawer on the left:
